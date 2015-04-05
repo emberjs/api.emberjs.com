@@ -1,0 +1,53 @@
+{
+  "name": "Ember.Map",
+  "description": "<p>A Map stores values indexed by keys. Unlike JavaScript&#39;s\ndefault Objects, the keys of a Map can be any JavaScript\nobject.</p>\n<p>Internally, a Map has two data structures:</p>\n<ol>\n<li><code>keys</code>: an OrderedSet of all of the existing keys</li>\n<li><code>values</code>: a JavaScript Object indexed by the <code>Ember.guidFor(key)</code></li>\n</ol>\n<p>When a key/value pair is added for the first time, we\nadd the key to the <code>keys</code> OrderedSet, and create or\nreplace an entry in <code>values</code>. When an entry is deleted,\nwe delete its entry in <code>keys</code> and <code>values</code>.</p>\n",
+  "line": 237,
+  "file": "packages/ember-metal/lib/map.js",
+  "methods": [
+    {
+      "name": "create",
+      "isPrivate": false
+    },
+    {
+      "name": "get",
+      "isPrivate": false
+    },
+    {
+      "name": "set",
+      "isPrivate": false
+    },
+    {
+      "name": "remove",
+      "isPrivate": false
+    },
+    {
+      "name": "delete",
+      "isPrivate": false
+    },
+    {
+      "name": "has",
+      "isPrivate": false
+    },
+    {
+      "name": "forEach",
+      "isPrivate": false
+    },
+    {
+      "name": "clear",
+      "isPrivate": false
+    },
+    {
+      "name": "copy",
+      "isPrivate": false
+    }
+  ],
+  "properties": [
+    {
+      "name": "size",
+      "isPrivate": false
+    }
+  ],
+  "events": [],
+  "isPrivate": true,
+  "constType": "Class"
+}

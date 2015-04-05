@@ -1,0 +1,52 @@
+{
+  "name": "Ember.OrderedSet",
+  "description": "<p>This class is used internally by Ember and Ember Data.\nPlease do not use it at this time. We plan to clean it up\nand add many tests soon.</p>\n",
+  "line": 58,
+  "file": "packages/ember-metal/lib/map.js",
+  "methods": [
+    {
+      "name": "create",
+      "isPrivate": false
+    },
+    {
+      "name": "clear",
+      "isPrivate": false
+    },
+    {
+      "name": "add",
+      "isPrivate": false
+    },
+    {
+      "name": "remove",
+      "isPrivate": false
+    },
+    {
+      "name": "delete",
+      "isPrivate": false
+    },
+    {
+      "name": "isEmpty",
+      "isPrivate": false
+    },
+    {
+      "name": "has",
+      "isPrivate": false
+    },
+    {
+      "name": "forEach",
+      "isPrivate": false
+    },
+    {
+      "name": "toArray",
+      "isPrivate": false
+    },
+    {
+      "name": "copy",
+      "isPrivate": false
+    }
+  ],
+  "properties": [],
+  "events": [],
+  "isPrivate": true,
+  "constType": "Class"
+}

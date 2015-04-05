@@ -1,0 +1,197 @@
+[
+  {
+    "file": "packages/ember-metal/lib/map.js",
+    "line": 455,
+    "itemtype": "method",
+    "name": "create",
+    "static": 1,
+    "params": [
+      {
+        "name": "options",
+        "description": "",
+        "optional": true,
+        "props": [
+          {
+            "name": "defaultValue",
+            "description": "",
+            "type": "*",
+            "optional": true
+          }
+        ]
+      }
+    ],
+    "return": {
+      "description": "If options are passed, returns\n  `Ember.MapWithDefault` otherwise returns `Ember.Map`",
+      "type": "Ember.MapWithDefault|Ember.Map"
+    },
+    "class": "Ember.MapWithDefault",
+    "module": "ember-metal",
+    "namespace": "Ember",
+    "description": ""
+  },
+  {
+    "file": "packages/ember-metal/lib/map.js",
+    "line": 476,
+    "description": "<p>Retrieve the value associated with a given key.</p>\n",
+    "itemtype": "method",
+    "name": "get",
+    "params": [
+      {
+        "name": "key",
+        "description": "",
+        "type": "*"
+      }
+    ],
+    "return": {
+      "description": "the value associated with the key, or the default value",
+      "type": "*"
+    },
+    "class": "Ember.MapWithDefault",
+    "module": "ember-metal",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-metal/lib/map.js",
+    "line": 308,
+    "description": "<p>Adds a value to the map. If a value for the given key has already been\nprovided, the new value will replace the old value.</p>\n",
+    "itemtype": "method",
+    "name": "set",
+    "params": [
+      {
+        "name": "key",
+        "description": "",
+        "type": "*"
+      },
+      {
+        "name": "value",
+        "description": "",
+        "type": "*"
+      }
+    ],
+    "return": {
+      "description": "",
+      "type": "Ember.Map"
+    },
+    "class": "Ember.Map",
+    "module": "ember-metal",
+    "namespace": "Ember",
+    "inheritedFrom": "Ember.Map"
+  },
+  {
+    "file": "packages/ember-metal/lib/map.js",
+    "line": 334,
+    "deprecated": true,
+    "deprecationMessage": "see delete\nRemoves a value from the map for an associated key.",
+    "itemtype": "method",
+    "name": "remove",
+    "params": [
+      {
+        "name": "key",
+        "description": "",
+        "type": "*"
+      }
+    ],
+    "return": {
+      "description": "true if an item was removed, false otherwise",
+      "type": "Boolean"
+    },
+    "class": "Ember.Map",
+    "module": "ember-metal",
+    "namespace": "Ember",
+    "description": "",
+    "inheritedFrom": "Ember.Map"
+  },
+  {
+    "file": "packages/ember-metal/lib/map.js",
+    "line": 348,
+    "description": "<p>Removes a value from the map for an associated key.</p>\n",
+    "since": "1.8.0",
+    "itemtype": "method",
+    "name": "delete",
+    "params": [
+      {
+        "name": "key",
+        "description": "",
+        "type": "*"
+      }
+    ],
+    "return": {
+      "description": "true if an item was removed, false otherwise",
+      "type": "Boolean"
+    },
+    "class": "Ember.Map",
+    "module": "ember-metal",
+    "namespace": "Ember",
+    "inheritedFrom": "Ember.Map"
+  },
+  {
+    "file": "packages/ember-metal/lib/map.js",
+    "line": 373,
+    "description": "<p>Check whether a key is present.</p>\n",
+    "itemtype": "method",
+    "name": "has",
+    "params": [
+      {
+        "name": "key",
+        "description": "",
+        "type": "*"
+      }
+    ],
+    "return": {
+      "description": "true if the item was present, false otherwise",
+      "type": "Boolean"
+    },
+    "class": "Ember.Map",
+    "module": "ember-metal",
+    "namespace": "Ember",
+    "inheritedFrom": "Ember.Map"
+  },
+  {
+    "file": "packages/ember-metal/lib/map.js",
+    "line": 384,
+    "description": "<p>Iterate over all the keys and values. Calls the function once\nfor each key, passing in value, key, and the map being iterated over,\nin that order.</p>\n<p>The keys are guaranteed to be iterated over in insertion order.</p>\n",
+    "itemtype": "method",
+    "name": "forEach",
+    "params": [
+      {
+        "name": "callback",
+        "description": "",
+        "type": "Function"
+      },
+      {
+        "name": "self",
+        "description": "if passed, the `this` value inside the\n  callback. By default, `this` is the map.",
+        "type": "*"
+      }
+    ],
+    "class": "Ember.Map",
+    "module": "ember-metal",
+    "namespace": "Ember",
+    "inheritedFrom": "Ember.Map"
+  },
+  {
+    "file": "packages/ember-metal/lib/map.js",
+    "line": 421,
+    "itemtype": "method",
+    "name": "clear",
+    "class": "Ember.Map",
+    "module": "ember-metal",
+    "namespace": "Ember",
+    "description": "",
+    "inheritedFrom": "Ember.Map"
+  },
+  {
+    "file": "packages/ember-metal/lib/map.js",
+    "line": 495,
+    "itemtype": "method",
+    "name": "copy",
+    "return": {
+      "description": "",
+      "type": "Ember.MapWithDefault"
+    },
+    "class": "Ember.MapWithDefault",
+    "module": "ember-metal",
+    "namespace": "Ember",
+    "description": ""
+  }
+]

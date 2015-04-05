@@ -1,0 +1,50 @@
+{
+  "name": "String",
+  "description": "",
+  "methods": [
+    {
+      "name": "fmt",
+      "isPrivate": false
+    },
+    {
+      "name": "w",
+      "isPrivate": false
+    },
+    {
+      "name": "loc",
+      "isPrivate": false
+    },
+    {
+      "name": "camelize",
+      "isPrivate": false
+    },
+    {
+      "name": "decamelize",
+      "isPrivate": false
+    },
+    {
+      "name": "dasherize",
+      "isPrivate": false
+    },
+    {
+      "name": "underscore",
+      "isPrivate": false
+    },
+    {
+      "name": "classify",
+      "isPrivate": false
+    },
+    {
+      "name": "capitalize",
+      "isPrivate": false
+    },
+    {
+      "name": "htmlSafe",
+      "isPrivate": false
+    }
+  ],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

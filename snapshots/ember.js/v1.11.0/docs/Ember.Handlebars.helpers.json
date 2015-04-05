@@ -1,0 +1,106 @@
+{
+  "name": "Ember.Handlebars.helpers",
+  "description": "",
+  "methods": [
+    {
+      "name": "bind-attr",
+      "isPrivate": false
+    },
+    {
+      "name": "bindAttr",
+      "isPrivate": false
+    },
+    {
+      "name": "collection",
+      "isPrivate": false
+    },
+    {
+      "name": "component",
+      "isPrivate": false
+    },
+    {
+      "name": "debugger",
+      "isPrivate": false
+    },
+    {
+      "name": "each",
+      "isPrivate": false
+    },
+    {
+      "name": "if",
+      "isPrivate": false
+    },
+    {
+      "name": "unless",
+      "isPrivate": false
+    },
+    {
+      "name": "input",
+      "isPrivate": false
+    },
+    {
+      "name": "loc",
+      "isPrivate": false
+    },
+    {
+      "name": "log",
+      "isPrivate": false
+    },
+    {
+      "name": "partial",
+      "isPrivate": false
+    },
+    {
+      "name": "template",
+      "isPrivate": false
+    },
+    {
+      "name": "textarea",
+      "isPrivate": false
+    },
+    {
+      "name": "unbound",
+      "isPrivate": false
+    },
+    {
+      "name": "view",
+      "isPrivate": false
+    },
+    {
+      "name": "with",
+      "isPrivate": false
+    },
+    {
+      "name": "yield",
+      "isPrivate": false
+    },
+    {
+      "name": "action",
+      "isPrivate": false
+    },
+    {
+      "name": "link-to",
+      "isPrivate": false
+    },
+    {
+      "name": "linkTo",
+      "isPrivate": false
+    },
+    {
+      "name": "outlet",
+      "isPrivate": false
+    },
+    {
+      "name": "query-params",
+      "isPrivate": false
+    },
+    {
+      "name": "render",
+      "isPrivate": false
+    }
+  ],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

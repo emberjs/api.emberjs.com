@@ -1,0 +1,203 @@
+{
+  "name": "Ember.NoneLocation",
+  "description": "<p>Ember.NoneLocation does not interact with the browser. It is useful for\ntesting, or when you need to manage state with your Router, but temporarily\ndon&#39;t want it to muck with the URL (for example when you embed your\napplication in a larger page).</p>\n",
+  "line": 10,
+  "file": "packages/ember-routing/lib/location/none_location.js",
+  "methods": [
+    {
+      "name": "init",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "destroy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "willDestroy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_scheduledDestroy",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "toString",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "extend",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "createWithMixins",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "create",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "reopen",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "reopenClass",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "metaForProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "eachComputedProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_onLookup",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_lazyInjections",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "get",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "getProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "set",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "setProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "beginPropertyChanges",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "endPropertyChanges",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "propertyWillChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "propertyDidChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "notifyPropertyChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "addObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "removeObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "hasObserverFor",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "getWithDefault",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "incrementProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "decrementProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "toggleProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "cacheFor",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "getURL",
+      "isPrivate": true
+    },
+    {
+      "name": "setURL",
+      "isPrivate": true
+    },
+    {
+      "name": "onUpdateURL",
+      "isPrivate": true
+    },
+    {
+      "name": "handleURL",
+      "isPrivate": true
+    },
+    {
+      "name": "formatURL",
+      "isPrivate": true
+    }
+  ],
+  "properties": [
+    {
+      "name": "concatenatedProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "isDestroyed",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "isDestroying",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    }
+  ],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

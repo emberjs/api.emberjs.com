@@ -1,0 +1,80 @@
+{
+  "name": "Ember.Observable",
+  "description": "<h2 id=\"overview\">Overview</h2>\n<p>This mixin provides properties and property observing functionality, core\nfeatures of the Ember object model.</p>\n<p>Properties and observers allow one object to observe changes to a\nproperty on another object. This is one of the fundamental ways that\nmodels, controllers and views communicate with each other in an Ember\napplication.</p>\n<p>Any object that has this mixin applied can be used in observer\noperations. That includes <code>Ember.Object</code> and most objects you will\ninteract with as you write your Ember application.</p>\n<p>Note that you will not generally apply this mixin to classes yourself,\nbut you will use the features provided by this module frequently, so it\nis important to understand how to use it.</p>\n<h2 id=\"using-get-and-set-\">Using <code>get()</code> and <code>set()</code></h2>\n<p>Because of Ember&#39;s support for bindings and observers, you will always\naccess properties using the get method, and set properties using the\nset method. This allows the observing objects to be notified and\ncomputed properties to be handled properly.</p>\n<p>More documentation about <code>get</code> and <code>set</code> are below.</p>\n<h2 id=\"observing-property-changes\">Observing Property Changes</h2>\n<p>You typically observe property changes simply by adding the <code>observes</code>\ncall to the end of your method declarations in classes that you write.\nFor example:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">Ember.Object.extend({\n  valueObserver: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n    <span class=\"hljs-comment\">// Executes whenever the \"value\" property changes</span>\n  }.observes(<span class=\"hljs-string\">'value'</span>)\n});</pre></td>      </tr>    </table>  </div></div><p>Although this is the most common way to add an observer, this capability\nis actually built into the <code>Ember.Object</code> class on top of two methods\ndefined in this mixin: <code>addObserver</code> and <code>removeObserver</code>. You can use\nthese two methods to add and remove observers yourself if you need to\ndo so at runtime.</p>\n<p>To add an observer for a property, call:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">object.addObserver(<span class=\"hljs-string\">'propertyKey'</span>, targetObject, targetAction)</pre></td>      </tr>    </table>  </div></div><p>This will call the <code>targetAction</code> method on the <code>targetObject</code> whenever\nthe value of the <code>propertyKey</code> changes.</p>\n<p>Note that if <code>propertyKey</code> is a computed property, the observer will be\ncalled when any of the property dependencies are changed, even if the\nresulting value of the computed property is unchanged. This is necessary\nbecause computed properties are not computed until <code>get</code> is called.</p>\n",
+  "line": 34,
+  "file": "packages/ember-runtime/lib/mixins/observable.js",
+  "methods": [
+    {
+      "name": "get",
+      "isPrivate": false
+    },
+    {
+      "name": "getProperties",
+      "isPrivate": false
+    },
+    {
+      "name": "set",
+      "isPrivate": false
+    },
+    {
+      "name": "setProperties",
+      "isPrivate": false
+    },
+    {
+      "name": "beginPropertyChanges",
+      "isPrivate": false
+    },
+    {
+      "name": "endPropertyChanges",
+      "isPrivate": false
+    },
+    {
+      "name": "propertyWillChange",
+      "isPrivate": false
+    },
+    {
+      "name": "propertyDidChange",
+      "isPrivate": false
+    },
+    {
+      "name": "notifyPropertyChange",
+      "isPrivate": false
+    },
+    {
+      "name": "addObserver",
+      "isPrivate": false
+    },
+    {
+      "name": "removeObserver",
+      "isPrivate": false
+    },
+    {
+      "name": "hasObserverFor",
+      "isPrivate": false
+    },
+    {
+      "name": "getWithDefault",
+      "isPrivate": false
+    },
+    {
+      "name": "incrementProperty",
+      "isPrivate": false
+    },
+    {
+      "name": "decrementProperty",
+      "isPrivate": false
+    },
+    {
+      "name": "toggleProperty",
+      "isPrivate": false
+    },
+    {
+      "name": "cacheFor",
+      "isPrivate": false
+    }
+  ],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

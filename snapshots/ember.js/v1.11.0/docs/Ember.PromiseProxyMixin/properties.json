@@ -1,0 +1,67 @@
+[
+  {
+    "file": "packages/ember-runtime/lib/mixins/promise_proxy.js",
+    "line": 102,
+    "description": "<p>If the proxied promise is rejected this will contain the reason\nprovided.</p>\n",
+    "itemtype": "property",
+    "name": "reason",
+    "default": "null",
+    "class": "Ember.PromiseProxyMixin",
+    "module": "ember",
+    "submodule": "ember-runtime"
+  },
+  {
+    "file": "packages/ember-runtime/lib/mixins/promise_proxy.js",
+    "line": 111,
+    "description": "<p>Once the proxied promise has settled this will become <code>false</code>.</p>\n",
+    "itemtype": "property",
+    "name": "isPending",
+    "default": "true",
+    "class": "Ember.PromiseProxyMixin",
+    "module": "ember",
+    "submodule": "ember-runtime"
+  },
+  {
+    "file": "packages/ember-runtime/lib/mixins/promise_proxy.js",
+    "line": 119,
+    "description": "<p>Once the proxied promise has settled this will become <code>true</code>.</p>\n",
+    "itemtype": "property",
+    "name": "isSettled",
+    "default": "false",
+    "class": "Ember.PromiseProxyMixin",
+    "module": "ember",
+    "submodule": "ember-runtime"
+  },
+  {
+    "file": "packages/ember-runtime/lib/mixins/promise_proxy.js",
+    "line": 127,
+    "description": "<p>Will become <code>true</code> if the proxied promise is rejected.</p>\n",
+    "itemtype": "property",
+    "name": "isRejected",
+    "default": "false",
+    "class": "Ember.PromiseProxyMixin",
+    "module": "ember",
+    "submodule": "ember-runtime"
+  },
+  {
+    "file": "packages/ember-runtime/lib/mixins/promise_proxy.js",
+    "line": 135,
+    "description": "<p>Will become <code>true</code> if the proxied promise is fulfilled.</p>\n",
+    "itemtype": "property",
+    "name": "isFulfilled",
+    "default": "false",
+    "class": "Ember.PromiseProxyMixin",
+    "module": "ember",
+    "submodule": "ember-runtime"
+  },
+  {
+    "file": "packages/ember-runtime/lib/mixins/promise_proxy.js",
+    "line": 143,
+    "description": "<p>The promise whose fulfillment value is being proxied by this object.</p>\n<p>This property must be specified upon creation, and should not be\nchanged once created.</p>\n<p>Example:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">Ember.ObjectController.extend(Ember.PromiseProxyMixin).create({\n  promise: <span class=\"xml\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">thenable</span>&gt;</span>\n});</span></pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "property",
+    "name": "promise",
+    "class": "Ember.PromiseProxyMixin",
+    "module": "ember",
+    "submodule": "ember-runtime"
+  }
+]

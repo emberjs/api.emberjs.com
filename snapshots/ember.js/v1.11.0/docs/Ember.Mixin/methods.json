@@ -1,0 +1,80 @@
+[
+  {
+    "file": "packages/ember-metal/lib/mixin.js",
+    "line": 588,
+    "itemtype": "method",
+    "name": "create",
+    "static": 1,
+    "params": [
+      {
+        "name": "arguments",
+        "description": "",
+        "multiple": true
+      }
+    ],
+    "class": "Ember.Mixin",
+    "module": "ember",
+    "submodule": "ember-metal",
+    "namespace": "Ember",
+    "description": ""
+  },
+  {
+    "file": "packages/ember-metal/lib/mixin.js",
+    "line": 607,
+    "itemtype": "method",
+    "name": "reopen",
+    "params": [
+      {
+        "name": "arguments",
+        "description": "",
+        "multiple": true
+      }
+    ],
+    "class": "Ember.Mixin",
+    "module": "ember",
+    "submodule": "ember-metal",
+    "namespace": "Ember",
+    "description": ""
+  },
+  {
+    "file": "packages/ember-metal/lib/mixin.js",
+    "line": 642,
+    "itemtype": "method",
+    "name": "apply",
+    "params": [
+      {
+        "name": "obj",
+        "description": ""
+      }
+    ],
+    "return": {
+      "description": "applied object"
+    },
+    "class": "Ember.Mixin",
+    "module": "ember",
+    "submodule": "ember-metal",
+    "namespace": "Ember",
+    "description": ""
+  },
+  {
+    "file": "packages/ember-metal/lib/mixin.js",
+    "line": 670,
+    "itemtype": "method",
+    "name": "detect",
+    "params": [
+      {
+        "name": "obj",
+        "description": ""
+      }
+    ],
+    "return": {
+      "description": "",
+      "type": "Boolean"
+    },
+    "class": "Ember.Mixin",
+    "module": "ember",
+    "submodule": "ember-metal",
+    "namespace": "Ember",
+    "description": ""
+  }
+]

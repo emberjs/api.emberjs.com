@@ -1,0 +1,15 @@
+[
+  {
+    "file": "packages/ember-runtime/lib/mixins/-proxy.js",
+    "line": 45,
+    "description": "<p>The object whose properties will be forwarded.</p>\n",
+    "itemtype": "property",
+    "name": "content",
+    "type": "Ember.Object",
+    "default": "null",
+    "class": "Ember.ProxyMixin",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  }
+]

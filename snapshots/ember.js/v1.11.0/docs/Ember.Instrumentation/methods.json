@@ -1,0 +1,91 @@
+[
+  {
+    "file": "packages/ember-metal/lib/instrumentation.js",
+    "line": 75,
+    "description": "<p>Notifies event&#39;s subscribers, calls <code>before</code> and <code>after</code> hooks.</p>\n",
+    "itemtype": "method",
+    "name": "instrument",
+    "params": [
+      {
+        "name": "name",
+        "description": "Namespaced event name.",
+        "type": "String",
+        "optional": true
+      },
+      {
+        "name": "payload",
+        "description": "",
+        "type": "Object"
+      },
+      {
+        "name": "callback",
+        "description": "Function that you're instrumenting.",
+        "type": "Function"
+      },
+      {
+        "name": "binding",
+        "description": "Context that instrument function is called with.",
+        "type": "Object"
+      }
+    ],
+    "class": "Ember.Instrumentation",
+    "module": "ember-metal",
+    "namespace": "Ember.Instrumentation"
+  },
+  {
+    "file": "packages/ember-metal/lib/instrumentation.js",
+    "line": 156,
+    "description": "<p>Subscribes to a particular event or instrumented block of code.</p>\n",
+    "itemtype": "method",
+    "name": "subscribe",
+    "params": [
+      {
+        "name": "pattern",
+        "description": "Namespaced event name.",
+        "type": "String",
+        "optional": true
+      },
+      {
+        "name": "object",
+        "description": "Before and After hooks.",
+        "type": "Object",
+        "optional": true
+      }
+    ],
+    "return": {
+      "description": "",
+      "type": "Subscriber"
+    },
+    "class": "Ember.Instrumentation",
+    "module": "ember-metal",
+    "namespace": "Ember.Instrumentation"
+  },
+  {
+    "file": "packages/ember-metal/lib/instrumentation.js",
+    "line": 196,
+    "description": "<p>Unsubscribes from a particular event or instrumented block of code.</p>\n",
+    "itemtype": "method",
+    "name": "unsubscribe",
+    "params": [
+      {
+        "name": "subscriber",
+        "description": "",
+        "type": "Object",
+        "optional": true
+      }
+    ],
+    "class": "Ember.Instrumentation",
+    "module": "ember-metal",
+    "namespace": "Ember.Instrumentation"
+  },
+  {
+    "file": "packages/ember-metal/lib/instrumentation.js",
+    "line": 217,
+    "description": "<p>Resets <code>Ember.Instrumentation</code> by flushing list of subscribers.</p>\n",
+    "itemtype": "method",
+    "name": "reset",
+    "class": "Ember.Instrumentation",
+    "module": "ember-metal",
+    "namespace": "Ember.Instrumentation"
+  }
+]

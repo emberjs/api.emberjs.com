@@ -1,0 +1,40 @@
+{
+  "name": "Ember.ComputedProperty",
+  "description": "<p>A computed property transforms an object&#39;s function into a property.</p>\n<p>By default the function backing the computed property will only be called\nonce and the result will be cached. You can specify various properties\nthat your computed property depends on. This will force the cached\nresult to be recomputed if the dependencies are modified.</p>\n<p>In the following example we declare a computed property (by calling\n<code>.property()</code> on the fullName function) and setup the property\ndependencies (depending on firstName and lastName). The fullName function\nwill be called once (regardless of how many times it is accessed) as long\nas its dependencies have not changed. Once firstName or lastName are updated\nany future calls (or anything bound) to fullName will incorporate the new\nvalues.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"><span class=\"hljs-keyword\">var</span> Person = Ember.Object.extend({\n  <span class=\"hljs-comment\">// these will be supplied by `create`</span>\n  firstName: <span class=\"hljs-literal\">null</span>,\n  lastName: <span class=\"hljs-literal\">null</span>,\n\n  fullName: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n    <span class=\"hljs-keyword\">var</span> firstName = <span class=\"hljs-keyword\">this</span>.get(<span class=\"hljs-string\">'firstName'</span>);\n    <span class=\"hljs-keyword\">var</span> lastName = <span class=\"hljs-keyword\">this</span>.get(<span class=\"hljs-string\">'lastName'</span>);\n\n   <span class=\"hljs-keyword\">return</span> firstName + <span class=\"hljs-string\">' '</span> + lastName;\n  }.property(<span class=\"hljs-string\">'firstName'</span>, <span class=\"hljs-string\">'lastName'</span>)\n});\n\n<span class=\"hljs-keyword\">var</span> tom = Person.create({\n  firstName: <span class=\"hljs-string\">'Tom'</span>,\n  lastName: <span class=\"hljs-string\">'Dale'</span>\n});\n\ntom.get(<span class=\"hljs-string\">'fullName'</span>) <span class=\"hljs-comment\">// 'Tom Dale'</span></pre></td>      </tr>    </table>  </div></div><p>You can also define what Ember should do when setting a computed property.\nIf you try to set a computed property, it will be invoked with the key and\nvalue you want to set it to. You can also accept the previous value as the\nthird parameter.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"><span class=\"hljs-keyword\">var</span> Person = Ember.Object.extend({\n  <span class=\"hljs-comment\">// these will be supplied by `create`</span>\n  firstName: <span class=\"hljs-literal\">null</span>,\n  lastName: <span class=\"hljs-literal\">null</span>,\n\n  fullName: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(key, value, oldValue)</span> </span>{\n    <span class=\"hljs-comment\">// getter</span>\n    <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-built_in\">arguments</span>.length === <span class=\"hljs-number\">1</span>) {\n      <span class=\"hljs-keyword\">var</span> firstName = <span class=\"hljs-keyword\">this</span>.get(<span class=\"hljs-string\">'firstName'</span>);\n      <span class=\"hljs-keyword\">var</span> lastName = <span class=\"hljs-keyword\">this</span>.get(<span class=\"hljs-string\">'lastName'</span>);\n\n      <span class=\"hljs-keyword\">return</span> firstName + <span class=\"hljs-string\">' '</span> + lastName;\n\n    <span class=\"hljs-comment\">// setter</span>\n    } <span class=\"hljs-keyword\">else</span> {\n      <span class=\"hljs-keyword\">var</span> name = value.split(<span class=\"hljs-string\">' '</span>);\n\n      <span class=\"hljs-keyword\">this</span>.set(<span class=\"hljs-string\">'firstName'</span>, name[<span class=\"hljs-number\">0</span>]);\n      <span class=\"hljs-keyword\">this</span>.set(<span class=\"hljs-string\">'lastName'</span>, name[<span class=\"hljs-number\">1</span>]);\n\n      <span class=\"hljs-keyword\">return</span> value;\n    }\n  }.property(<span class=\"hljs-string\">'firstName'</span>, <span class=\"hljs-string\">'lastName'</span>)\n});\n\n<span class=\"hljs-keyword\">var</span> person = Person.create();\n\nperson.set(<span class=\"hljs-string\">'fullName'</span>, <span class=\"hljs-string\">'Peter Wagenet'</span>);\nperson.get(<span class=\"hljs-string\">'firstName'</span>); <span class=\"hljs-comment\">// 'Peter'</span>\nperson.get(<span class=\"hljs-string\">'lastName'</span>);  <span class=\"hljs-comment\">// 'Wagenet'</span></pre></td>      </tr>    </table>  </div></div>",
+  "line": 34,
+  "file": "packages/ember-metal/lib/computed.js",
+  "methods": [
+    {
+      "name": "cacheable",
+      "isPrivate": false
+    },
+    {
+      "name": "volatile",
+      "isPrivate": false
+    },
+    {
+      "name": "readOnly",
+      "isPrivate": false
+    },
+    {
+      "name": "property",
+      "isPrivate": false
+    },
+    {
+      "name": "meta",
+      "isPrivate": false
+    },
+    {
+      "name": "get",
+      "isPrivate": false
+    },
+    {
+      "name": "set",
+      "isPrivate": false
+    }
+  ],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

@@ -1,0 +1,36 @@
+{
+  "name": "Ember.TargetActionSupport",
+  "description": "<p><code>Ember.TargetActionSupport</code> is a mixin that can be included in a class\nto add a <code>triggerAction</code> method with semantics similar to the Handlebars\n<code>{{action}}</code> helper. In normal Ember usage, the <code>{{action}}</code> helper is\nusually the best choice. This mixin is most often useful when you are\ndoing more complex event handling in View objects.</p>\n<p>See also <code>Ember.ViewTargetActionSupport</code>, which has\nview-aware defaults for target and actionContext.</p>\n",
+  "line": 12,
+  "file": "packages/ember-runtime/lib/mixins/target_action_support.js",
+  "methods": [
+    {
+      "name": "create",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Mixin"
+    },
+    {
+      "name": "reopen",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Mixin"
+    },
+    {
+      "name": "apply",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Mixin"
+    },
+    {
+      "name": "detect",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Mixin"
+    },
+    {
+      "name": "triggerAction",
+      "isPrivate": false
+    }
+  ],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

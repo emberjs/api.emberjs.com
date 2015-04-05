@@ -1,0 +1,49 @@
+[
+  {
+    "file": "packages/ember-runtime/lib/system/subarray.js",
+    "line": 34,
+    "description": "<p>Track that an item was added to the tracked array.</p>\n",
+    "itemtype": "method",
+    "name": "addItem",
+    "params": [
+      {
+        "name": "index",
+        "description": "The index of the item in the tracked array.",
+        "type": "Number"
+      },
+      {
+        "name": "match",
+        "description": "`true` iff the item is included in the subarray.",
+        "type": "Boolean"
+      }
+    ],
+    "return": {
+      "description": "The index of the item in the subarray.",
+      "type": "Number"
+    },
+    "class": "Ember.SubArray",
+    "module": "ember",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-runtime/lib/system/subarray.js",
+    "line": 87,
+    "description": "<p>Track that an item was removed from the tracked array.</p>\n",
+    "itemtype": "method",
+    "name": "removeItem",
+    "params": [
+      {
+        "name": "index",
+        "description": "The index of the item in the tracked array.",
+        "type": "Number"
+      }
+    ],
+    "return": {
+      "description": "The index of the item in the subarray, or `-1` if the item\nwas not in the subarray.",
+      "type": "Number"
+    },
+    "class": "Ember.SubArray",
+    "module": "ember",
+    "namespace": "Ember"
+  }
+]

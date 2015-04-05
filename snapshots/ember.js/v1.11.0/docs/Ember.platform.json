@@ -1,0 +1,21 @@
+{
+  "name": "Ember.platform",
+  "description": "",
+  "line": 3,
+  "file": "packages/ember-metal/lib/platform/define_property.js",
+  "methods": [
+    {
+      "name": "defineProperty",
+      "isPrivate": false
+    }
+  ],
+  "properties": [
+    {
+      "name": "hasPropertyAccessors",
+      "isPrivate": false
+    }
+  ],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Namespace"
+}

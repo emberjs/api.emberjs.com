@@ -1,0 +1,172 @@
+[
+  {
+    "file": "packages/ember-runtime/lib/mixins/action_handler.js",
+    "line": 148,
+    "description": "<p>Moves <code>actions</code> to <code>_actions</code> at extend time. Note that this currently\nmodifies the mixin themselves, which is technically dubious but\nis practically of little consequence. This may change in the future.</p>\n",
+    "access": "private",
+    "tagname": "",
+    "itemtype": "method",
+    "name": "willMergeMixin",
+    "class": "Ember.ActionHandler",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember",
+    "isPrivate": true,
+    "inheritedFrom": "Ember.ActionHandler"
+  },
+  {
+    "file": "packages/ember-runtime/lib/mixins/action_handler.js",
+    "line": 178,
+    "description": "<p>Triggers a named action on the <code>ActionHandler</code>. Any parameters\nsupplied after the <code>actionName</code> string will be passed as arguments\nto the action target function.</p>\n<p>If the <code>ActionHandler</code> has its <code>target</code> property set, actions may\nbubble to the <code>target</code>. Bubbling happens when an <code>actionName</code> can\nnot be found in the <code>ActionHandler</code>&#39;s <code>actions</code> hash or if the\naction target function returns <code>true</code>.</p>\n<p>Example</p>\n<div class=\"highlight js\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n</pre>        </td>        <td class=\"code\"><pre class=\"js\">App.WelcomeRoute = Ember.Route.extend({\n  actions: {\n    playTheme: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n       <span class=\"hljs-keyword\">this</span>.send(<span class=\"hljs-string\">'playMusic'</span>, <span class=\"hljs-string\">'theme.mp3'</span>);\n    },\n    playMusic: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(track)</span> </span>{\n      <span class=\"hljs-comment\">// ...</span>\n    }\n  }\n});</pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "method",
+    "name": "send",
+    "params": [
+      {
+        "name": "actionName",
+        "description": "The action to trigger",
+        "type": "String"
+      },
+      {
+        "name": "context",
+        "description": "a context to send with the action",
+        "type": "*"
+      }
+    ],
+    "class": "Ember.ActionHandler",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember",
+    "inheritedFrom": "Ember.ActionHandler"
+  },
+  {
+    "file": "packages/ember-routing/lib/ext/controller.js",
+    "line": 99,
+    "itemtype": "method",
+    "name": "_updateCacheParams",
+    "access": "private",
+    "tagname": "",
+    "class": "Ember.ControllerMixin",
+    "module": "ember",
+    "submodule": "ember-routing",
+    "description": "",
+    "isPrivate": true
+  },
+  {
+    "file": "packages/ember-routing/lib/ext/controller.js",
+    "line": 120,
+    "itemtype": "method",
+    "name": "_qpChanged",
+    "access": "private",
+    "tagname": "",
+    "class": "Ember.ControllerMixin",
+    "module": "ember",
+    "submodule": "ember-routing",
+    "description": "",
+    "isPrivate": true
+  },
+  {
+    "file": "packages/ember-routing/lib/ext/controller.js",
+    "line": 144,
+    "itemtype": "method",
+    "name": "_calculateCacheKey",
+    "access": "private",
+    "tagname": "",
+    "class": "Ember.ControllerMixin",
+    "module": "ember",
+    "submodule": "ember-routing",
+    "description": "",
+    "isPrivate": true
+  },
+  {
+    "file": "packages/ember-routing/lib/ext/controller.js",
+    "line": 159,
+    "description": "<p>Transition the application into another route. The route may\nbe either a single route or route path:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">aController.transitionToRoute(<span class=\"hljs-string\">'blogPosts'</span>);\naController.transitionToRoute(<span class=\"hljs-string\">'blogPosts.recentEntries'</span>);</pre></td>      </tr>    </table>  </div></div><p>Optionally supply a model for the route in question. The model\nwill be serialized into the URL using the <code>serialize</code> hook of\nthe route:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">aController.transitionToRoute(<span class=\"hljs-string\">'blogPost'</span>, aPost);</pre></td>      </tr>    </table>  </div></div><p>If a literal is passed (such as a number or a string), it will\nbe treated as an identifier instead. In this case, the <code>model</code>\nhook of the route will be triggered:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">aController.transitionToRoute(<span class=\"hljs-string\">'blogPost'</span>, <span class=\"hljs-number\">1</span>);</pre></td>      </tr>    </table>  </div></div><p>Multiple models will be applied last to first recursively up the\nresource tree.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.Router.map(<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n  <span class=\"hljs-keyword\">this</span>.resource(<span class=\"hljs-string\">'blogPost'</span>, {path:<span class=\"hljs-string\">':blogPostId'</span>}, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n    <span class=\"hljs-keyword\">this</span>.resource(<span class=\"hljs-string\">'blogComment'</span>, {path: <span class=\"hljs-string\">':blogCommentId'</span>});\n  });\n});\n\naController.transitionToRoute(<span class=\"hljs-string\">'blogComment'</span>, aPost, aComment);\naController.transitionToRoute(<span class=\"hljs-string\">'blogComment'</span>, <span class=\"hljs-number\">1</span>, <span class=\"hljs-number\">13</span>);</pre></td>      </tr>    </table>  </div></div><p>It is also possible to pass a URL (a string that starts with a\n<code>/</code>). This is intended for testing and debugging purposes and\nshould rarely be used in production code.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">aController.transitionToRoute(<span class=\"hljs-string\">'/'</span>);\naController.transitionToRoute(<span class=\"hljs-string\">'/blog/post/1/comment/13'</span>);\naController.transitionToRoute(<span class=\"hljs-string\">'/blog/posts?sort=title'</span>);</pre></td>      </tr>    </table>  </div></div><p>An options hash with a <code>queryParams</code> property may be provided as\nthe final argument to add query parameters to the destination URL.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">aController.transitionToRoute(<span class=\"hljs-string\">'blogPost'</span>, <span class=\"hljs-number\">1</span>, {\n  queryParams: {showComments: <span class=\"hljs-string\">'true'</span>}\n});\n\n<span class=\"hljs-comment\">// if you just want to transition the query parameters without changing the route</span>\naController.transitionToRoute({queryParams: {sort: <span class=\"hljs-string\">'date'</span>}});</pre></td>      </tr>    </table>  </div></div><p>See also <a href=\"/api/classes/Ember.ControllerMixin.html#method_replaceRoute\">replaceRoute</a>.</p>\n",
+    "params": [
+      {
+        "name": "name",
+        "description": "the name of the route or a URL",
+        "type": "String"
+      },
+      {
+        "name": "models",
+        "description": "the model(s) or identifier(s) to be used\n  while transitioning to the route.",
+        "type": "...Object"
+      },
+      {
+        "name": "options",
+        "description": "optional hash with a queryParams property\n  containing a mapping of query parameters",
+        "type": "Object",
+        "optional": true
+      }
+    ],
+    "itemtype": "method",
+    "name": "transitionToRoute",
+    "class": "Ember.ControllerMixin",
+    "module": "ember",
+    "submodule": "ember-routing",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-routing/lib/ext/controller.js",
+    "line": 237,
+    "deprecated": true,
+    "itemtype": "method",
+    "name": "transitionTo",
+    "class": "Ember.ControllerMixin",
+    "module": "ember",
+    "submodule": "ember-routing",
+    "namespace": "Ember",
+    "description": ""
+  },
+  {
+    "file": "packages/ember-routing/lib/ext/controller.js",
+    "line": 247,
+    "description": "<p>Transition into another route while replacing the current URL, if possible.\nThis will replace the current history entry instead of adding a new one.\nBeside that, it is identical to <code>transitionToRoute</code> in all other respects.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">aController.replaceRoute(<span class=\"hljs-string\">'blogPosts'</span>);\naController.replaceRoute(<span class=\"hljs-string\">'blogPosts.recentEntries'</span>);</pre></td>      </tr>    </table>  </div></div><p>Optionally supply a model for the route in question. The model\nwill be serialized into the URL using the <code>serialize</code> hook of\nthe route:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">aController.replaceRoute(<span class=\"hljs-string\">'blogPost'</span>, aPost);</pre></td>      </tr>    </table>  </div></div><p>If a literal is passed (such as a number or a string), it will\nbe treated as an identifier instead. In this case, the <code>model</code>\nhook of the route will be triggered:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">aController.replaceRoute(<span class=\"hljs-string\">'blogPost'</span>, <span class=\"hljs-number\">1</span>);</pre></td>      </tr>    </table>  </div></div><p>Multiple models will be applied last to first recursively up the\nresource tree.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.Router.map(<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n  <span class=\"hljs-keyword\">this</span>.resource(<span class=\"hljs-string\">'blogPost'</span>, {path:<span class=\"hljs-string\">':blogPostId'</span>}, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n    <span class=\"hljs-keyword\">this</span>.resource(<span class=\"hljs-string\">'blogComment'</span>, {path: <span class=\"hljs-string\">':blogCommentId'</span>});\n  });\n});\n\naController.replaceRoute(<span class=\"hljs-string\">'blogComment'</span>, aPost, aComment);\naController.replaceRoute(<span class=\"hljs-string\">'blogComment'</span>, <span class=\"hljs-number\">1</span>, <span class=\"hljs-number\">13</span>);</pre></td>      </tr>    </table>  </div></div><p>It is also possible to pass a URL (a string that starts with a\n<code>/</code>). This is intended for testing and debugging purposes and\nshould rarely be used in production code.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">aController.replaceRoute(<span class=\"hljs-string\">'/'</span>);\naController.replaceRoute(<span class=\"hljs-string\">'/blog/post/1/comment/13'</span>);</pre></td>      </tr>    </table>  </div></div>",
+    "params": [
+      {
+        "name": "name",
+        "description": "the name of the route or a URL",
+        "type": "String"
+      },
+      {
+        "name": "models",
+        "description": "the model(s) or identifier(s) to be used\nwhile transitioning to the route.",
+        "type": "...Object"
+      }
+    ],
+    "itemtype": "method",
+    "name": "replaceRoute",
+    "class": "Ember.ControllerMixin",
+    "module": "ember",
+    "submodule": "ember-routing",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-routing/lib/ext/controller.js",
+    "line": 309,
+    "deprecated": true,
+    "itemtype": "method",
+    "name": "replaceWith",
+    "class": "Ember.ControllerMixin",
+    "module": "ember",
+    "submodule": "ember-routing",
+    "namespace": "Ember",
+    "description": ""
+  },
+  {
+    "file": "packages/ember-application/lib/ext/controller.js",
+    "line": 147,
+    "itemtype": "method",
+    "name": "controllerFor",
+    "see": [
+      "{Ember.Route#controllerFor}"
+    ],
+    "deprecated": true,
+    "deprecationMessage": "Use `needs` instead",
+    "class": "Ember.ControllerMixin",
+    "module": "ember",
+    "submodule": "ember-application",
+    "namespace": "Ember",
+    "description": ""
+  }
+]

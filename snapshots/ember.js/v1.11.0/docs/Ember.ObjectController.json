@@ -1,0 +1,108 @@
+{
+  "name": "Ember.ObjectController",
+  "description": "<p><code>Ember.ObjectController</code> is part of Ember&#39;s Controller layer. It is intended\nto wrap a single object, proxying unhandled attempts to <code>get</code> and <code>set</code> to the underlying\nmodel object, and to forward unhandled action attempts to its <code>target</code>.</p>\n<p><code>Ember.ObjectController</code> derives this functionality from its superclass\n<code>Ember.ObjectProxy</code> and the <code>Ember.ControllerMixin</code> mixin.</p>\n",
+  "line": 13,
+  "file": "packages/ember-runtime/lib/controllers/object_controller.js",
+  "methods": [
+    {
+      "name": "willMergeMixin",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "send",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "_updateCacheParams",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "_qpChanged",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "_calculateCacheKey",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "transitionToRoute",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "transitionTo",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "replaceRoute",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "replaceWith",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "controllerFor",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ControllerMixin"
+    }
+  ],
+  "properties": [
+    {
+      "name": "actions",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "target",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "model",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "queryParams",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "_qpDelegate",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "_normalizedQueryParams",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "_cacheMeta",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "needs",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "controllers",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ControllerMixin"
+    }
+  ],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

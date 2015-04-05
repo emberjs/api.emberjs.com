@@ -1,0 +1,17 @@
+[
+  {
+    "file": "packages/ember-runtime/lib/mixins/freezable.js",
+    "line": 77,
+    "description": "<p>Freezes the object. Once this method has been called the object should\nno longer allow any properties to be edited.</p>\n",
+    "itemtype": "method",
+    "name": "freeze",
+    "return": {
+      "description": "receiver",
+      "type": "Object"
+    },
+    "class": "Ember.Freezable",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  }
+]

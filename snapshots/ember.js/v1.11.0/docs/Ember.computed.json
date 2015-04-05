@@ -1,0 +1,152 @@
+{
+  "name": "Ember.computed",
+  "description": "<p>This helper returns a new property descriptor that wraps the passed\ncomputed property function. You can use this helper to define properties\nwith mixins or via <code>Ember.defineProperty()</code>.</p>\n<p>The function you pass will be used to both get and set property values.\nThe function should accept two parameters, key and value. If value is not\nundefined you should set the value first. In either case return the\ncurrent value of the property.</p>\n<p>A computed property defined in this way might look like this:</p>\n<div class=\"highlight js\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n</pre>        </td>        <td class=\"code\"><pre class=\"js\"><span class=\"hljs-keyword\">var</span> Person = Ember.Object.extend({\n  firstName: <span class=\"hljs-string\">'Betty'</span>,\n  lastName: <span class=\"hljs-string\">'Jones'</span>,\n\n  fullName: Ember.computed(<span class=\"hljs-string\">'firstName'</span>, <span class=\"hljs-string\">'lastName'</span>, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(key, value)</span> </span>{\n    <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.get(<span class=\"hljs-string\">'firstName'</span>) + <span class=\"hljs-string\">' '</span> + <span class=\"hljs-keyword\">this</span>.get(<span class=\"hljs-string\">'lastName'</span>);\n  })\n});\n\n<span class=\"hljs-keyword\">var</span> client = Person.create();\n\nclient.get(<span class=\"hljs-string\">'fullName'</span>); <span class=\"hljs-comment\">// 'Betty Jones'</span>\n\nclient.set(<span class=\"hljs-string\">'lastName'</span>, <span class=\"hljs-string\">'Fuller'</span>);\nclient.get(<span class=\"hljs-string\">'fullName'</span>); <span class=\"hljs-comment\">// 'Betty Fuller'</span></pre></td>      </tr>    </table>  </div></div><p><em>Note: This is the preferred way to define computed properties when writing third-party\nlibraries that depend on or use Ember, since there is no guarantee that the user\nwill have prototype extensions enabled.</em></p>\n<p>You might use this method if you disabled\n<a href=\"http://emberjs.com/guides/configuring-ember/disabling-prototype-extensions/\">Prototype Extensions</a>.\nThe alternative syntax might look like this\n(if prototype extensions are enabled, which is the default behavior):</p>\n<div class=\"highlight js\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n</pre>        </td>        <td class=\"code\"><pre class=\"js\">fullName: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-params\">()</span> </span>{\n  <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.get(<span class=\"hljs-string\">'firstName'</span>) + <span class=\"hljs-string\">' '</span> + <span class=\"hljs-keyword\">this</span>.get(<span class=\"hljs-string\">'lastName'</span>);\n}.property(<span class=\"hljs-string\">'firstName'</span>, <span class=\"hljs-string\">'lastName'</span>)</pre></td>      </tr>    </table>  </div></div>",
+  "line": 522,
+  "file": "packages/ember-metal/lib/computed.js",
+  "methods": [
+    {
+      "name": "empty",
+      "isPrivate": false
+    },
+    {
+      "name": "notEmpty",
+      "isPrivate": false
+    },
+    {
+      "name": "none",
+      "isPrivate": false
+    },
+    {
+      "name": "not",
+      "isPrivate": false
+    },
+    {
+      "name": "bool",
+      "isPrivate": false
+    },
+    {
+      "name": "match",
+      "isPrivate": false
+    },
+    {
+      "name": "equal",
+      "isPrivate": false
+    },
+    {
+      "name": "gt",
+      "isPrivate": false
+    },
+    {
+      "name": "gte",
+      "isPrivate": false
+    },
+    {
+      "name": "lt",
+      "isPrivate": false
+    },
+    {
+      "name": "lte",
+      "isPrivate": false
+    },
+    {
+      "name": "and",
+      "isPrivate": false
+    },
+    {
+      "name": "or",
+      "isPrivate": false
+    },
+    {
+      "name": "any",
+      "isPrivate": false
+    },
+    {
+      "name": "collect",
+      "isPrivate": false
+    },
+    {
+      "name": "alias",
+      "isPrivate": false
+    },
+    {
+      "name": "oneWay",
+      "isPrivate": false
+    },
+    {
+      "name": "reads",
+      "isPrivate": false
+    },
+    {
+      "name": "readOnly",
+      "isPrivate": false
+    },
+    {
+      "name": "defaultTo",
+      "isPrivate": false
+    },
+    {
+      "name": "deprecatingAlias",
+      "isPrivate": false
+    },
+    {
+      "name": "sum",
+      "isPrivate": false
+    },
+    {
+      "name": "max",
+      "isPrivate": false
+    },
+    {
+      "name": "min",
+      "isPrivate": false
+    },
+    {
+      "name": "map",
+      "isPrivate": false
+    },
+    {
+      "name": "mapBy",
+      "isPrivate": false
+    },
+    {
+      "name": "mapProperty",
+      "isPrivate": false
+    },
+    {
+      "name": "filter",
+      "isPrivate": false
+    },
+    {
+      "name": "filterBy",
+      "isPrivate": false
+    },
+    {
+      "name": "filterProperty",
+      "isPrivate": false
+    },
+    {
+      "name": "uniq",
+      "isPrivate": false
+    },
+    {
+      "name": "union",
+      "isPrivate": false
+    },
+    {
+      "name": "intersect",
+      "isPrivate": false
+    },
+    {
+      "name": "setDiff",
+      "isPrivate": false
+    },
+    {
+      "name": "sort",
+      "isPrivate": false
+    }
+  ],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Namespace"
+}

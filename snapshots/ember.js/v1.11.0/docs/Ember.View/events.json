@@ -1,0 +1,57 @@
+[
+  {
+    "file": "packages/ember-views/lib/views/view.js",
+    "line": 1105,
+    "description": "<p>Called when a view is going to insert an element into the DOM.</p>\n",
+    "itemtype": "event",
+    "name": "willInsertElement",
+    "class": "Ember.View",
+    "module": "ember",
+    "submodule": "ember-views",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-views/lib/views/view.js",
+    "line": 1112,
+    "description": "<p>Called when the element of the view has been inserted into the DOM\nor after the view was re-rendered. Override this function to do any\nset up that requires an element in the document body.</p>\n<p>When a view has children, didInsertElement will be called on the\nchild view(s) first, bubbling upwards through the hierarchy.</p>\n",
+    "itemtype": "event",
+    "name": "didInsertElement",
+    "class": "Ember.View",
+    "module": "ember",
+    "submodule": "ember-views",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-views/lib/views/view.js",
+    "line": 1124,
+    "description": "<p>Called when the view is about to rerender, but before anything has\nbeen torn down. This is a good opportunity to tear down any manual\nobservers you have installed based on the DOM state</p>\n",
+    "itemtype": "event",
+    "name": "willClearRender",
+    "class": "Ember.View",
+    "module": "ember",
+    "submodule": "ember-views",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-views/lib/views/view.js",
+    "line": 1155,
+    "description": "<p>Called when the element of the view is going to be destroyed. Override\nthis function to do any teardown that requires an element, like removing\nevent listeners.</p>\n<p>Please note: any property changes made during this event will have no\neffect on object observers.</p>\n",
+    "itemtype": "event",
+    "name": "willDestroyElement",
+    "class": "Ember.View",
+    "module": "ember",
+    "submodule": "ember-views",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-views/lib/views/view.js",
+    "line": 1167,
+    "description": "<p>Called when the parentView property has changed.</p>\n",
+    "itemtype": "event",
+    "name": "parentViewDidChange",
+    "class": "Ember.View",
+    "module": "ember",
+    "submodule": "ember-views",
+    "namespace": "Ember"
+  }
+]

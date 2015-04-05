@@ -1,0 +1,14 @@
+[
+  {
+    "file": "packages/ember-runtime/lib/mixins/freezable.js",
+    "line": 68,
+    "description": "<p>Set to <code>true</code> when the object is frozen. Use this property to detect\nwhether your object is frozen or not.</p>\n",
+    "itemtype": "property",
+    "name": "isFrozen",
+    "type": "Boolean",
+    "class": "Ember.Freezable",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  }
+]

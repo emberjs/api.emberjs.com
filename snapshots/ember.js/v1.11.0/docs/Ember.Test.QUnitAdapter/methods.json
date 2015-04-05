@@ -1,0 +1,51 @@
+[
+  {
+    "file": "packages/ember-testing/lib/adapters/adapter.js",
+    "line": 18,
+    "description": "<p>This callback will be called whenever an async operation is about to start.</p>\n<p>Override this to call your framework&#39;s methods that handle async\noperations.</p>\n",
+    "access": "public",
+    "tagname": "",
+    "itemtype": "method",
+    "name": "asyncStart",
+    "class": "Ember.Test.Adapter",
+    "module": "ember",
+    "submodule": "ember-testing",
+    "namespace": "Ember.Test",
+    "inheritedFrom": "Ember.Test.Adapter"
+  },
+  {
+    "file": "packages/ember-testing/lib/adapters/adapter.js",
+    "line": 29,
+    "description": "<p>This callback will be called whenever an async operation has completed.</p>\n",
+    "access": "public",
+    "tagname": "",
+    "itemtype": "method",
+    "name": "asyncEnd",
+    "class": "Ember.Test.Adapter",
+    "module": "ember",
+    "submodule": "ember-testing",
+    "namespace": "Ember.Test",
+    "inheritedFrom": "Ember.Test.Adapter"
+  },
+  {
+    "file": "packages/ember-testing/lib/adapters/adapter.js",
+    "line": 37,
+    "description": "<p>Override this method with your testing framework&#39;s false assertion.\nThis function is called whenever an exception occurs causing the testing\npromise to fail.</p>\n<p>QUnit example:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">  exception: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(error)</span> </span>{\n    ok(<span class=\"hljs-literal\">false</span>, error);\n  };</pre></td>      </tr>    </table>  </div></div>",
+    "access": "public",
+    "tagname": "",
+    "itemtype": "method",
+    "name": "exception",
+    "params": [
+      {
+        "name": "error",
+        "description": "The exception to be raised.",
+        "type": "String"
+      }
+    ],
+    "class": "Ember.Test.Adapter",
+    "module": "ember",
+    "submodule": "ember-testing",
+    "namespace": "Ember.Test",
+    "inheritedFrom": "Ember.Test.Adapter"
+  }
+]

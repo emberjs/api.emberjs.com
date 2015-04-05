@@ -1,0 +1,54 @@
+{
+  "name": "ember-routing",
+  "classes": [
+    {
+      "name": "Ember.AutoLocation"
+    },
+    {
+      "name": "Ember.HashLocation"
+    },
+    {
+      "name": "Ember.HistoryLocation"
+    },
+    {
+      "name": "Ember.Location"
+    },
+    {
+      "name": "Ember.NoneLocation"
+    },
+    {
+      "name": "Ember.Route"
+    },
+    {
+      "name": "Ember.Router"
+    }
+  ],
+  "submodules": [
+    {
+      "name": "Ember.AutoLocation"
+    },
+    {
+      "name": "Ember.HashLocation"
+    },
+    {
+      "name": "Ember.HistoryLocation"
+    },
+    {
+      "name": "Ember.Location"
+    },
+    {
+      "name": "Ember.NoneLocation"
+    },
+    {
+      "name": "Ember.Route"
+    },
+    {
+      "name": "Ember.Router"
+    }
+  ],
+  "requires": [
+    {
+      "name": "ember-views"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Ember.ProxyMixin",
+  "description": "<p><code>Ember.ProxyMixin</code> forwards all properties not defined by the proxy itself\nto a proxied <code>content</code> object.  See Ember.ObjectProxy for more details.</p>\n",
+  "line": 37,
+  "file": "packages/ember-runtime/lib/mixins/-proxy.js",
+  "methods": [],
+  "properties": [
+    {
+      "name": "content",
+      "isPrivate": false
+    }
+  ],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

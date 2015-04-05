@@ -1,0 +1,16 @@
+[
+  {
+    "file": "packages/ember-metal/lib/map.js",
+    "line": 282,
+    "description": "<p>This property will change as the number of objects in the map changes.</p>\n",
+    "since": "1.8.0",
+    "itemtype": "property",
+    "name": "size",
+    "type": "number",
+    "default": "0",
+    "class": "Ember.Map",
+    "module": "ember-metal",
+    "namespace": "Ember",
+    "inheritedFrom": "Ember.Map"
+  }
+]

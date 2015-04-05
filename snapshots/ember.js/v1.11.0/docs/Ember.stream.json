@@ -1,0 +1,46 @@
+{
+  "name": "Ember.stream",
+  "description": "",
+  "methods": [
+    {
+      "name": "subscribe",
+      "isPrivate": false
+    },
+    {
+      "name": "unsubscribe",
+      "isPrivate": false
+    },
+    {
+      "name": "read",
+      "isPrivate": false
+    },
+    {
+      "name": "readArray",
+      "isPrivate": false
+    },
+    {
+      "name": "readHash",
+      "isPrivate": false
+    },
+    {
+      "name": "scanArray",
+      "isPrivate": false
+    },
+    {
+      "name": "scanHash",
+      "isPrivate": false
+    },
+    {
+      "name": "concat",
+      "isPrivate": false
+    },
+    {
+      "name": "chain",
+      "isPrivate": false
+    }
+  ],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

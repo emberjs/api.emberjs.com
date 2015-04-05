@@ -1,0 +1,16 @@
+{
+  "name": "Ember.Comparable",
+  "description": "<p>Implements some standard methods for comparing objects. Add this mixin to\nany class you create that can compare its instances.</p>\n<p>You should implement the <code>compare()</code> method.</p>\n",
+  "line": 11,
+  "file": "packages/ember-runtime/lib/mixins/comparable.js",
+  "methods": [
+    {
+      "name": "compare",
+      "isPrivate": false
+    }
+  ],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

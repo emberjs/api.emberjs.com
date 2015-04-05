@@ -1,0 +1,53 @@
+[
+  {
+    "file": "packages/ember-runtime/lib/mixins/controller_content_model_alias_deprecation.js",
+    "line": 19,
+    "access": "private",
+    "tagname": "Moves `content` to `model`  at extend time if a `model` is not also specified.\n\nNote that this currently modifies the mixin themselves, which is technically\ndubious but is practically of little consequence. This may change in the\nfuture.",
+    "itemtype": "method",
+    "name": "willMergeMixin",
+    "since": "1.4.0",
+    "class": "Ember.Copyable",
+    "module": "ember",
+    "namespace": "Ember",
+    "description": "",
+    "isPrivate": true
+  },
+  {
+    "file": "packages/ember-runtime/lib/mixins/copyable.js",
+    "line": 30,
+    "description": "<p>Override to return a copy of the receiver. Default implementation raises\nan exception.</p>\n",
+    "itemtype": "method",
+    "name": "copy",
+    "params": [
+      {
+        "name": "deep",
+        "description": "if `true`, a deep copy of the object should be made",
+        "type": "Boolean"
+      }
+    ],
+    "return": {
+      "description": "copy of receiver",
+      "type": "Object"
+    },
+    "class": "Ember.Copyable",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-runtime/lib/mixins/copyable.js",
+    "line": 40,
+    "description": "<p>If the object implements <code>Ember.Freezable</code>, then this will return a new\ncopy if the object is not frozen and the receiver if the object is frozen.</p>\n<p>Raises an exception if you try to call this method on a object that does\nnot support freezing.</p>\n<p>You should use this method whenever you want a copy of a freezable object\nsince a freezable object can simply return itself without actually\nconsuming more memory.</p>\n",
+    "itemtype": "method",
+    "name": "frozenCopy",
+    "return": {
+      "description": "copy of receiver or receiver",
+      "type": "Object"
+    },
+    "class": "Ember.Copyable",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  }
+]

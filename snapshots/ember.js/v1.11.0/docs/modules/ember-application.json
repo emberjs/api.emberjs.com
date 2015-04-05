@@ -1,0 +1,33 @@
+{
+  "name": "ember-application",
+  "classes": [
+    {
+      "name": "Ember.Application"
+    },
+    {
+      "name": "Ember.ControllerMixin"
+    },
+    {
+      "name": "Ember.DefaultResolver"
+    }
+  ],
+  "submodules": [
+    {
+      "name": "Ember.Application"
+    },
+    {
+      "name": "Ember.ControllerMixin"
+    },
+    {
+      "name": "Ember.DefaultResolver"
+    }
+  ],
+  "requires": [
+    {
+      "name": "ember-routing"
+    },
+    {
+      "name": "ember-views"
+    }
+  ]
+}

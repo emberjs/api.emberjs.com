@@ -1,0 +1,13 @@
+[
+  {
+    "file": "packages/ember-application/lib/system/application.js",
+    "line": 732,
+    "description": "<p>Called when the Application has become ready.\nThe call will be delayed until the DOM has become ready.</p>\n",
+    "itemtype": "event",
+    "name": "ready",
+    "class": "Ember.Application",
+    "module": "ember",
+    "submodule": "ember-application",
+    "namespace": "Ember"
+  }
+]

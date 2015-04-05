@@ -1,0 +1,28 @@
+{
+  "name": "RSVP.EventTarget",
+  "description": "",
+  "line": 19,
+  "file": "bower_components/rsvp/lib/rsvp/events.js",
+  "methods": [
+    {
+      "name": "mixin",
+      "isPrivate": true
+    },
+    {
+      "name": "on",
+      "isPrivate": true
+    },
+    {
+      "name": "off",
+      "isPrivate": true
+    },
+    {
+      "name": "trigger",
+      "isPrivate": true
+    }
+  ],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

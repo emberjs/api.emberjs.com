@@ -1,0 +1,60 @@
+{
+  "name": "Ember.MapWithDefault",
+  "description": "",
+  "line": 441,
+  "file": "packages/ember-metal/lib/map.js",
+  "methods": [
+    {
+      "name": "create",
+      "isPrivate": false
+    },
+    {
+      "name": "get",
+      "isPrivate": false
+    },
+    {
+      "name": "set",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Map"
+    },
+    {
+      "name": "remove",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Map"
+    },
+    {
+      "name": "delete",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Map"
+    },
+    {
+      "name": "has",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Map"
+    },
+    {
+      "name": "forEach",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Map"
+    },
+    {
+      "name": "clear",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Map"
+    },
+    {
+      "name": "copy",
+      "isPrivate": false
+    }
+  ],
+  "properties": [
+    {
+      "name": "size",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Map"
+    }
+  ],
+  "events": [],
+  "isPrivate": true,
+  "constType": "Class"
+}

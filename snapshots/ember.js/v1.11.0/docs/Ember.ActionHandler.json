@@ -1,0 +1,25 @@
+{
+  "name": "Ember.ActionHandler",
+  "description": "<p>The <code>Ember.ActionHandler</code> mixin implements support for moving an <code>actions</code>\nproperty to an <code>_actions</code> property at extend time, and adding <code>_actions</code>\nto the object&#39;s mergedProperties list.</p>\n<p><code>Ember.ActionHandler</code> is available on some familiar classes including\n<code>Ember.Route</code>, <code>Ember.View</code>, <code>Ember.Component</code>, and controllers such as\n<code>Ember.Controller</code> and <code>Ember.ObjectController</code>.\n(Internally the mixin is used by <code>Ember.CoreView</code>, <code>Ember.ControllerMixin</code>,\nand <code>Ember.Route</code> and available to the above classes through\ninheritance.)</p>\n",
+  "line": 10,
+  "file": "packages/ember-runtime/lib/mixins/action_handler.js",
+  "methods": [
+    {
+      "name": "willMergeMixin",
+      "isPrivate": true
+    },
+    {
+      "name": "send",
+      "isPrivate": false
+    }
+  ],
+  "properties": [
+    {
+      "name": "actions",
+      "isPrivate": false
+    }
+  ],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

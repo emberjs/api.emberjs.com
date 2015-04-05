@@ -1,0 +1,106 @@
+[
+  {
+    "file": "packages/ember-runtime/lib/ext/string.js",
+    "line": 23,
+    "description": "<p>See <a href=\"/api/classes/Ember.String.html#method_fmt\">Ember.String.fmt</a>.</p>\n",
+    "itemtype": "method",
+    "name": "fmt",
+    "class": "String",
+    "module": "ember",
+    "submodule": "ember-runtime"
+  },
+  {
+    "file": "packages/ember-runtime/lib/ext/string.js",
+    "line": 33,
+    "description": "<p>See <a href=\"/api/classes/Ember.String.html#method_w\">Ember.String.w</a>.</p>\n",
+    "itemtype": "method",
+    "name": "w",
+    "class": "String",
+    "module": "ember",
+    "submodule": "ember-runtime"
+  },
+  {
+    "file": "packages/ember-runtime/lib/ext/string.js",
+    "line": 43,
+    "description": "<p>See <a href=\"/api/classes/Ember.String.html#method_loc\">Ember.String.loc</a>.</p>\n",
+    "itemtype": "method",
+    "name": "loc",
+    "class": "String",
+    "module": "ember",
+    "submodule": "ember-runtime"
+  },
+  {
+    "file": "packages/ember-runtime/lib/ext/string.js",
+    "line": 53,
+    "description": "<p>See <a href=\"/api/classes/Ember.String.html#method_camelize\">Ember.String.camelize</a>.</p>\n",
+    "itemtype": "method",
+    "name": "camelize",
+    "class": "String",
+    "module": "ember",
+    "submodule": "ember-runtime"
+  },
+  {
+    "file": "packages/ember-runtime/lib/ext/string.js",
+    "line": 63,
+    "description": "<p>See <a href=\"/api/classes/Ember.String.html#method_decamelize\">Ember.String.decamelize</a>.</p>\n",
+    "itemtype": "method",
+    "name": "decamelize",
+    "class": "String",
+    "module": "ember",
+    "submodule": "ember-runtime"
+  },
+  {
+    "file": "packages/ember-runtime/lib/ext/string.js",
+    "line": 73,
+    "description": "<p>See <a href=\"/api/classes/Ember.String.html#method_dasherize\">Ember.String.dasherize</a>.</p>\n",
+    "itemtype": "method",
+    "name": "dasherize",
+    "class": "String",
+    "module": "ember",
+    "submodule": "ember-runtime"
+  },
+  {
+    "file": "packages/ember-runtime/lib/ext/string.js",
+    "line": 83,
+    "description": "<p>See <a href=\"/api/classes/Ember.String.html#method_underscore\">Ember.String.underscore</a>.</p>\n",
+    "itemtype": "method",
+    "name": "underscore",
+    "class": "String",
+    "module": "ember",
+    "submodule": "ember-runtime"
+  },
+  {
+    "file": "packages/ember-runtime/lib/ext/string.js",
+    "line": 93,
+    "description": "<p>See <a href=\"/api/classes/Ember.String.html#method_classify\">Ember.String.classify</a>.</p>\n",
+    "itemtype": "method",
+    "name": "classify",
+    "class": "String",
+    "module": "ember",
+    "submodule": "ember-runtime"
+  },
+  {
+    "file": "packages/ember-runtime/lib/ext/string.js",
+    "line": 103,
+    "description": "<p>See <a href=\"/api/classes/Ember.String.html#method_capitalize\">Ember.String.capitalize</a>.</p>\n",
+    "itemtype": "method",
+    "name": "capitalize",
+    "class": "String",
+    "module": "ember",
+    "submodule": "ember-runtime"
+  },
+  {
+    "file": "packages/ember-htmlbars/lib/utils/string.js",
+    "line": 41,
+    "description": "<p>Mark a string as being safe for unescaped output with Handlebars.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"><span class=\"hljs-string\">'&lt;div&gt;someString&lt;/div&gt;'</span>.htmlSafe()</pre></td>      </tr>    </table>  </div></div><p>See <a href=\"/api/classes/Ember.String.html#method_htmlSafe\">Ember.String.htmlSafe</a>.</p>\n",
+    "itemtype": "method",
+    "name": "htmlSafe",
+    "return": {
+      "description": "a string that will not be html escaped by Handlebars",
+      "type": "Handlebars.SafeString"
+    },
+    "class": "String",
+    "module": "ember",
+    "submodule": "ember-htmlbars"
+  }
+]

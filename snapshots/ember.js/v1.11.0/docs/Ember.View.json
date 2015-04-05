@@ -1,0 +1,351 @@
+{
+  "name": "Ember.View",
+  "description": "<p><code>Ember.View</code> is the class in Ember responsible for encapsulating templates of\nHTML content, combining templates with data to render as sections of a page&#39;s\nDOM, and registering and responding to user-initiated events.</p>\n<h2 id=\"html-tag\">HTML Tag</h2>\n<p>The default HTML tag name used for a view&#39;s DOM representation is <code>div</code>. This\ncan be customized by setting the <code>tagName</code> property. The following view\nclass:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">ParagraphView = Ember.View.extend({\n  tagName: <span class=\"hljs-string\">'em'</span>\n});</pre></td>      </tr>    </table>  </div></div><p>Would result in instances with the following HTML:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">em</span> <span class=\"hljs-attribute\">id</span>=<span class=\"hljs-value\">\"ember1\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">em</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><h2 id=\"html-class-attribute\">HTML <code>class</code> Attribute</h2>\n<p>The HTML <code>class</code> attribute of a view&#39;s tag can be set by providing a\n<code>classNames</code> property that is set to an array of strings:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">MyView = Ember.View.extend({\n  classNames: [<span class=\"hljs-string\">'my-class'</span>, <span class=\"hljs-string\">'my-other-class'</span>]\n});</pre></td>      </tr>    </table>  </div></div><p>Will result in view instances with an HTML representation of:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">id</span>=<span class=\"hljs-value\">\"ember1\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view my-class my-other-class\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p><code>class</code> attribute values can also be set by providing a <code>classNameBindings</code>\nproperty set to an array of properties names for the view. The return value\nof these properties will be added as part of the value for the view&#39;s <code>class</code>\nattribute. These properties can be computed properties:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">MyView = Ember.View.extend({\n  classNameBindings: [<span class=\"hljs-string\">'propertyA'</span>, <span class=\"hljs-string\">'propertyB'</span>],\n  propertyA: <span class=\"hljs-string\">'from-a'</span>,\n  propertyB: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n    <span class=\"hljs-keyword\">if</span> (someLogic) { <span class=\"hljs-keyword\">return</span> <span class=\"hljs-string\">'from-b'</span>; }\n  }.property()\n});</pre></td>      </tr>    </table>  </div></div><p>Will result in view instances with an HTML representation of:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">id</span>=<span class=\"hljs-value\">\"ember1\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view from-a from-b\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p>If the value of a class name binding returns a boolean the property name\nitself will be used as the class name if the property is true. The class name\nwill not be added if the value is <code>false</code> or <code>undefined</code>.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">MyView = Ember.View.extend({\n  classNameBindings: [<span class=\"hljs-string\">'hovered'</span>],\n  hovered: <span class=\"hljs-literal\">true</span>\n});</pre></td>      </tr>    </table>  </div></div><p>Will result in view instances with an HTML representation of:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">id</span>=<span class=\"hljs-value\">\"ember1\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view hovered\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p>When using boolean class name bindings you can supply a string value other\nthan the property name for use as the <code>class</code> HTML attribute by appending the\npreferred value after a &quot;:&quot; character when defining the binding:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">MyView = Ember.View.extend({\n  classNameBindings: [<span class=\"hljs-string\">'awesome:so-very-cool'</span>],\n  awesome: <span class=\"hljs-literal\">true</span>\n});</pre></td>      </tr>    </table>  </div></div><p>Will result in view instances with an HTML representation of:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">id</span>=<span class=\"hljs-value\">\"ember1\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view so-very-cool\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p>Boolean value class name bindings whose property names are in a\ncamelCase-style format will be converted to a dasherized format:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">MyView = Ember.View.extend({\n  classNameBindings: [<span class=\"hljs-string\">'isUrgent'</span>],\n  isUrgent: <span class=\"hljs-literal\">true</span>\n});</pre></td>      </tr>    </table>  </div></div><p>Will result in view instances with an HTML representation of:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">id</span>=<span class=\"hljs-value\">\"ember1\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view is-urgent\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p>Class name bindings can also refer to object values that are found by\ntraversing a path relative to the view itself:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">MyView = Ember.View.extend({\n  classNameBindings: [<span class=\"hljs-string\">'messages.empty'</span>]\n  messages: Ember.Object.create({\n    empty: <span class=\"hljs-literal\">true</span>\n  })\n});</pre></td>      </tr>    </table>  </div></div><p>Will result in view instances with an HTML representation of:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">id</span>=<span class=\"hljs-value\">\"ember1\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view empty\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p>If you want to add a class name for a property which evaluates to true and\nand a different class name if it evaluates to false, you can pass a binding\nlike this:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"><span class=\"hljs-comment\">// Applies 'enabled' class when isEnabled is true and 'disabled' when isEnabled is false</span>\nEmber.View.extend({\n  classNameBindings: [<span class=\"hljs-string\">'isEnabled:enabled:disabled'</span>]\n  isEnabled: <span class=\"hljs-literal\">true</span>\n});</pre></td>      </tr>    </table>  </div></div><p>Will result in view instances with an HTML representation of:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">id</span>=<span class=\"hljs-value\">\"ember1\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view enabled\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p>When isEnabled is <code>false</code>, the resulting HTML representation looks like\nthis:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">id</span>=<span class=\"hljs-value\">\"ember1\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view disabled\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p>This syntax offers the convenience to add a class if a property is <code>false</code>:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"><span class=\"hljs-comment\">// Applies no class when isEnabled is true and class 'disabled' when isEnabled is false</span>\nEmber.View.extend({\n  classNameBindings: [<span class=\"hljs-string\">'isEnabled::disabled'</span>]\n  isEnabled: <span class=\"hljs-literal\">true</span>\n});</pre></td>      </tr>    </table>  </div></div><p>Will result in view instances with an HTML representation of:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">id</span>=<span class=\"hljs-value\">\"ember1\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p>When the <code>isEnabled</code> property on the view is set to <code>false</code>, it will result\nin view instances with an HTML representation of:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">id</span>=<span class=\"hljs-value\">\"ember1\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view disabled\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p>Updates to the the value of a class name binding will result in automatic\nupdate of the  HTML <code>class</code> attribute in the view&#39;s rendered HTML\nrepresentation. If the value becomes <code>false</code> or <code>undefined</code> the class name\nwill be removed.</p>\n<p>Both <code>classNames</code> and <code>classNameBindings</code> are concatenated properties. See\n<a href=\"/api/classes/Ember.Object.html\">Ember.Object</a> documentation for more\ninformation about concatenated properties.</p>\n<h2 id=\"html-attributes\">HTML Attributes</h2>\n<p>The HTML attribute section of a view&#39;s tag can be set by providing an\n<code>attributeBindings</code> property set to an array of property names on the view.\nThe return value of these properties will be used as the value of the view&#39;s\nHTML associated attribute:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">AnchorView = Ember.View.extend({\n  tagName: <span class=\"hljs-string\">'a'</span>,\n  attributeBindings: [<span class=\"hljs-string\">'href'</span>],\n  href: <span class=\"hljs-string\">'http://google.com'</span>\n});</pre></td>      </tr>    </table>  </div></div><p>Will result in view instances with an HTML representation of:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">id</span>=<span class=\"hljs-value\">\"ember1\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view\"</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"http://google.com\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p>One property can be mapped on to another by placing a &quot;:&quot; between\nthe source property and the destination property:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">AnchorView = Ember.View.extend({\n  tagName: <span class=\"hljs-string\">'a'</span>,\n  attributeBindings: [<span class=\"hljs-string\">'url:href'</span>],\n  url: <span class=\"hljs-string\">'http://google.com'</span>\n});</pre></td>      </tr>    </table>  </div></div><p>Will result in view instances with an HTML representation of:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">a</span> <span class=\"hljs-attribute\">id</span>=<span class=\"hljs-value\">\"ember1\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view\"</span> <span class=\"hljs-attribute\">href</span>=<span class=\"hljs-value\">\"http://google.com\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">a</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p>Namespaced attributes (e.g. <code>xlink:href</code>) are supported, but have to be\nmapped, since <code>:</code> is not a valid character for properties in Javascript:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">UseView = Ember.View.extend({\n  tagName: <span class=\"hljs-string\">'use'</span>,\n  attributeBindings: [<span class=\"hljs-string\">'xlinkHref:xlink:href'</span>],\n  xlinkHref: <span class=\"hljs-string\">'#triangle'</span>\n});</pre></td>      </tr>    </table>  </div></div><p>Will result in view instances with an HTML representation of:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">use</span> <span class=\"hljs-attribute\">xlink:href</span>=<span class=\"hljs-value\">\"#triangle\"</span>&gt;</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">use</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p>If the return value of an <code>attributeBindings</code> monitored property is a boolean\nthe property will follow HTML&#39;s pattern of repeating the attribute&#39;s name as\nits value:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">MyTextInput = Ember.View.extend({\n  tagName: <span class=\"hljs-string\">'input'</span>,\n  attributeBindings: [<span class=\"hljs-string\">'disabled'</span>],\n  disabled: <span class=\"hljs-literal\">true</span>\n});</pre></td>      </tr>    </table>  </div></div><p>Will result in view instances with an HTML representation of:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">input</span> <span class=\"hljs-attribute\">id</span>=<span class=\"hljs-value\">\"ember1\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view\"</span> <span class=\"hljs-attribute\">disabled</span>=<span class=\"hljs-value\">\"disabled\"</span> /&gt;</span></pre></td>      </tr>    </table>  </div></div><p><code>attributeBindings</code> can refer to computed properties:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">MyTextInput = Ember.View.extend({\n  tagName: <span class=\"hljs-string\">'input'</span>,\n  attributeBindings: [<span class=\"hljs-string\">'disabled'</span>],\n  disabled: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n    <span class=\"hljs-keyword\">if</span> (someLogic) {\n      <span class=\"hljs-keyword\">return</span> <span class=\"hljs-literal\">true</span>;\n    } <span class=\"hljs-keyword\">else</span> {\n      <span class=\"hljs-keyword\">return</span> <span class=\"hljs-literal\">false</span>;\n    }\n  }.property()\n});</pre></td>      </tr>    </table>  </div></div><p>Updates to the the property of an attribute binding will result in automatic\nupdate of the  HTML attribute in the view&#39;s rendered HTML representation.</p>\n<p><code>attributeBindings</code> is a concatenated property. See <a href=\"/api/classes/Ember.Object.html\">Ember.Object</a>\ndocumentation for more information about concatenated properties.</p>\n<h2 id=\"templates\">Templates</h2>\n<p>The HTML contents of a view&#39;s rendered representation are determined by its\ntemplate. Templates can be any function that accepts an optional context\nparameter and returns a string of HTML that will be inserted within the\nview&#39;s tag. Most typically in Ember this function will be a compiled\n<code>Ember.Handlebars</code> template.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">AView = Ember.View.extend({\n  template: Ember.Handlebars.compile(<span class=\"hljs-string\">'I am the template'</span>)\n});</pre></td>      </tr>    </table>  </div></div><p>Will result in view instances with an HTML representation of:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">id</span>=<span class=\"hljs-value\">\"ember1\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view\"</span>&gt;</span>I am the template<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p>Within an Ember application is more common to define a Handlebars templates as\npart of a page:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">script</span> <span class=\"hljs-attribute\">type</span>=<span class=\"hljs-value\">'text/x-handlebars'</span> <span class=\"hljs-attribute\">data-template-name</span>=<span class=\"hljs-value\">'some-template'</span>&gt;</span><span class=\"nginx\">\n  <span class=\"hljs-title\">Hello</span>\n</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">script</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p>And associate it by name using a view&#39;s <code>templateName</code> property:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">AView = Ember.View.extend({\n  templateName: <span class=\"hljs-string\">'some-template'</span>\n});</pre></td>      </tr>    </table>  </div></div><p>If you have nested resources, your Handlebars template will look like this:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">script</span> <span class=\"hljs-attribute\">type</span>=<span class=\"hljs-value\">'text/x-handlebars'</span> <span class=\"hljs-attribute\">data-template-name</span>=<span class=\"hljs-value\">'posts/new'</span>&gt;</span><span class=\"xml\">\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">h1</span>&gt;</span>New Post<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">h1</span>&gt;</span>\n</span><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">script</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p>And <code>templateName</code> property:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">AView = Ember.View.extend({\n  templateName: <span class=\"hljs-string\">'posts/new'</span>\n});</pre></td>      </tr>    </table>  </div></div><p>Using a value for <code>templateName</code> that does not have a Handlebars template\nwith a matching <code>data-template-name</code> attribute will throw an error.</p>\n<p>For views classes that may have a template later defined (e.g. as the block\nportion of a <code>{{view}}</code> Handlebars helper call in another template or in\na subclass), you can provide a <code>defaultTemplate</code> property set to compiled\ntemplate function. If a template is not later provided for the view instance\nthe <code>defaultTemplate</code> value will be used:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">AView = Ember.View.extend({\n  defaultTemplate: Ember.Handlebars.compile(<span class=\"hljs-string\">'I was the default'</span>),\n  template: <span class=\"hljs-literal\">null</span>,\n  templateName: <span class=\"hljs-literal\">null</span>\n});</pre></td>      </tr>    </table>  </div></div><p>Will result in instances with an HTML representation of:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">id</span>=<span class=\"hljs-value\">\"ember1\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view\"</span>&gt;</span>I was the default<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p>If a <code>template</code> or <code>templateName</code> is provided it will take precedence over\n<code>defaultTemplate</code>:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">AView = Ember.View.extend({\n  defaultTemplate: Ember.Handlebars.compile(<span class=\"hljs-string\">'I was the default'</span>)\n});\n\naView = AView.create({\n  template: Ember.Handlebars.compile(<span class=\"hljs-string\">'I was the template, not default'</span>)\n});</pre></td>      </tr>    </table>  </div></div><p>Will result in the following HTML representation when rendered:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">id</span>=<span class=\"hljs-value\">\"ember1\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view\"</span>&gt;</span>I was the template, not default<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><h2 id=\"view-context\">View Context</h2>\n<p>The default context of the compiled template is the view&#39;s controller:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">AView = Ember.View.extend({\n  template: Ember.Handlebars.compile(<span class=\"hljs-string\">'Hello {{excitedGreeting}}'</span>)\n});\n\naController = Ember.Object.create({\n  firstName: <span class=\"hljs-string\">'Barry'</span>,\n  excitedGreeting: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n    <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.get(<span class=\"hljs-string\">\"content.firstName\"</span>) + <span class=\"hljs-string\">\"!!!\"</span>\n  }.property()\n});\n\naView = AView.create({\n  controller: aController\n});</pre></td>      </tr>    </table>  </div></div><p>Will result in an HTML representation of:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">id</span>=<span class=\"hljs-value\">\"ember1\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view\"</span>&gt;</span>Hello Barry!!!<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p>A context can also be explicitly supplied through the view&#39;s <code>context</code>\nproperty. If the view has neither <code>context</code> nor <code>controller</code> properties, the\n<code>parentView</code>&#39;s context will be used.</p>\n<h2 id=\"layouts\">Layouts</h2>\n<p>Views can have a secondary template that wraps their main template. Like\nprimary templates, layouts can be any function that  accepts an optional\ncontext parameter and returns a string of HTML that will be inserted inside\nview&#39;s tag. Views whose HTML element is self closing (e.g. <code>&lt;input /&gt;</code>)\ncannot have a layout and this property will be ignored.</p>\n<p>Most typically in Ember a layout will be a compiled <code>Ember.Handlebars</code>\ntemplate.</p>\n<p>A view&#39;s layout can be set directly with the <code>layout</code> property or reference\nan existing Handlebars template by name with the <code>layoutName</code> property.</p>\n<p>A template used as a layout must contain a single use of the Handlebars\n<code>{{yield}}</code> helper. The HTML contents of a view&#39;s rendered <code>template</code> will be\ninserted at this location:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">AViewWithLayout = Ember.View.extend({\n  layout: Ember.Handlebars.compile(<span class=\"hljs-string\">\"&lt;div class='my-decorative-class'&gt;{{yield}}&lt;/div&gt;\"</span>),\n  template: Ember.Handlebars.compile(<span class=\"hljs-string\">\"I got wrapped\"</span>)\n});</pre></td>      </tr>    </table>  </div></div><p>Will result in view instances with an HTML representation of:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">id</span>=<span class=\"hljs-value\">\"ember1\"</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view\"</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"my-decorative-class\"</span>&gt;</span>\n    I got wrapped\n  <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p>See <a href=\"/api/classes/Ember.Handlebars.helpers.html#method_yield\">Ember.Handlebars.helpers.yield</a>\nfor more information.</p>\n<h2 id=\"responding-to-browser-events\">Responding to Browser Events</h2>\n<p>Views can respond to user-initiated events in one of three ways: method\nimplementation, through an event manager, and through <code>{{action}}</code> helper use\nin their template or layout.</p>\n<h3 id=\"method-implementation\">Method Implementation</h3>\n<p>Views can respond to user-initiated events by implementing a method that\nmatches the event name. A <code>jQuery.Event</code> object will be passed as the\nargument to this method.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">AView = Ember.View.extend({\n  click: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(event)</span> </span>{\n    <span class=\"hljs-comment\">// will be called when when an instance's</span>\n    <span class=\"hljs-comment\">// rendered element is clicked</span>\n  }\n});</pre></td>      </tr>    </table>  </div></div><h3 id=\"event-managers\">Event Managers</h3>\n<p>Views can define an object as their <code>eventManager</code> property. This object can\nthen implement methods that match the desired event names. Matching events\nthat occur on the view&#39;s rendered HTML or the rendered HTML of any of its DOM\ndescendants will trigger this method. A <code>jQuery.Event</code> object will be passed\nas the first argument to the method and an  <code>Ember.View</code> object as the\nsecond. The <code>Ember.View</code> will be the view whose rendered HTML was interacted\nwith. This may be the view with the <code>eventManager</code> property or one of its\ndescendant views.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">AView = Ember.View.extend({\n  eventManager: Ember.Object.create({\n    doubleClick: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(event, view)</span> </span>{\n      <span class=\"hljs-comment\">// will be called when when an instance's</span>\n      <span class=\"hljs-comment\">// rendered element or any rendering</span>\n      <span class=\"hljs-comment\">// of this view's descendant</span>\n      <span class=\"hljs-comment\">// elements is clicked</span>\n    }\n  })\n});</pre></td>      </tr>    </table>  </div></div><p>An event defined for an event manager takes precedence over events of the\nsame name handled through methods on the view.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">AView = Ember.View.extend({\n  mouseEnter: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(event)</span> </span>{\n    <span class=\"hljs-comment\">// will never trigger.</span>\n  },\n  eventManager: Ember.Object.create({\n    mouseEnter: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(event, view)</span> </span>{\n      <span class=\"hljs-comment\">// takes precedence over AView#mouseEnter</span>\n    }\n  })\n});</pre></td>      </tr>    </table>  </div></div><p>Similarly a view&#39;s event manager will take precedence for events of any views\nrendered as a descendant. A method name that matches an event name will not\nbe called if the view instance was rendered inside the HTML representation of\na view that has an <code>eventManager</code> property defined that handles events of the\nname. Events not handled by the event manager will still trigger method calls\non the descendant.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"><span class=\"hljs-keyword\">var</span> App = Ember.Application.create();\nApp.OuterView = Ember.View.extend({\n  template: Ember.Handlebars.compile(<span class=\"hljs-string\">\"outer {{#view 'inner'}}inner{{/view}} outer\"</span>),\n  eventManager: Ember.Object.create({\n    mouseEnter: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(event, view)</span> </span>{\n      <span class=\"hljs-comment\">// view might be instance of either</span>\n      <span class=\"hljs-comment\">// OuterView or InnerView depending on</span>\n      <span class=\"hljs-comment\">// where on the page the user interaction occurred</span>\n    }\n  })\n});\n\nApp.InnerView = Ember.View.extend({\n  click: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(event)</span> </span>{\n    <span class=\"hljs-comment\">// will be called if rendered inside</span>\n    <span class=\"hljs-comment\">// an OuterView because OuterView's</span>\n    <span class=\"hljs-comment\">// eventManager doesn't handle click events</span>\n  },\n  mouseEnter: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(event)</span> </span>{\n    <span class=\"hljs-comment\">// will never be called if rendered inside</span>\n    <span class=\"hljs-comment\">// an OuterView.</span>\n  }\n});</pre></td>      </tr>    </table>  </div></div><h3 id=\"handlebars-action-helper\">Handlebars <code>{{action}}</code> Helper</h3>\n<p>See <a href=\"/api/classes/Ember.Handlebars.helpers.html#method_action\">Handlebars.helpers.action</a>.</p>\n<h3 id=\"event-names\">Event Names</h3>\n<p>All of the event handling approaches described above respond to the same set\nof events. The names of the built-in events are listed below. (The hash of\nbuilt-in events exists in <code>Ember.EventDispatcher</code>.) Additional, custom events\ncan be registered by using <code>Ember.Application.customEvents</code>.</p>\n<p>Touch events:</p>\n<ul>\n<li><code>touchStart</code></li>\n<li><code>touchMove</code></li>\n<li><code>touchEnd</code></li>\n<li><code>touchCancel</code></li>\n</ul>\n<p>Keyboard events</p>\n<ul>\n<li><code>keyDown</code></li>\n<li><code>keyUp</code></li>\n<li><code>keyPress</code></li>\n</ul>\n<p>Mouse events</p>\n<ul>\n<li><code>mouseDown</code></li>\n<li><code>mouseUp</code></li>\n<li><code>contextMenu</code></li>\n<li><code>click</code></li>\n<li><code>doubleClick</code></li>\n<li><code>mouseMove</code></li>\n<li><code>focusIn</code></li>\n<li><code>focusOut</code></li>\n<li><code>mouseEnter</code></li>\n<li><code>mouseLeave</code></li>\n</ul>\n<p>Form events:</p>\n<ul>\n<li><code>submit</code></li>\n<li><code>change</code></li>\n<li><code>focusIn</code></li>\n<li><code>focusOut</code></li>\n<li><code>input</code></li>\n</ul>\n<p>HTML5 drag and drop events:</p>\n<ul>\n<li><code>dragStart</code></li>\n<li><code>drag</code></li>\n<li><code>dragEnter</code></li>\n<li><code>dragLeave</code></li>\n<li><code>dragOver</code></li>\n<li><code>dragEnd</code></li>\n<li><code>drop</code></li>\n</ul>\n<h2 id=\"handlebars-view-helper\">Handlebars <code>{{view}}</code> Helper</h2>\n<p>Other <code>Ember.View</code> instances can be included as part of a view&#39;s template by\nusing the <code>{{view}}</code> Handlebars helper. See <a href=\"/api/classes/Ember.Handlebars.helpers.html#method_view\">Ember.Handlebars.helpers.view</a>\nfor additional information.</p>\n",
+  "line": 64,
+  "file": "packages/ember-views/lib/views/view.js",
+  "methods": [
+    {
+      "name": "init",
+      "isPrivate": true
+    },
+    {
+      "name": "destroy",
+      "isPrivate": false
+    },
+    {
+      "name": "willDestroy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_scheduledDestroy",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "toString",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "extend",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "createWithMixins",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "create",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "reopen",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "reopenClass",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "metaForProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "eachComputedProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_onLookup",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_lazyInjections",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "get",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "getProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "set",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "setProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "beginPropertyChanges",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "endPropertyChanges",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "propertyWillChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "propertyDidChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "notifyPropertyChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "addObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "removeObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "hasObserverFor",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "getWithDefault",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "incrementProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "decrementProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "toggleProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "cacheFor",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "on",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "one",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "trigger",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreView"
+    },
+    {
+      "name": "off",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "has",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "willMergeMixin",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "send",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "_contextDidChange",
+      "isPrivate": true
+    },
+    {
+      "name": "nearestOfType",
+      "isPrivate": false
+    },
+    {
+      "name": "nearestWithProperty",
+      "isPrivate": false
+    },
+    {
+      "name": "_parentViewDidChange",
+      "isPrivate": true
+    },
+    {
+      "name": "rerender",
+      "isPrivate": false
+    },
+    {
+      "name": "_classStringForProperty",
+      "isPrivate": true
+    },
+    {
+      "name": "$",
+      "isPrivate": false
+    },
+    {
+      "name": "appendTo",
+      "isPrivate": false
+    },
+    {
+      "name": "replaceIn",
+      "isPrivate": false
+    },
+    {
+      "name": "append",
+      "isPrivate": false
+    },
+    {
+      "name": "remove",
+      "isPrivate": false
+    },
+    {
+      "name": "findElementInParentElement",
+      "isPrivate": false
+    },
+    {
+      "name": "createElement",
+      "isPrivate": false
+    },
+    {
+      "name": "destroyElement",
+      "isPrivate": false
+    },
+    {
+      "name": "removeFromParent",
+      "isPrivate": false
+    },
+    {
+      "name": "handleEvent",
+      "isPrivate": true
+    }
+  ],
+  "properties": [
+    {
+      "name": "concatenatedProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "isDestroyed",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "isDestroying",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "actions",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "parentView",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreView"
+    },
+    {
+      "name": "isView",
+      "isPrivate": false
+    },
+    {
+      "name": "templateName",
+      "isPrivate": false
+    },
+    {
+      "name": "layoutName",
+      "isPrivate": false
+    },
+    {
+      "name": "template",
+      "isPrivate": false
+    },
+    {
+      "name": "layout",
+      "isPrivate": false
+    },
+    {
+      "name": "element",
+      "isPrivate": false
+    },
+    {
+      "name": "elementId",
+      "isPrivate": false
+    },
+    {
+      "name": "tagName",
+      "isPrivate": false
+    },
+    {
+      "name": "ariaRole",
+      "isPrivate": false
+    },
+    {
+      "name": "views",
+      "isPrivate": false
+    }
+  ],
+  "events": [
+    {
+      "name": "willInsertElement",
+      "isPrivate": false
+    },
+    {
+      "name": "didInsertElement",
+      "isPrivate": false
+    },
+    {
+      "name": "willClearRender",
+      "isPrivate": false
+    },
+    {
+      "name": "willDestroyElement",
+      "isPrivate": false
+    },
+    {
+      "name": "parentViewDidChange",
+      "isPrivate": false
+    }
+  ],
+  "isPrivate": false,
+  "constType": "Class"
+}

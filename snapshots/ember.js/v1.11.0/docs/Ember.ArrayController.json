@@ -1,0 +1,690 @@
+{
+  "name": "Ember.ArrayController",
+  "description": "<p><code>Ember.ArrayController</code> provides a way for you to publish a collection of\nobjects so that you can easily bind to the collection from a Handlebars\n<code>#each</code> helper, an <code>Ember.CollectionView</code>, or other controllers.</p>\n<p>The advantage of using an <code>ArrayController</code> is that you only have to set up\nyour view bindings once; to change what&#39;s displayed, simply swap out the\n<code>model</code> property on the controller.</p>\n<p>For example, imagine you wanted to display a list of items fetched via an XHR\nrequest. Create an <code>Ember.ArrayController</code> and set its <code>model</code> property:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">MyApp.listController = Ember.ArrayController.create();\n\n$.get(<span class=\"hljs-string\">'people.json'</span>, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(data)</span> </span>{\n  MyApp.listController.set(<span class=\"hljs-string\">'model'</span>, data);\n});</pre></td>      </tr>    </table>  </div></div><p>Then, create a view that binds to your new controller:</p>\n<div class=\"highlight handlebars\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n</pre>        </td>        <td class=\"code\"><pre class=\"handlebars\"><span class=\"xml\"></span><span class=\"hljs-expression\">{{<span class=\"hljs-begin-block\">#<span class=\"hljs-keyword\">each</span> person <span class=\"hljs-keyword\">in</span> MyApp.listController</span>}}</span><span class=\"xml\">\n  </span><span class=\"hljs-expression\">{{<span class=\"hljs-variable\">person.firstName</span>}}</span><span class=\"xml\"> </span><span class=\"hljs-expression\">{{<span class=\"hljs-variable\">person.lastName</span>}}</span><span class=\"xml\">\n</span><span class=\"hljs-expression\">{{<span class=\"hljs-end-block\">/<span class=\"hljs-keyword\">each</span></span>}}</span><span class=\"xml\"></span></pre></td>      </tr>    </table>  </div></div><p>Although you are binding to the controller, the behavior of this controller\nis to pass through any methods or properties to the underlying array. This\ncapability comes from <code>Ember.ArrayProxy</code>, which this class inherits from.</p>\n<p>Sometimes you want to display computed properties within the body of an\n<code>#each</code> helper that depend on the underlying items in <code>model</code>, but are not\npresent on those items.   To do this, set <code>itemController</code> to the name of a\ncontroller (probably an <code>ObjectController</code>) that will wrap each individual item.</p>\n<p>For example:</p>\n<div class=\"highlight handlebars\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n</pre>        </td>        <td class=\"code\"><pre class=\"handlebars\"><span class=\"xml\"></span><span class=\"hljs-expression\">{{<span class=\"hljs-begin-block\">#<span class=\"hljs-keyword\">each</span> post <span class=\"hljs-keyword\">in</span> controller</span>}}</span><span class=\"xml\">\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">li</span>&gt;</span></span><span class=\"hljs-expression\">{{<span class=\"hljs-variable\">post.title</span>}}</span><span class=\"xml\"> (</span><span class=\"hljs-expression\">{{<span class=\"hljs-variable\">post.titleLength</span>}}</span><span class=\"xml\"> characters)<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">li</span>&gt;</span>\n</span><span class=\"hljs-expression\">{{<span class=\"hljs-end-block\">/<span class=\"hljs-keyword\">each</span></span>}}</span><span class=\"xml\"></span></pre></td>      </tr>    </table>  </div></div><div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.PostsController = Ember.ArrayController.extend({\n  itemController: <span class=\"hljs-string\">'post'</span>\n});\n\nApp.PostController = Ember.ObjectController.extend({\n  <span class=\"hljs-comment\">// the `title` property will be proxied to the underlying post.</span>\n  titleLength: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n    <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.get(<span class=\"hljs-string\">'title'</span>).length;\n  }.property(<span class=\"hljs-string\">'title'</span>)\n});</pre></td>      </tr>    </table>  </div></div><p>In some cases it is helpful to return a different <code>itemController</code> depending\non the particular item.  Subclasses can do this by overriding\n<code>lookupItemController</code>.</p>\n<p>For example:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.MyArrayController = Ember.ArrayController.extend({\n  lookupItemController: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">( object )</span> </span>{\n    <span class=\"hljs-keyword\">if</span> (object.get(<span class=\"hljs-string\">'isSpecial'</span>)) {\n      <span class=\"hljs-keyword\">return</span> <span class=\"hljs-string\">\"special\"</span>; <span class=\"hljs-comment\">// use App.SpecialController</span>\n    } <span class=\"hljs-keyword\">else</span> {\n      <span class=\"hljs-keyword\">return</span> <span class=\"hljs-string\">\"regular\"</span>; <span class=\"hljs-comment\">// use App.RegularController</span>\n    }\n  }\n});</pre></td>      </tr>    </table>  </div></div><p>The itemController instances will have a <code>parentController</code> property set to\nthe <code>ArrayController</code> instance.</p>\n",
+  "line": 20,
+  "file": "packages/ember-runtime/lib/controllers/array_controller.js",
+  "methods": [
+    {
+      "name": "init",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "destroy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "willDestroy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_scheduledDestroy",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "toString",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "extend",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "createWithMixins",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "create",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "reopen",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "reopenClass",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "metaForProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "eachComputedProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_onLookup",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_lazyInjections",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "get",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "getProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "set",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "setProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "beginPropertyChanges",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "endPropertyChanges",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "propertyWillChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "propertyDidChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "notifyPropertyChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "addObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "removeObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "hasObserverFor",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "getWithDefault",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "incrementProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "decrementProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "toggleProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "cacheFor",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "nextObject",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "contains",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "forEach",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "getEach",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "setEach",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "map",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "mapBy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "mapProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "filter",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "reject",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "filterBy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "filterProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "rejectBy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "rejectProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "find",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "findBy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "findProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "every",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "everyBy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "everyProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "isEvery",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "any",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "some",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "isAny",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "anyBy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "someProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "reduce",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "invoke",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "toArray",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "compact",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "without",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "uniq",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "addEnumerableObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "removeEnumerableObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "enumerableContentWillChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "enumerableContentDidChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "sortBy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "objectAt",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Array"
+    },
+    {
+      "name": "objectsAt",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Array"
+    },
+    {
+      "name": "slice",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Array"
+    },
+    {
+      "name": "indexOf",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Array"
+    },
+    {
+      "name": "lastIndexOf",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Array"
+    },
+    {
+      "name": "addArrayObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Array"
+    },
+    {
+      "name": "removeArrayObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Array"
+    },
+    {
+      "name": "arrayContentWillChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Array"
+    },
+    {
+      "name": "arrayContentDidChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Array"
+    },
+    {
+      "name": "addObject",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.MutableEnumerable"
+    },
+    {
+      "name": "addObjects",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.MutableEnumerable"
+    },
+    {
+      "name": "removeObject",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.MutableEnumerable"
+    },
+    {
+      "name": "removeObjects",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.MutableEnumerable"
+    },
+    {
+      "name": "replace",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.MutableArray"
+    },
+    {
+      "name": "clear",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.MutableArray"
+    },
+    {
+      "name": "insertAt",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.MutableArray"
+    },
+    {
+      "name": "removeAt",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.MutableArray"
+    },
+    {
+      "name": "pushObject",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.MutableArray"
+    },
+    {
+      "name": "pushObjects",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.MutableArray"
+    },
+    {
+      "name": "popObject",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.MutableArray"
+    },
+    {
+      "name": "shiftObject",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.MutableArray"
+    },
+    {
+      "name": "unshiftObject",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.MutableArray"
+    },
+    {
+      "name": "unshiftObjects",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.MutableArray"
+    },
+    {
+      "name": "reverseObjects",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.MutableArray"
+    },
+    {
+      "name": "setObjects",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.MutableArray"
+    },
+    {
+      "name": "objectAtContent",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ArrayProxy"
+    },
+    {
+      "name": "replaceContent",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ArrayProxy"
+    },
+    {
+      "name": "_contentWillChange",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.ArrayProxy"
+    },
+    {
+      "name": "contentArrayWillChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ArrayProxy"
+    },
+    {
+      "name": "contentArrayDidChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ArrayProxy"
+    },
+    {
+      "name": "_contentDidChange",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.ArrayProxy"
+    },
+    {
+      "name": "willMergeMixin",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "send",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "_updateCacheParams",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "_qpChanged",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "_calculateCacheKey",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "transitionToRoute",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "transitionTo",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "replaceRoute",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "replaceWith",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "controllerFor",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "lookupItemController",
+      "isPrivate": false
+    }
+  ],
+  "properties": [
+    {
+      "name": "concatenatedProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "isDestroyed",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "isDestroying",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "firstObject",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "lastObject",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "[]",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "hasEnumerableObservers",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "length",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Array"
+    },
+    {
+      "name": "hasArrayObservers",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Array"
+    },
+    {
+      "name": "@each",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Array"
+    },
+    {
+      "name": "content",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ArrayProxy"
+    },
+    {
+      "name": "arrangedContent",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.SortableMixin"
+    },
+    {
+      "name": "sortProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.SortableMixin"
+    },
+    {
+      "name": "sortAscending",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.SortableMixin"
+    },
+    {
+      "name": "sortFunction",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.SortableMixin"
+    },
+    {
+      "name": "actions",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "target",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "model",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "queryParams",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "_qpDelegate",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "_normalizedQueryParams",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "_cacheMeta",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "needs",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "controllers",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ControllerMixin"
+    },
+    {
+      "name": "itemController",
+      "isPrivate": false
+    },
+    {
+      "name": "_isVirtual",
+      "isPrivate": true
+    }
+  ],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

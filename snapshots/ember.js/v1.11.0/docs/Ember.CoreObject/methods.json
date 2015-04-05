@@ -1,0 +1,230 @@
+[
+  {
+    "file": "packages/ember-runtime/lib/system/core_object.js",
+    "line": 242,
+    "description": "<p>An overridable method called when objects are instantiated. By default,\ndoes nothing unless it is overridden during class definition.</p>\n<p>Example:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.Person = Ember.Object.extend({\n  init: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n    alert(<span class=\"hljs-string\">'Name is '</span> + <span class=\"hljs-keyword\">this</span>.get(<span class=\"hljs-string\">'name'</span>));\n  }\n});\n\n<span class=\"hljs-keyword\">var</span> steve = App.Person.create({\n  name: <span class=\"hljs-string\">\"Steve\"</span>\n});\n\n<span class=\"hljs-comment\">// alerts 'Name is Steve'.</span></pre></td>      </tr>    </table>  </div></div><p>NOTE: If you do override <code>init</code> for a framework class like <code>Ember.View</code> or\n<code>Ember.ArrayController</code>, be sure to call <code>this._super.apply(this, arguments)</code> in your\n<code>init</code> declaration! If you don&#39;t, Ember may not have an opportunity to\ndo important setup work, and you&#39;ll see strange behavior in your\napplication.</p>\n",
+    "itemtype": "method",
+    "name": "init",
+    "class": "Ember.CoreObject",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-runtime/lib/system/core_object.js",
+    "line": 366,
+    "description": "<p>Destroys an object by setting the <code>isDestroyed</code> flag and removing its\nmetadata, which effectively destroys observers and bindings.</p>\n<p>If you try to set a property on a destroyed object, an exception will be\nraised.</p>\n<p>Note that destruction is scheduled for the end of the run loop and does not\nhappen immediately.  It will set an isDestroying flag immediately.</p>\n",
+    "itemtype": "method",
+    "name": "destroy",
+    "return": {
+      "description": "receiver",
+      "type": "Ember.Object"
+    },
+    "class": "Ember.CoreObject",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-runtime/lib/system/core_object.js",
+    "line": 388,
+    "description": "<p>Override to implement teardown.</p>\n",
+    "itemtype": "method",
+    "name": "willDestroy",
+    "class": "Ember.CoreObject",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-runtime/lib/system/core_object.js",
+    "line": 395,
+    "description": "<p>Invoked by the run loop to actually destroy the object. This is\nscheduled for execution by the <code>destroy</code> method.</p>\n",
+    "access": "private",
+    "tagname": "",
+    "itemtype": "method",
+    "name": "_scheduledDestroy",
+    "class": "Ember.CoreObject",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember",
+    "isPrivate": true
+  },
+  {
+    "file": "packages/ember-runtime/lib/system/core_object.js",
+    "line": 414,
+    "description": "<p>Returns a string representation which attempts to provide more information\nthan Javascript&#39;s <code>toString</code> typically does, in a generic way for all Ember\nobjects.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.Person = Em.Object.extend()\nperson = App.Person.create()\nperson.toString() <span class=\"hljs-comment\">//=&gt; \"&lt;App.Person:ember1024&gt;\"</span></pre></td>      </tr>    </table>  </div></div><p>If the object&#39;s class is not defined on an Ember namespace, it will\nindicate it is a subclass of the registered superclass:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">Student = App.Person.extend()\nstudent = Student.create()\nstudent.toString() <span class=\"hljs-comment\">//=&gt; \"&lt;(subclass of App.Person):ember1025&gt;\"</span></pre></td>      </tr>    </table>  </div></div><p>If the method <code>toStringExtension</code> is defined, its return value will be\nincluded in the output.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.Teacher = App.Person.extend({\n  toStringExtension: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n    <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.get(<span class=\"hljs-string\">'fullName'</span>);\n  }\n});\nteacher = App.Teacher.create()\nteacher.toString(); <span class=\"hljs-comment\">//=&gt; \"&lt;App.Teacher:ember1026:Tom Dale&gt;\"</span></pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "method",
+    "name": "toString",
+    "return": {
+      "description": "string representation",
+      "type": "String"
+    },
+    "class": "Ember.CoreObject",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-runtime/lib/system/core_object.js",
+    "line": 478,
+    "description": "<p>Creates a new subclass.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.Person = Ember.Object.extend({\n  say: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(thing)</span> </span>{\n    alert(thing);\n   }\n});</pre></td>      </tr>    </table>  </div></div><p>This defines a new subclass of Ember.Object: <code>App.Person</code>. It contains one method: <code>say()</code>.</p>\n<p>You can also create a subclass from any existing class by calling its <code>extend()</code>  method. For example, you might want to create a subclass of Ember&#39;s built-in <code>Ember.View</code> class:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.PersonView = Ember.View.extend({\n  tagName: <span class=\"hljs-string\">'li'</span>,\n  classNameBindings: [<span class=\"hljs-string\">'isAdministrator'</span>]\n});</pre></td>      </tr>    </table>  </div></div><p>When defining a subclass, you can override methods but still access the implementation of your parent class by calling the special <code>_super()</code> method:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.Person = Ember.Object.extend({\n  say: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(thing)</span> </span>{\n    <span class=\"hljs-keyword\">var</span> name = <span class=\"hljs-keyword\">this</span>.get(<span class=\"hljs-string\">'name'</span>);\n    alert(name + <span class=\"hljs-string\">' says: '</span> + thing);\n  }\n});\n\nApp.Soldier = App.Person.extend({\n  say: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(thing)</span> </span>{\n    <span class=\"hljs-keyword\">this</span>._super(thing + <span class=\"hljs-string\">\", sir!\"</span>);\n  },\n  march: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(numberOfHours)</span> </span>{\n    alert(<span class=\"hljs-keyword\">this</span>.get(<span class=\"hljs-string\">'name'</span>) + <span class=\"hljs-string\">' marches for '</span> + numberOfHours + <span class=\"hljs-string\">' hours.'</span>)\n  }\n});\n\n<span class=\"hljs-keyword\">var</span> yehuda = App.Soldier.create({\n  name: <span class=\"hljs-string\">\"Yehuda Katz\"</span>\n});\n\nyehuda.say(<span class=\"hljs-string\">\"Yes\"</span>);  <span class=\"hljs-comment\">// alerts \"Yehuda Katz says: Yes, sir!\"</span></pre></td>      </tr>    </table>  </div></div><p>The <code>create()</code> on line #17 creates an <em>instance</em> of the <code>App.Soldier</code> class. The <code>extend()</code> on line #8 creates a <em>subclass</em> of <code>App.Person</code>. Any instance of the <code>App.Person</code> class will <em>not</em> have the <code>march()</code> method.</p>\n<p>You can also pass <code>Mixin</code> classes to add additional properties to the subclass.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.Person = Ember.Object.extend({\n  say: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(thing)</span> </span>{\n    alert(<span class=\"hljs-keyword\">this</span>.get(<span class=\"hljs-string\">'name'</span>) + <span class=\"hljs-string\">' says: '</span> + thing);\n  }\n});\n\nApp.SingingMixin = Mixin.create({\n  sing: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(thing)</span></span>{\n    alert(<span class=\"hljs-keyword\">this</span>.get(<span class=\"hljs-string\">'name'</span>) + <span class=\"hljs-string\">' sings: la la la '</span> + thing);\n  }\n});\n\nApp.BroadwayStar = App.Person.extend(App.SingingMixin, {\n  dance: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n    alert(<span class=\"hljs-keyword\">this</span>.get(<span class=\"hljs-string\">'name'</span>) + <span class=\"hljs-string\">' dances: tap tap tap tap '</span>);\n  }\n});</pre></td>      </tr>    </table>  </div></div><p>The <code>App.BroadwayStar</code> class contains three methods: <code>say()</code>, <code>sing()</code>, and <code>dance()</code>.</p>\n",
+    "itemtype": "method",
+    "name": "extend",
+    "static": 1,
+    "params": [
+      {
+        "name": "mixins",
+        "description": "One or more Mixin classes",
+        "type": "Mixin",
+        "optional": true,
+        "multiple": true
+      },
+      {
+        "name": "arguments",
+        "description": "Object containing values to use within the new class",
+        "type": "Object",
+        "optional": true,
+        "multiple": true
+      }
+    ],
+    "class": "Ember.CoreObject",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-runtime/lib/system/core_object.js",
+    "line": 581,
+    "description": "<p>Equivalent to doing <code>extend(arguments).create()</code>.\nIf possible use the normal <code>create</code> method instead.</p>\n",
+    "itemtype": "method",
+    "name": "createWithMixins",
+    "static": 1,
+    "params": [
+      {
+        "name": "arguments",
+        "description": "",
+        "optional": true,
+        "multiple": true
+      }
+    ],
+    "class": "Ember.CoreObject",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-runtime/lib/system/core_object.js",
+    "line": 602,
+    "description": "<p>Creates an instance of a class. Accepts either no arguments, or an object\ncontaining values to initialize the newly instantiated object with.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.Person = Ember.Object.extend({\n  helloWorld: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n    alert(<span class=\"hljs-string\">\"Hi, my name is \"</span> + <span class=\"hljs-keyword\">this</span>.get(<span class=\"hljs-string\">'name'</span>));\n  }\n});\n\n<span class=\"hljs-keyword\">var</span> tom = App.Person.create({\n  name: <span class=\"hljs-string\">'Tom Dale'</span>\n});\n\ntom.helloWorld(); <span class=\"hljs-comment\">// alerts \"Hi, my name is Tom Dale\".</span></pre></td>      </tr>    </table>  </div></div><p><code>create</code> will call the <code>init</code> function if defined during\n<code>Ember.AnyObject.extend</code></p>\n<p>If no arguments are passed to <code>create</code>, it will not set values to the new\ninstance during initialization:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"><span class=\"hljs-keyword\">var</span> noName = App.Person.create();\nnoName.helloWorld(); <span class=\"hljs-comment\">// alerts undefined</span></pre></td>      </tr>    </table>  </div></div><p>NOTE: For performance reasons, you cannot declare methods or computed\nproperties during <code>create</code>. You should instead declare methods and computed\nproperties when using <code>extend</code> or use the <code>createWithMixins</code> shorthand.</p>\n",
+    "itemtype": "method",
+    "name": "create",
+    "static": 1,
+    "params": [
+      {
+        "name": "arguments",
+        "description": "",
+        "optional": true,
+        "multiple": true
+      }
+    ],
+    "class": "Ember.CoreObject",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-runtime/lib/system/core_object.js",
+    "line": 652,
+    "description": "<p>Augments a constructor&#39;s prototype with additional\nproperties and functions:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">MyObject = Ember.Object.extend({\n  name: <span class=\"hljs-string\">'an object'</span>\n});\n\no = MyObject.create();\no.get(<span class=\"hljs-string\">'name'</span>); <span class=\"hljs-comment\">// 'an object'</span>\n\nMyObject.reopen({\n  say: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(msg)</span></span>{\n    <span class=\"hljs-built_in\">console</span>.log(msg);\n  }\n})\n\no2 = MyObject.create();\no2.say(<span class=\"hljs-string\">\"hello\"</span>); <span class=\"hljs-comment\">// logs \"hello\"</span>\n\no.say(<span class=\"hljs-string\">\"goodbye\"</span>); <span class=\"hljs-comment\">// logs \"goodbye\"</span></pre></td>      </tr>    </table>  </div></div><p>To add functions and properties to the constructor itself,\nsee <code>reopenClass</code></p>\n",
+    "itemtype": "method",
+    "name": "reopen",
+    "class": "Ember.CoreObject",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-runtime/lib/system/core_object.js",
+    "line": 696,
+    "description": "<p>Augments a constructor&#39;s own properties and functions:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">MyObject = Ember.Object.extend({\n  name: <span class=\"hljs-string\">'an object'</span>\n});\n\nMyObject.reopenClass({\n  canBuild: <span class=\"hljs-literal\">false</span>\n});\n\nMyObject.canBuild; <span class=\"hljs-comment\">// false</span>\no = MyObject.create();</pre></td>      </tr>    </table>  </div></div><p>In other words, this creates static properties and functions for the class. These are only available on the class\nand not on any instance of that class.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.Person = Ember.Object.extend({\n  name : <span class=\"hljs-string\">\"\"</span>,\n  sayHello : <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n    alert(<span class=\"hljs-string\">\"Hello. My name is \"</span> + <span class=\"hljs-keyword\">this</span>.get(<span class=\"hljs-string\">'name'</span>));\n  }\n});\n\nApp.Person.reopenClass({\n  species : <span class=\"hljs-string\">\"Homo sapiens\"</span>,\n  createPerson: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(newPersonsName)</span></span>{\n    <span class=\"hljs-keyword\">return</span> App.Person.create({\n      name:newPersonsName\n    });\n  }\n});\n\n<span class=\"hljs-keyword\">var</span> tom = App.Person.create({\n  name : <span class=\"hljs-string\">\"Tom Dale\"</span>\n});\n<span class=\"hljs-keyword\">var</span> yehuda = App.Person.createPerson(<span class=\"hljs-string\">\"Yehuda Katz\"</span>);\n\ntom.sayHello(); <span class=\"hljs-comment\">// \"Hello. My name is Tom Dale\"</span>\nyehuda.sayHello(); <span class=\"hljs-comment\">// \"Hello. My name is Yehuda Katz\"</span>\nalert(App.Person.species); <span class=\"hljs-comment\">// \"Homo sapiens\"</span></pre></td>      </tr>    </table>  </div></div><p>Note that <code>species</code> and <code>createPerson</code> are <em>not</em> valid on the <code>tom</code> and <code>yehuda</code>\nvariables. They are only valid on <code>App.Person</code>.</p>\n<p>To add functions and properties to instances of\na constructor by extending the constructor&#39;s prototype\nsee <code>reopen</code></p>\n",
+    "itemtype": "method",
+    "name": "reopenClass",
+    "class": "Ember.CoreObject",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-runtime/lib/system/core_object.js",
+    "line": 778,
+    "description": "<p>In some cases, you may want to annotate computed properties with additional\nmetadata about how they function or what values they operate on. For\nexample, computed property functions may close over variables that are then\nno longer available for introspection.</p>\n<p>You can pass a hash of these values to a computed property like this:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">person: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n  <span class=\"hljs-keyword\">var</span> personId = <span class=\"hljs-keyword\">this</span>.get(<span class=\"hljs-string\">'personId'</span>);\n  <span class=\"hljs-keyword\">return</span> App.Person.create({ id: personId });\n}.property().meta({ type: App.Person })</pre></td>      </tr>    </table>  </div></div><p>Once you&#39;ve done this, you can retrieve the values saved to the computed\nproperty from your class like this:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">MyClass.metaForProperty(<span class=\"hljs-string\">'person'</span>);</pre></td>      </tr>    </table>  </div></div><p>This will return the original hash that was passed to <code>meta()</code>.</p>\n",
+    "static": 1,
+    "itemtype": "method",
+    "name": "metaForProperty",
+    "params": [
+      {
+        "name": "key",
+        "description": "property name",
+        "type": "String"
+      }
+    ],
+    "class": "Ember.CoreObject",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-runtime/lib/system/core_object.js",
+    "line": 834,
+    "description": "<p>Iterate over each computed property for the class, passing its name\nand any associated metadata (see <code>metaForProperty</code>) to the callback.</p>\n",
+    "static": 1,
+    "itemtype": "method",
+    "name": "eachComputedProperty",
+    "params": [
+      {
+        "name": "callback",
+        "description": "",
+        "type": "Function"
+      },
+      {
+        "name": "binding",
+        "description": "",
+        "type": "Object"
+      }
+    ],
+    "class": "Ember.CoreObject",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-runtime/lib/system/core_object.js",
+    "line": 862,
+    "description": "<p>Provides lookup-time type validation for injected properties.</p>\n",
+    "access": "private",
+    "tagname": "",
+    "itemtype": "method",
+    "name": "_onLookup",
+    "class": "Ember.CoreObject",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember",
+    "isPrivate": true
+  },
+  {
+    "file": "packages/ember-runtime/lib/system/core_object.js",
+    "line": 871,
+    "description": "<p>Returns a hash of property names and container names that injected\nproperties will lookup on the container lazily.</p>\n",
+    "itemtype": "method",
+    "name": "_lazyInjections",
+    "return": {
+      "description": "Hash of all lazy injected property keys to container names",
+      "type": "Object"
+    },
+    "class": "Ember.CoreObject",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  }
+]

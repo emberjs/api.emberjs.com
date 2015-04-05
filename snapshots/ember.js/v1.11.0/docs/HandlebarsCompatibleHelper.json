@@ -1,0 +1,11 @@
+{
+  "name": "HandlebarsCompatibleHelper",
+  "description": "<p>Wraps an Handlebars helper with an HTMLBars helper for backwards compatibility.</p>\n",
+  "line": 26,
+  "file": "packages/ember-htmlbars/lib/compat/helper.js",
+  "methods": [],
+  "properties": [],
+  "events": [],
+  "isPrivate": true,
+  "constType": "Class"
+}

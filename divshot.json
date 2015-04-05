@@ -1,0 +1,6 @@
+{
+  "name": "ember-api",
+  "root": "snapshots",
+  "clean_urls": true,
+  "error_page": "error.html"
+}

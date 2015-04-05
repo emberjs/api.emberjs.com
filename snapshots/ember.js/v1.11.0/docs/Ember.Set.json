@@ -1,0 +1,392 @@
+{
+  "name": "Ember.Set",
+  "description": "<p>An unordered collection of objects.</p>\n<p>A Set works a bit like an array except that its items are not ordered. You\ncan create a set to efficiently test for membership for an object. You can\nalso iterate through a set just like an array, even accessing objects by\nindex, however there is no guarantee as to their order.</p>\n<p>All Sets are observable via the Enumerable Observer API - which works\non any enumerable object including both Sets and Arrays.</p>\n<h2 id=\"creating-a-set\">Creating a Set</h2>\n<p>You can create a set like you would most objects using\n<code>new Ember.Set()</code>. Most new sets you create will be empty, but you can\nalso initialize the set with some content by passing an array or other\nenumerable of objects to the constructor.</p>\n<p>Finally, you can pass in an existing set and the set will be copied. You\ncan also create a copy of a set by calling <code>Ember.Set#copy()</code>.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"><span class=\"hljs-comment\">// creates a new empty set</span>\n<span class=\"hljs-keyword\">var</span> foundNames = <span class=\"hljs-keyword\">new</span> Ember.Set();\n\n<span class=\"hljs-comment\">// creates a set with four names in it.</span>\n<span class=\"hljs-keyword\">var</span> names = <span class=\"hljs-keyword\">new</span> Ember.Set([<span class=\"hljs-string\">\"Charles\"</span>, <span class=\"hljs-string\">\"Tom\"</span>, <span class=\"hljs-string\">\"Juan\"</span>, <span class=\"hljs-string\">\"Alex\"</span>]); <span class=\"hljs-comment\">// :P</span>\n\n<span class=\"hljs-comment\">// creates a copy of the names set.</span>\n<span class=\"hljs-keyword\">var</span> namesCopy = <span class=\"hljs-keyword\">new</span> Ember.Set(names);\n\n<span class=\"hljs-comment\">// same as above.</span>\n<span class=\"hljs-keyword\">var</span> anotherNamesCopy = names.copy();</pre></td>      </tr>    </table>  </div></div><h2 id=\"adding-removing-objects\">Adding/Removing Objects</h2>\n<p>You generally add or remove objects from a set using <code>add()</code> or\n<code>remove()</code>. You can add any type of object including primitives such as\nnumbers, strings, and booleans.</p>\n<p>Unlike arrays, objects can only exist one time in a set. If you call <code>add()</code>\non a set with the same object multiple times, the object will only be added\nonce. Likewise, calling <code>remove()</code> with the same object multiple times will\nremove the object the first time and have no effect on future calls until\nyou add the object to the set again.</p>\n<p>NOTE: You cannot add/remove <code>null</code> or <code>undefined</code> to a set. Any attempt to do\nso will be ignored.</p>\n<p>In addition to add/remove you can also call <code>push()</code>/<code>pop()</code>. Push behaves\njust like <code>add()</code> but <code>pop()</code>, unlike <code>remove()</code> will pick an arbitrary\nobject, remove it and return it. This is a good way to use a set as a job\nqueue when you don&#39;t care which order the jobs are executed in.</p>\n<h2 id=\"testing-for-an-object\">Testing for an Object</h2>\n<p>To test for an object&#39;s presence in a set you simply call\n<code>Ember.Set#contains()</code>.</p>\n<h2 id=\"observing-changes\">Observing changes</h2>\n<p>When using <code>Ember.Set</code>, you can observe the <code>&quot;[]&quot;</code> property to be\nalerted whenever the content changes. You can also add an enumerable\nobserver to the set to be notified of specific objects that are added and\nremoved from the set. See <a href=\"/api/classes/Ember.Enumerable.html\">Ember.Enumerable</a>\nfor more information on enumerables.</p>\n<p>This is often unhelpful. If you are filtering sets of objects, for instance,\nit is very inefficient to re-filter all of the items each time the set\nchanges. It would be better if you could just adjust the filtered set based\non what was changed on the original set. The same issue applies to merging\nsets, as well.</p>\n<h2 id=\"other-methods\">Other Methods</h2>\n<p><code>Ember.Set</code> primary implements other mixin APIs. For a complete reference\non the methods you will use with <code>Ember.Set</code>, please consult these mixins.\nThe most useful ones will be <code>Ember.Enumerable</code> and\n<code>Ember.MutableEnumerable</code> which implement most of the common iterator\nmethods you are used to on Array.</p>\n<p>Note that you can also use the <code>Ember.Copyable</code> and <code>Ember.Freezable</code>\nAPIs on <code>Ember.Set</code> as well. Once a set is frozen it can no longer be\nmodified. The benefit of this is that when you call <code>frozenCopy()</code> on it,\nEmber will avoid making copies of the set. This allows you to write\ncode that can know with certainty when the underlying set data will or\nwill not be modified.</p>\n",
+  "line": 28,
+  "file": "packages/ember-runtime/lib/system/set.js",
+  "methods": [
+    {
+      "name": "init",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "destroy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "willDestroy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_scheduledDestroy",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "toString",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "extend",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "createWithMixins",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "create",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "reopen",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "reopenClass",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "metaForProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "eachComputedProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_onLookup",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_lazyInjections",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "nextObject",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "contains",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "forEach",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "getEach",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "setEach",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "map",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "mapBy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "mapProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "filter",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "reject",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "filterBy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "filterProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "rejectBy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "rejectProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "find",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "findBy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "findProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "every",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "everyBy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "everyProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "isEvery",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "any",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "some",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "isAny",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "anyBy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "someProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "reduce",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "invoke",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "toArray",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "compact",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "without",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "uniq",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "addEnumerableObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "removeEnumerableObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "enumerableContentWillChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "enumerableContentDidChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "sortBy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "addObject",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.MutableEnumerable"
+    },
+    {
+      "name": "addObjects",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.MutableEnumerable"
+    },
+    {
+      "name": "removeObject",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.MutableEnumerable"
+    },
+    {
+      "name": "removeObjects",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.MutableEnumerable"
+    },
+    {
+      "name": "willMergeMixin",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.Copyable"
+    },
+    {
+      "name": "copy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Copyable"
+    },
+    {
+      "name": "frozenCopy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Copyable"
+    },
+    {
+      "name": "freeze",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Freezable"
+    },
+    {
+      "name": "clear",
+      "isPrivate": false
+    },
+    {
+      "name": "isEqual",
+      "isPrivate": false
+    },
+    {
+      "name": "add",
+      "isPrivate": false
+    },
+    {
+      "name": "remove",
+      "isPrivate": false
+    },
+    {
+      "name": "pop",
+      "isPrivate": false
+    },
+    {
+      "name": "push",
+      "isPrivate": false
+    },
+    {
+      "name": "shift",
+      "isPrivate": false
+    },
+    {
+      "name": "unshift",
+      "isPrivate": false
+    },
+    {
+      "name": "addEach",
+      "isPrivate": false
+    },
+    {
+      "name": "removeEach",
+      "isPrivate": false
+    }
+  ],
+  "properties": [
+    {
+      "name": "concatenatedProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "isDestroyed",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "isDestroying",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "firstObject",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "lastObject",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "[]",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "hasEnumerableObservers",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "isFrozen",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Freezable"
+    },
+    {
+      "name": "length",
+      "isPrivate": false
+    }
+  ],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

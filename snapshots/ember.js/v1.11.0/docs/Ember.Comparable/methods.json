@@ -1,0 +1,29 @@
+[
+  {
+    "file": "packages/ember-runtime/lib/mixins/comparable.js",
+    "line": 23,
+    "description": "<p>Override to return the result of the comparison of the two parameters. The\ncompare method should return:</p>\n<ul>\n<li><code>-1</code> if <code>a &lt; b</code></li>\n<li><code>0</code> if <code>a == b</code></li>\n<li><code>1</code> if <code>a &gt; b</code></li>\n</ul>\n<p>Default implementation raises an exception.</p>\n",
+    "itemtype": "method",
+    "name": "compare",
+    "params": [
+      {
+        "name": "a",
+        "description": "the first object to compare",
+        "type": "Object"
+      },
+      {
+        "name": "b",
+        "description": "the second object to compare",
+        "type": "Object"
+      }
+    ],
+    "return": {
+      "description": "the result of the comparison",
+      "type": "Integer"
+    },
+    "class": "Ember.Comparable",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  }
+]

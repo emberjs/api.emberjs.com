@@ -1,0 +1,47 @@
+{
+  "name": "Ember.ReduceComputedProperty",
+  "description": "<p>A computed property whose dependent keys are arrays and which is updated with\n&quot;one at a time&quot; semantics.</p>\n",
+  "line": 465,
+  "file": "packages/ember-runtime/lib/computed/reduce_computed.js",
+  "methods": [
+    {
+      "name": "cacheable",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ComputedProperty"
+    },
+    {
+      "name": "volatile",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ComputedProperty"
+    },
+    {
+      "name": "readOnly",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ComputedProperty"
+    },
+    {
+      "name": "property",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ComputedProperty"
+    },
+    {
+      "name": "meta",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ComputedProperty"
+    },
+    {
+      "name": "get",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ComputedProperty"
+    },
+    {
+      "name": "set",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ComputedProperty"
+    }
+  ],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

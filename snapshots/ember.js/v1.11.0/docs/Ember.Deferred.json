@@ -1,0 +1,24 @@
+{
+  "name": "Ember.Deferred",
+  "description": "",
+  "line": 13,
+  "file": "packages/ember-runtime/lib/mixins/deferred.js",
+  "methods": [
+    {
+      "name": "then",
+      "isPrivate": false
+    },
+    {
+      "name": "resolve",
+      "isPrivate": false
+    },
+    {
+      "name": "reject",
+      "isPrivate": false
+    }
+  ],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

@@ -1,0 +1,26 @@
+{
+  "name": "Ember.Handlebars",
+  "description": "",
+  "methods": [
+    {
+      "name": "get",
+      "isPrivate": false
+    },
+    {
+      "name": "makeBoundHelper",
+      "isPrivate": false
+    },
+    {
+      "name": "registerBoundHelper",
+      "isPrivate": false
+    },
+    {
+      "name": "bootstrap",
+      "isPrivate": true
+    }
+  ],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

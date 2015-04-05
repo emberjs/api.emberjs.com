@@ -1,0 +1,52 @@
+{
+  "name": "Ember.EnumerableUtils",
+  "description": "<p>Defines some convenience methods for working with Enumerables.\n<code>Ember.EnumerableUtils</code> uses <code>Ember.ArrayPolyfills</code> when necessary.</p>\n",
+  "line": 10,
+  "file": "packages/ember-metal/lib/enumerable_utils.js",
+  "methods": [
+    {
+      "name": "deprecateProperty",
+      "isPrivate": true
+    },
+    {
+      "name": "map",
+      "isPrivate": false
+    },
+    {
+      "name": "forEach",
+      "isPrivate": false
+    },
+    {
+      "name": "filter",
+      "isPrivate": false
+    },
+    {
+      "name": "indexOf",
+      "isPrivate": false
+    },
+    {
+      "name": "indexesOf",
+      "isPrivate": false
+    },
+    {
+      "name": "addObject",
+      "isPrivate": false
+    },
+    {
+      "name": "removeObject",
+      "isPrivate": false
+    },
+    {
+      "name": "replace",
+      "isPrivate": false
+    },
+    {
+      "name": "intersection",
+      "isPrivate": false
+    }
+  ],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Namespace"
+}

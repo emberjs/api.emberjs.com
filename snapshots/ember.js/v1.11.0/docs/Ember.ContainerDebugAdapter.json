@@ -1,0 +1,199 @@
+{
+  "name": "Ember.ContainerDebugAdapter",
+  "description": "<p>The <code>ContainerDebugAdapter</code> helps the container and resolver interface\nwith tools that debug Ember such as the\n<a href=\"https://github.com/tildeio/ember-extension\">Ember Extension</a>\nfor Chrome and Firefox.</p>\n<p>This class can be extended by a custom resolver implementer\nto override some of the methods with library-specific code.</p>\n<p>The methods likely to be overridden are:</p>\n<ul>\n<li><code>canCatalogEntriesByType</code></li>\n<li><code>catalogEntriesByType</code></li>\n</ul>\n<p>The adapter will need to be registered\nin the application&#39;s container as <code>container-debug-adapter:main</code></p>\n<p>Example:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">Application.initializer({\n  name: <span class=\"hljs-string\">\"containerDebugAdapter\"</span>,\n\n  initialize: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(container, application)</span> </span>{\n    application.register(<span class=\"hljs-string\">'container-debug-adapter:main'</span>, <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">'app/container-debug-adapter'</span>));\n  }\n});</pre></td>      </tr>    </table>  </div></div>",
+  "line": 16,
+  "file": "packages/ember-extension-support/lib/container_debug_adapter.js",
+  "methods": [
+    {
+      "name": "init",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "destroy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "willDestroy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_scheduledDestroy",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "toString",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "extend",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "createWithMixins",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "create",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "reopen",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "reopenClass",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "metaForProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "eachComputedProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_onLookup",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_lazyInjections",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "get",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "getProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "set",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "setProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "beginPropertyChanges",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "endPropertyChanges",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "propertyWillChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "propertyDidChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "notifyPropertyChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "addObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "removeObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "hasObserverFor",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "getWithDefault",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "incrementProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "decrementProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "toggleProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "cacheFor",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "canCatalogEntriesByType",
+      "isPrivate": false
+    },
+    {
+      "name": "catalogEntriesByType",
+      "isPrivate": false
+    }
+  ],
+  "properties": [
+    {
+      "name": "concatenatedProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "isDestroyed",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "isDestroying",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "container",
+      "isPrivate": false
+    },
+    {
+      "name": "resolver",
+      "isPrivate": false
+    }
+  ],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

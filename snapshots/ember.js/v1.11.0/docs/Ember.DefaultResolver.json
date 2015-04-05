@@ -1,0 +1,235 @@
+{
+  "name": "Ember.DefaultResolver",
+  "description": "<p>The DefaultResolver defines the default lookup rules to resolve\ncontainer lookups before consulting the container for registered\nitems:</p>\n<ul>\n<li>templates are looked up on <code>Ember.TEMPLATES</code></li>\n<li>other names are looked up on the application after converting\nthe name. For example, <code>controller:post</code> looks up\n<code>App.PostController</code> by default.</li>\n<li>there are some nuances (see examples below)</li>\n</ul>\n<h3 id=\"how-resolving-works\">How Resolving Works</h3>\n<p>The container calls this object&#39;s <code>resolve</code> method with the\n<code>fullName</code> argument.</p>\n<p>It first parses the fullName into an object using <code>parseName</code>.</p>\n<p>Then it checks for the presence of a type-specific instance\nmethod of the form <code>resolve[Type]</code> and calls it if it exists.\nFor example if it was resolving &#39;template:post&#39;, it would call\nthe <code>resolveTemplate</code> method.</p>\n<p>Its last resort is to call the <code>resolveOther</code> method.</p>\n<p>The methods of this object are designed to be easy to override\nin a subclass. For example, you could enhance how a template\nis resolved like so:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App = Ember.Application.create({\n  Resolver: Ember.DefaultResolver.extend({\n    resolveTemplate: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(parsedName)</span> </span>{\n      <span class=\"hljs-keyword\">var</span> resolvedTemplate = <span class=\"hljs-keyword\">this</span>._super(parsedName);\n      <span class=\"hljs-keyword\">if</span> (resolvedTemplate) { <span class=\"hljs-keyword\">return</span> resolvedTemplate; }\n      <span class=\"hljs-keyword\">return</span> Ember.TEMPLATES[<span class=\"hljs-string\">'not_found'</span>];\n    }\n  })\n});</pre></td>      </tr>    </table>  </div></div><p>Some examples of how names are resolved:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"><span class=\"hljs-string\">'template:post'</span>           <span class=\"hljs-comment\">//=&gt; Ember.TEMPLATES['post']</span>\n<span class=\"hljs-string\">'template:posts/byline'</span>   <span class=\"hljs-comment\">//=&gt; Ember.TEMPLATES['posts/byline']</span>\n<span class=\"hljs-string\">'template:posts.byline'</span>   <span class=\"hljs-comment\">//=&gt; Ember.TEMPLATES['posts/byline']</span>\n<span class=\"hljs-string\">'template:blogPost'</span>       <span class=\"hljs-comment\">//=&gt; Ember.TEMPLATES['blogPost']</span>\n                          <span class=\"hljs-comment\">//   OR</span>\n                          <span class=\"hljs-comment\">//   Ember.TEMPLATES['blog_post']</span>\n<span class=\"hljs-string\">'controller:post'</span>         <span class=\"hljs-comment\">//=&gt; App.PostController</span>\n<span class=\"hljs-string\">'controller:posts.index'</span>  <span class=\"hljs-comment\">//=&gt; App.PostsIndexController</span>\n<span class=\"hljs-string\">'controller:blog/post'</span>    <span class=\"hljs-comment\">//=&gt; Blog.PostController</span>\n<span class=\"hljs-string\">'controller:basic'</span>        <span class=\"hljs-comment\">//=&gt; Ember.Controller</span>\n<span class=\"hljs-string\">'route:post'</span>              <span class=\"hljs-comment\">//=&gt; App.PostRoute</span>\n<span class=\"hljs-string\">'route:posts.index'</span>       <span class=\"hljs-comment\">//=&gt; App.PostsIndexRoute</span>\n<span class=\"hljs-string\">'route:blog/post'</span>         <span class=\"hljs-comment\">//=&gt; Blog.PostRoute</span>\n<span class=\"hljs-string\">'route:basic'</span>             <span class=\"hljs-comment\">//=&gt; Ember.Route</span>\n<span class=\"hljs-string\">'view:post'</span>               <span class=\"hljs-comment\">//=&gt; App.PostView</span>\n<span class=\"hljs-string\">'view:posts.index'</span>        <span class=\"hljs-comment\">//=&gt; App.PostsIndexView</span>\n<span class=\"hljs-string\">'view:blog/post'</span>          <span class=\"hljs-comment\">//=&gt; Blog.PostView</span>\n<span class=\"hljs-string\">'view:basic'</span>              <span class=\"hljs-comment\">//=&gt; Ember.View</span>\n<span class=\"hljs-string\">'foo:post'</span>                <span class=\"hljs-comment\">//=&gt; App.PostFoo</span>\n<span class=\"hljs-string\">'model:post'</span>              <span class=\"hljs-comment\">//=&gt; App.Post</span></pre></td>      </tr>    </table>  </div></div>",
+  "line": 35,
+  "file": "packages/ember-application/lib/system/resolver.js",
+  "methods": [
+    {
+      "name": "init",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "destroy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "willDestroy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_scheduledDestroy",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "toString",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "extend",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "createWithMixins",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "create",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "reopen",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "reopenClass",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "metaForProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "eachComputedProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_onLookup",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_lazyInjections",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "get",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "getProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "set",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "setProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "beginPropertyChanges",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "endPropertyChanges",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "propertyWillChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "propertyDidChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "notifyPropertyChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "addObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "removeObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "hasObserverFor",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "getWithDefault",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "incrementProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "decrementProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "toggleProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "cacheFor",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "resolve",
+      "isPrivate": false
+    },
+    {
+      "name": "parseName",
+      "isPrivate": false
+    },
+    {
+      "name": "lookupDescription",
+      "isPrivate": false
+    },
+    {
+      "name": "useRouterNaming",
+      "isPrivate": false
+    },
+    {
+      "name": "resolveTemplate",
+      "isPrivate": false
+    },
+    {
+      "name": "resolveView",
+      "isPrivate": false
+    },
+    {
+      "name": "resolveController",
+      "isPrivate": false
+    },
+    {
+      "name": "resolveRoute",
+      "isPrivate": false
+    },
+    {
+      "name": "resolveModel",
+      "isPrivate": false
+    },
+    {
+      "name": "resolveHelper",
+      "isPrivate": false
+    },
+    {
+      "name": "resolveOther",
+      "isPrivate": false
+    },
+    {
+      "name": "_logLookup",
+      "isPrivate": true
+    }
+  ],
+  "properties": [
+    {
+      "name": "concatenatedProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "isDestroyed",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "isDestroying",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "namespace",
+      "isPrivate": false
+    }
+  ],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

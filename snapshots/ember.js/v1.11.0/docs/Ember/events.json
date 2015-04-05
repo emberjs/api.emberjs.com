@@ -1,0 +1,19 @@
+[
+  {
+    "file": "packages/ember-metal/lib/main.js",
+    "line": 403,
+    "description": "<p>A function may be assigned to <code>Ember.onerror</code> to be called when Ember\ninternals encounter an error. This is useful for specialized error handling\nand reporting code.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">Ember.onerror = <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(error)</span> </span>{\n  Em.$.ajax(<span class=\"hljs-string\">'/report-error'</span>, <span class=\"hljs-string\">'POST'</span>, {\n    stack: error.stack,\n    otherInformation: <span class=\"hljs-string\">'whatever app state you want to provide'</span>\n  });\n};</pre></td>      </tr>    </table>  </div></div><p>Internally, <code>Ember.onerror</code> is used as Backburner&#39;s error handler.</p>\n",
+    "itemtype": "event",
+    "name": "onerror",
+    "params": [
+      {
+        "name": "error",
+        "description": "the error object",
+        "type": "Exception"
+      }
+    ],
+    "class": "Ember",
+    "module": "ember",
+    "submodule": "ember-metal"
+  }
+]

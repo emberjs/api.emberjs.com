@@ -1,0 +1,441 @@
+{
+  "name": "Ember.CollectionView",
+  "description": "<p><code>Ember.CollectionView</code> is an <code>Ember.View</code> descendent responsible for managing\na collection (an array or array-like object) by maintaining a child view object\nand associated DOM representation for each item in the array and ensuring\nthat child views and their associated rendered HTML are updated when items in\nthe array are added, removed, or replaced.</p>\n<h2 id=\"setting-content\">Setting content</h2>\n<p>The managed collection of objects is referenced as the <code>Ember.CollectionView</code>\ninstance&#39;s <code>content</code> property.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">someItemsView = Ember.CollectionView.create({\n  content: [<span class=\"hljs-string\">'A'</span>, <span class=\"hljs-string\">'B'</span>,<span class=\"hljs-string\">'C'</span>]\n})</pre></td>      </tr>    </table>  </div></div><p>The view for each item in the collection will have its <code>content</code> property set\nto the item.</p>\n<h2 id=\"specifying-itemviewclass-\">Specifying <code>itemViewClass</code></h2>\n<p>By default the view class for each item in the managed collection will be an\ninstance of <code>Ember.View</code>. You can supply a different class by setting the\n<code>CollectionView</code>&#39;s <code>itemViewClass</code> property.</p>\n<p>Given the following application code:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"><span class=\"hljs-keyword\">var</span> App = Ember.Application.create();\nApp.ItemListView = Ember.CollectionView.extend({\n  classNames: [<span class=\"hljs-string\">'a-collection'</span>],\n  content: [<span class=\"hljs-string\">'A'</span>,<span class=\"hljs-string\">'B'</span>,<span class=\"hljs-string\">'C'</span>],\n  itemViewClass: Ember.View.extend({\n    template: Ember.Handlebars.compile(<span class=\"hljs-string\">\"the letter: {{view.content}}\"</span>)\n  })\n});</pre></td>      </tr>    </table>  </div></div><p>And a simple application template:</p>\n<div class=\"highlight handlebars\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"handlebars\"><span class=\"xml\"></span><span class=\"hljs-expression\">{{<span class=\"hljs-variable\"><span class=\"hljs-keyword\">view</span></span> '<span class=\"hljs-variable\">item-list</span>'}}</span><span class=\"xml\"></span></pre></td>      </tr>    </table>  </div></div><p>The following HTML will result:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view a-collection\"</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view\"</span>&gt;</span>the letter: A<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view\"</span>&gt;</span>the letter: B<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view\"</span>&gt;</span>the letter: C<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><h2 id=\"automatic-matching-of-parent-child-tagnames\">Automatic matching of parent/child tagNames</h2>\n<p>Setting the <code>tagName</code> property of a <code>CollectionView</code> to any of\n&quot;ul&quot;, &quot;ol&quot;, &quot;table&quot;, &quot;thead&quot;, &quot;tbody&quot;, &quot;tfoot&quot;, &quot;tr&quot;, or &quot;select&quot; will result\nin the item views receiving an appropriately matched <code>tagName</code> property.</p>\n<p>Given the following application code:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"><span class=\"hljs-keyword\">var</span> App = Ember.Application.create();\nApp.UnorderedListView = Ember.CollectionView.create({\n  tagName: <span class=\"hljs-string\">'ul'</span>,\n  content: [<span class=\"hljs-string\">'A'</span>,<span class=\"hljs-string\">'B'</span>,<span class=\"hljs-string\">'C'</span>],\n  itemViewClass: Ember.View.extend({\n    template: Ember.Handlebars.compile(<span class=\"hljs-string\">\"the letter: {{view.content}}\"</span>)\n  })\n});</pre></td>      </tr>    </table>  </div></div><p>And a simple application template:</p>\n<div class=\"highlight handlebars\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"handlebars\"><span class=\"xml\"></span><span class=\"hljs-expression\">{{<span class=\"hljs-variable\"><span class=\"hljs-keyword\">view</span></span> '<span class=\"hljs-variable\">unordered-list-<span class=\"hljs-keyword\">view</span></span>'}}</span><span class=\"xml\"></span></pre></td>      </tr>    </table>  </div></div><p>The following HTML will result:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">ul</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view a-collection\"</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">li</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view\"</span>&gt;</span>the letter: A<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">li</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">li</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view\"</span>&gt;</span>the letter: B<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">li</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">li</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view\"</span>&gt;</span>the letter: C<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">li</span>&gt;</span>\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">ul</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p>Additional <code>tagName</code> pairs can be provided by adding to\n<code>Ember.CollectionView.CONTAINER_MAP</code>. For example:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">Ember.CollectionView.CONTAINER_MAP[<span class=\"hljs-string\">'article'</span>] = <span class=\"hljs-string\">'section'</span></pre></td>      </tr>    </table>  </div></div><h2 id=\"programmatic-creation-of-child-views\">Programmatic creation of child views</h2>\n<p>For cases where additional customization beyond the use of a single\n<code>itemViewClass</code> or <code>tagName</code> matching is required CollectionView&#39;s\n<code>createChildView</code> method can be overridden:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.CustomCollectionView = Ember.CollectionView.extend({\n  createChildView: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(viewClass, attrs)</span> </span>{\n    <span class=\"hljs-keyword\">if</span> (attrs.content.kind == <span class=\"hljs-string\">'album'</span>) {\n      viewClass = App.AlbumView;\n    } <span class=\"hljs-keyword\">else</span> {\n      viewClass = App.SongView;\n    }\n    <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>._super(viewClass, attrs);\n  }\n});</pre></td>      </tr>    </table>  </div></div><h2 id=\"empty-view\">Empty View</h2>\n<p>You can provide an <code>Ember.View</code> subclass to the <code>Ember.CollectionView</code>\ninstance as its <code>emptyView</code> property. If the <code>content</code> property of a\n<code>CollectionView</code> is set to <code>null</code> or an empty array, an instance of this view\nwill be the <code>CollectionView</code>s only child.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"><span class=\"hljs-keyword\">var</span> App = Ember.Application.create();\nApp.ListWithNothing = Ember.CollectionView.create({\n  classNames: [<span class=\"hljs-string\">'nothing'</span>],\n  content: <span class=\"hljs-literal\">null</span>,\n  emptyView: Ember.View.extend({\n    template: Ember.Handlebars.compile(<span class=\"hljs-string\">\"The collection is empty\"</span>)\n  })\n});</pre></td>      </tr>    </table>  </div></div><p>And a simple application template:</p>\n<div class=\"highlight handlebars\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"handlebars\"><span class=\"xml\"></span><span class=\"hljs-expression\">{{<span class=\"hljs-variable\"><span class=\"hljs-keyword\">view</span></span> '<span class=\"hljs-variable\">list-<span class=\"hljs-keyword\">with</span>-nothing</span>'}}</span><span class=\"xml\"></span></pre></td>      </tr>    </table>  </div></div><p>The following HTML will result:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view nothing\"</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view\"</span>&gt;</span>\n    The collection is empty\n  <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><h2 id=\"adding-and-removing-items\">Adding and Removing items</h2>\n<p>The <code>childViews</code> property of a <code>CollectionView</code> should not be directly\nmanipulated. Instead, add, remove, replace items from its <code>content</code> property.\nThis will trigger appropriate changes to its rendered HTML.</p>\n",
+  "line": 22,
+  "file": "packages/ember-views/lib/views/collection_view.js",
+  "methods": [
+    {
+      "name": "init",
+      "isPrivate": false
+    },
+    {
+      "name": "destroy",
+      "isPrivate": false
+    },
+    {
+      "name": "willDestroy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_scheduledDestroy",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "toString",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "extend",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "createWithMixins",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "create",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "reopen",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "reopenClass",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "metaForProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "eachComputedProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_onLookup",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_lazyInjections",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "get",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "getProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "set",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "setProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "beginPropertyChanges",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "endPropertyChanges",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "propertyWillChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "propertyDidChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "notifyPropertyChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "addObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "removeObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "hasObserverFor",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "getWithDefault",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "incrementProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "decrementProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "toggleProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "cacheFor",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "on",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "one",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "trigger",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreView"
+    },
+    {
+      "name": "off",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "has",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "willMergeMixin",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "send",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "_contextDidChange",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "nearestOfType",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "nearestWithProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "_parentViewDidChange",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "rerender",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "_classStringForProperty",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "$",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "appendTo",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "replaceIn",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "append",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "remove",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "findElementInParentElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "createElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "destroyElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "removeFromParent",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "handleEvent",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "render",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.ContainerView"
+    },
+    {
+      "name": "childViewsWillChange",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.ContainerView"
+    },
+    {
+      "name": "childViewsDidChange",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.ContainerView"
+    },
+    {
+      "name": "_contentWillChange",
+      "isPrivate": true
+    },
+    {
+      "name": "_contentDidChange",
+      "isPrivate": true
+    },
+    {
+      "name": "_assertArrayLike",
+      "isPrivate": true
+    },
+    {
+      "name": "arrayWillChange",
+      "isPrivate": false
+    },
+    {
+      "name": "arrayDidChange",
+      "isPrivate": false
+    },
+    {
+      "name": "createChildView",
+      "isPrivate": false
+    }
+  ],
+  "properties": [
+    {
+      "name": "concatenatedProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "isDestroyed",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "isDestroying",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "actions",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "parentView",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreView"
+    },
+    {
+      "name": "isView",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "templateName",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "layoutName",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "template",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "layout",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "element",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "elementId",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "tagName",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "ariaRole",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "views",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "content",
+      "isPrivate": false
+    },
+    {
+      "name": "emptyViewClass",
+      "isPrivate": true
+    },
+    {
+      "name": "emptyView",
+      "isPrivate": false
+    },
+    {
+      "name": "itemViewClass",
+      "isPrivate": false
+    },
+    {
+      "name": "CONTAINER_MAP",
+      "isPrivate": false
+    }
+  ],
+  "events": [
+    {
+      "name": "willInsertElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "didInsertElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "willClearRender",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "willDestroyElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "parentViewDidChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    }
+  ],
+  "isPrivate": false,
+  "constType": "Class"
+}

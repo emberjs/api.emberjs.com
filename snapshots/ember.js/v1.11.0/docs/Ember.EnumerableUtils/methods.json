@@ -1,0 +1,287 @@
+[
+  {
+    "file": "packages/ember-metal/lib/deprecate_property.js",
+    "line": 12,
+    "description": "<p>Used internally to allow changing properties in a backwards compatible way, and print a helpful\ndeprecation warning.</p>\n",
+    "itemtype": "method",
+    "name": "deprecateProperty",
+    "params": [
+      {
+        "name": "object",
+        "description": "The object to add the deprecated property to.",
+        "type": "Object"
+      },
+      {
+        "name": "deprecatedKey",
+        "description": "The property to add (and print deprecation warnings upon accessing).",
+        "type": "String"
+      },
+      {
+        "name": "newKey",
+        "description": "The property that will be aliased.",
+        "type": "String"
+      }
+    ],
+    "access": "private",
+    "tagname": "",
+    "since": "1.7.0",
+    "class": "Ember.EnumerableUtils",
+    "module": "ember-metal",
+    "isPrivate": true
+  },
+  {
+    "file": "packages/ember-metal/lib/enumerable_utils.js",
+    "line": 19,
+    "description": "<p>Calls the map function on the passed object with a specified callback. This\nuses <code>Ember.ArrayPolyfill</code>&#39;s-map method when necessary.</p>\n",
+    "itemtype": "method",
+    "name": "map",
+    "params": [
+      {
+        "name": "obj",
+        "description": "The object that should be mapped",
+        "type": "Object"
+      },
+      {
+        "name": "callback",
+        "description": "The callback to execute",
+        "type": "Function"
+      },
+      {
+        "name": "thisArg",
+        "description": "Value to use as this when executing *callback*",
+        "type": "Object"
+      }
+    ],
+    "return": {
+      "description": "An array of mapped values.",
+      "type": "Array"
+    },
+    "class": "Ember.EnumerableUtils",
+    "module": "ember-metal",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-metal/lib/enumerable_utils.js",
+    "line": 34,
+    "description": "<p>Calls the forEach function on the passed object with a specified callback. This\nuses <code>Ember.ArrayPolyfill</code>&#39;s-forEach method when necessary.</p>\n",
+    "itemtype": "method",
+    "name": "forEach",
+    "params": [
+      {
+        "name": "obj",
+        "description": "The object to call forEach on",
+        "type": "Object"
+      },
+      {
+        "name": "callback",
+        "description": "The callback to execute",
+        "type": "Function"
+      },
+      {
+        "name": "thisArg",
+        "description": "Value to use as this when executing *callback*",
+        "type": "Object"
+      }
+    ],
+    "class": "Ember.EnumerableUtils",
+    "module": "ember-metal",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-metal/lib/enumerable_utils.js",
+    "line": 48,
+    "description": "<p>Calls the filter function on the passed object with a specified callback. This\nuses <code>Ember.ArrayPolyfill</code>&#39;s-filter method when necessary.</p>\n",
+    "itemtype": "method",
+    "name": "filter",
+    "params": [
+      {
+        "name": "obj",
+        "description": "The object to call filter on",
+        "type": "Object"
+      },
+      {
+        "name": "callback",
+        "description": "The callback to execute",
+        "type": "Function"
+      },
+      {
+        "name": "thisArg",
+        "description": "Value to use as this when executing *callback*",
+        "type": "Object"
+      }
+    ],
+    "return": {
+      "description": "An array containing the filtered values",
+      "type": "Array"
+    },
+    "since": "1.4.0",
+    "class": "Ember.EnumerableUtils",
+    "module": "ember-metal",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-metal/lib/enumerable_utils.js",
+    "line": 64,
+    "description": "<p>Calls the indexOf function on the passed object with a specified callback. This\nuses <code>Ember.ArrayPolyfill</code>&#39;s-indexOf method when necessary.</p>\n",
+    "itemtype": "method",
+    "name": "indexOf",
+    "params": [
+      {
+        "name": "obj",
+        "description": "The object to call indexOn on",
+        "type": "Object"
+      },
+      {
+        "name": "callback",
+        "description": "The callback to execute",
+        "type": "Function"
+      },
+      {
+        "name": "index",
+        "description": "The index to start searching from",
+        "type": "Object"
+      }
+    ],
+    "class": "Ember.EnumerableUtils",
+    "module": "ember-metal",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-metal/lib/enumerable_utils.js",
+    "line": 78,
+    "description": "<p>Returns an array of indexes of the first occurrences of the passed elements\non the passed object.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"> <span class=\"hljs-keyword\">var</span> array = [<span class=\"hljs-number\">1</span>, <span class=\"hljs-number\">2</span>, <span class=\"hljs-number\">3</span>, <span class=\"hljs-number\">4</span>, <span class=\"hljs-number\">5</span>];\n Ember.EnumerableUtils.indexesOf(array, [<span class=\"hljs-number\">2</span>, <span class=\"hljs-number\">5</span>]); <span class=\"hljs-comment\">// [1, 4]</span>\n\n <span class=\"hljs-keyword\">var</span> fubar = <span class=\"hljs-string\">\"Fubarr\"</span>;\n Ember.EnumerableUtils.indexesOf(fubar, [<span class=\"hljs-string\">'b'</span>, <span class=\"hljs-string\">'r'</span>]); <span class=\"hljs-comment\">// [2, 4]</span></pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "method",
+    "name": "indexesOf",
+    "params": [
+      {
+        "name": "obj",
+        "description": "The object to check for element indexes",
+        "type": "Object"
+      },
+      {
+        "name": "elements",
+        "description": "The elements to search for on *obj*",
+        "type": "Array"
+      }
+    ],
+    "return": {
+      "description": "An array of indexes.",
+      "type": "Array"
+    },
+    "class": "Ember.EnumerableUtils",
+    "module": "ember-metal",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-metal/lib/enumerable_utils.js",
+    "line": 103,
+    "description": "<p>Adds an object to an array. If the array already includes the object this\nmethod has no effect.</p>\n",
+    "itemtype": "method",
+    "name": "addObject",
+    "params": [
+      {
+        "name": "array",
+        "description": "The array the passed item should be added to",
+        "type": "Array"
+      },
+      {
+        "name": "item",
+        "description": "The item to add to the passed array",
+        "type": "Object"
+      }
+    ],
+    "return": {
+      "description": "'undefined'"
+    },
+    "class": "Ember.EnumerableUtils",
+    "module": "ember-metal",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-metal/lib/enumerable_utils.js",
+    "line": 118,
+    "description": "<p>Removes an object from an array. If the array does not contain the passed\nobject this method has no effect.</p>\n",
+    "itemtype": "method",
+    "name": "removeObject",
+    "params": [
+      {
+        "name": "array",
+        "description": "The array to remove the item from.",
+        "type": "Array"
+      },
+      {
+        "name": "item",
+        "description": "The item to remove from the passed array.",
+        "type": "Object"
+      }
+    ],
+    "return": {
+      "description": "'undefined'"
+    },
+    "class": "Ember.EnumerableUtils",
+    "module": "ember-metal",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-metal/lib/enumerable_utils.js",
+    "line": 157,
+    "description": "<p>Replaces objects in an array with the passed objects.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">  <span class=\"hljs-keyword\">var</span> array = [<span class=\"hljs-number\">1</span>,<span class=\"hljs-number\">2</span>,<span class=\"hljs-number\">3</span>];\n  Ember.EnumerableUtils.replace(array, <span class=\"hljs-number\">1</span>, <span class=\"hljs-number\">2</span>, [<span class=\"hljs-number\">4</span>, <span class=\"hljs-number\">5</span>]); <span class=\"hljs-comment\">// [1, 4, 5]</span>\n\n  <span class=\"hljs-keyword\">var</span> array = [<span class=\"hljs-number\">1</span>,<span class=\"hljs-number\">2</span>,<span class=\"hljs-number\">3</span>];\n  Ember.EnumerableUtils.replace(array, <span class=\"hljs-number\">1</span>, <span class=\"hljs-number\">1</span>, [<span class=\"hljs-number\">4</span>, <span class=\"hljs-number\">5</span>]); <span class=\"hljs-comment\">// [1, 4, 5, 3]</span>\n\n  <span class=\"hljs-keyword\">var</span> array = [<span class=\"hljs-number\">1</span>,<span class=\"hljs-number\">2</span>,<span class=\"hljs-number\">3</span>];\n  Ember.EnumerableUtils.replace(array, <span class=\"hljs-number\">10</span>, <span class=\"hljs-number\">1</span>, [<span class=\"hljs-number\">4</span>, <span class=\"hljs-number\">5</span>]); <span class=\"hljs-comment\">// [1, 2, 3, 4, 5]</span></pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "method",
+    "name": "replace",
+    "params": [
+      {
+        "name": "array",
+        "description": "The array the objects should be inserted into.",
+        "type": "Array"
+      },
+      {
+        "name": "idx",
+        "description": "Starting index in the array to replace. If *idx* >=\nlength, then append to the end of the array.",
+        "type": "Number"
+      },
+      {
+        "name": "amt",
+        "description": "Number of elements that should be removed from the array,\nstarting at *idx*",
+        "type": "Number"
+      },
+      {
+        "name": "objects",
+        "description": "An array of zero or more objects that should be\ninserted into the array at *idx*",
+        "type": "Array"
+      }
+    ],
+    "return": {
+      "description": "The modified array.",
+      "type": "Array"
+    },
+    "class": "Ember.EnumerableUtils",
+    "module": "ember-metal",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-metal/lib/enumerable_utils.js",
+    "line": 190,
+    "description": "<p>Calculates the intersection of two arrays. This method returns a new array\nfilled with the records that the two passed arrays share with each other.\nIf there is no intersection, an empty array will be returned.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"><span class=\"hljs-keyword\">var</span> array1 = [<span class=\"hljs-number\">1</span>, <span class=\"hljs-number\">2</span>, <span class=\"hljs-number\">3</span>, <span class=\"hljs-number\">4</span>, <span class=\"hljs-number\">5</span>];\n<span class=\"hljs-keyword\">var</span> array2 = [<span class=\"hljs-number\">1</span>, <span class=\"hljs-number\">3</span>, <span class=\"hljs-number\">5</span>, <span class=\"hljs-number\">6</span>, <span class=\"hljs-number\">7</span>];\n\nEmber.EnumerableUtils.intersection(array1, array2); <span class=\"hljs-comment\">// [1, 3, 5]</span>\n\n<span class=\"hljs-keyword\">var</span> array1 = [<span class=\"hljs-number\">1</span>, <span class=\"hljs-number\">2</span>, <span class=\"hljs-number\">3</span>];\n<span class=\"hljs-keyword\">var</span> array2 = [<span class=\"hljs-number\">4</span>, <span class=\"hljs-number\">5</span>, <span class=\"hljs-number\">6</span>];\n\nEmber.EnumerableUtils.intersection(array1, array2); <span class=\"hljs-comment\">// []</span></pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "method",
+    "name": "intersection",
+    "params": [
+      {
+        "name": "array1",
+        "description": "The first array",
+        "type": "Array"
+      },
+      {
+        "name": "array2",
+        "description": "The second array",
+        "type": "Array"
+      }
+    ],
+    "return": {
+      "description": "The intersection of the two passed arrays.",
+      "type": "Array"
+    },
+    "class": "Ember.EnumerableUtils",
+    "module": "ember-metal",
+    "namespace": "Ember"
+  }
+]

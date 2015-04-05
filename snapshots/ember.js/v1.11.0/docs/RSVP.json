@@ -1,0 +1,58 @@
+{
+  "name": "RSVP",
+  "description": "",
+  "methods": [
+    {
+      "name": "all",
+      "isPrivate": false
+    },
+    {
+      "name": "race",
+      "isPrivate": false
+    },
+    {
+      "name": "reject",
+      "isPrivate": false
+    },
+    {
+      "name": "resolve",
+      "isPrivate": false
+    },
+    {
+      "name": "allSettled",
+      "isPrivate": false
+    },
+    {
+      "name": "defer",
+      "isPrivate": false
+    },
+    {
+      "name": "filter",
+      "isPrivate": false
+    },
+    {
+      "name": "hashSettled",
+      "isPrivate": false
+    },
+    {
+      "name": "hash",
+      "isPrivate": false
+    },
+    {
+      "name": "map",
+      "isPrivate": false
+    },
+    {
+      "name": "denodeify",
+      "isPrivate": false
+    },
+    {
+      "name": "rethrow",
+      "isPrivate": false
+    }
+  ],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

@@ -1,0 +1,384 @@
+{
+  "name": "Ember._MetamorphView",
+  "description": "",
+  "line": 36,
+  "file": "packages/ember-views/lib/views/metamorph_view.js",
+  "methods": [
+    {
+      "name": "init",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "destroy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "willDestroy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_scheduledDestroy",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "toString",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "extend",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "createWithMixins",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "create",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "reopen",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "reopenClass",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "metaForProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "eachComputedProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_onLookup",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_lazyInjections",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "get",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "getProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "set",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "setProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "beginPropertyChanges",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "endPropertyChanges",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "propertyWillChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "propertyDidChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "notifyPropertyChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "addObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "removeObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "hasObserverFor",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "getWithDefault",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "incrementProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "decrementProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "toggleProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "cacheFor",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "on",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "one",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "trigger",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreView"
+    },
+    {
+      "name": "off",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "has",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "willMergeMixin",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "send",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "_contextDidChange",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "nearestOfType",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "nearestWithProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "_parentViewDidChange",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "rerender",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "_classStringForProperty",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "$",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "appendTo",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "replaceIn",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "append",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "remove",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "findElementInParentElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "createElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "destroyElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "removeFromParent",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "handleEvent",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.View"
+    }
+  ],
+  "properties": [
+    {
+      "name": "concatenatedProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "isDestroyed",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "isDestroying",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "actions",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "parentView",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreView"
+    },
+    {
+      "name": "isView",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "templateName",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "layoutName",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "template",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "layout",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "element",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "elementId",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "tagName",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "ariaRole",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "views",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    }
+  ],
+  "events": [
+    {
+      "name": "willInsertElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "didInsertElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "willClearRender",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "willDestroyElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "parentViewDidChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    }
+  ],
+  "isPrivate": true,
+  "constType": "Class"
+}

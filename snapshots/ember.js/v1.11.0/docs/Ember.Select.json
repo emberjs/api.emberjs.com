@@ -1,0 +1,432 @@
+{
+  "name": "Ember.Select",
+  "description": "<p>The <code>Ember.Select</code> view class renders a\n<a href=\"https://developer.mozilla.org/en/HTML/Element/select\">select</a> HTML element,\nallowing the user to choose from a list of options.</p>\n<p>The text and <code>value</code> property of each <code>&lt;option&gt;</code> element within the\n<code>&lt;select&gt;</code> element are populated from the objects in the <code>Element.Select</code>&#39;s\n<code>content</code> property. The underlying data object of the selected <code>&lt;option&gt;</code> is\nstored in the <code>Element.Select</code>&#39;s <code>value</code> property.</p>\n<h2 id=\"the-content-property-array-of-strings-\">The Content Property (array of strings)</h2>\n<p>The simplest version of an <code>Ember.Select</code> takes an array of strings as its\n<code>content</code> property. The string will be used as both the <code>value</code> property and\nthe inner text of each <code>&lt;option&gt;</code> element inside the rendered <code>&lt;select&gt;</code>.</p>\n<p>Example:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.ApplicationController = Ember.ObjectController.extend({\n  names: [<span class=\"hljs-string\">\"Yehuda\"</span>, <span class=\"hljs-string\">\"Tom\"</span>]\n});</pre></td>      </tr>    </table>  </div></div><div class=\"highlight handlebars\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"handlebars\"><span class=\"xml\"></span><span class=\"hljs-expression\">{{<span class=\"hljs-variable\"><span class=\"hljs-keyword\">view</span></span> <span class=\"hljs-string\">\"select\"</span> <span class=\"hljs-variable\">content</span>=<span class=\"hljs-variable\">names</span>}}</span><span class=\"xml\"></span></pre></td>      </tr>    </table>  </div></div><p>Would result in the following HTML:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">select</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-select\"</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"Yehuda\"</span>&gt;</span>Yehuda<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">option</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"Tom\"</span>&gt;</span>Tom<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">option</span>&gt;</span>\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">select</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p>You can control which <code>&lt;option&gt;</code> is selected through the <code>Ember.Select</code>&#39;s\n<code>value</code> property:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.ApplicationController = Ember.ObjectController.extend({\n  selectedName: <span class=\"hljs-string\">'Tom'</span>,\n  names: [<span class=\"hljs-string\">\"Yehuda\"</span>, <span class=\"hljs-string\">\"Tom\"</span>]\n});</pre></td>      </tr>    </table>  </div></div><div class=\"highlight handlebars\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"handlebars\"><span class=\"xml\"></span><span class=\"hljs-expression\">{{<span class=\"hljs-variable\"><span class=\"hljs-keyword\">view</span></span> <span class=\"hljs-string\">\"select\"</span> <span class=\"hljs-variable\">content</span>=<span class=\"hljs-variable\">names</span> <span class=\"hljs-variable\">value</span>=<span class=\"hljs-variable\">selectedName</span>}}</span><span class=\"xml\"></span></pre></td>      </tr>    </table>  </div></div><p>Would result in the following HTML with the <code>&lt;option&gt;</code> for &#39;Tom&#39; selected:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">select</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-select\"</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"Yehuda\"</span>&gt;</span>Yehuda<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">option</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"Tom\"</span> <span class=\"hljs-attribute\">selected</span>=<span class=\"hljs-value\">\"selected\"</span>&gt;</span>Tom<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">option</span>&gt;</span>\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">select</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p>A user interacting with the rendered <code>&lt;select&gt;</code> to choose &quot;Yehuda&quot; would\nupdate the value of <code>selectedName</code> to &quot;Yehuda&quot;.</p>\n<h2 id=\"the-content-property-array-of-objects-\">The Content Property (array of Objects)</h2>\n<p>An <code>Ember.Select</code> can also take an array of JavaScript or Ember objects as\nits <code>content</code> property.</p>\n<p>When using objects you need to tell the <code>Ember.Select</code> which property should\nbe accessed on each object to supply the <code>value</code> attribute of the <code>&lt;option&gt;</code>\nand which property should be used to supply the element text.</p>\n<p>The <code>optionValuePath</code> option is used to specify the path on each object to\nthe desired property for the <code>value</code> attribute. The <code>optionLabelPath</code>\nspecifies the path on each object to the desired property for the\nelement&#39;s text. Both paths must reference each object itself as <code>content</code>:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.ApplicationController = Ember.ObjectController.extend({\n  programmers: [\n    {firstName: <span class=\"hljs-string\">\"Yehuda\"</span>, id: <span class=\"hljs-number\">1</span>},\n    {firstName: <span class=\"hljs-string\">\"Tom\"</span>,    id: <span class=\"hljs-number\">2</span>}\n  ]\n});</pre></td>      </tr>    </table>  </div></div><div class=\"highlight handlebars\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n</pre>        </td>        <td class=\"code\"><pre class=\"handlebars\"><span class=\"xml\"></span><span class=\"hljs-expression\">{{<span class=\"hljs-variable\"><span class=\"hljs-keyword\">view</span></span> <span class=\"hljs-string\">\"select\"</span>\n       <span class=\"hljs-variable\">content</span>=<span class=\"hljs-variable\">programmers</span>\n       <span class=\"hljs-variable\">optionValuePath</span>=<span class=\"hljs-string\">\"content.id\"</span>\n       <span class=\"hljs-variable\">optionLabelPath</span>=<span class=\"hljs-string\">\"content.firstName\"</span>}}</span><span class=\"xml\"></span></pre></td>      </tr>    </table>  </div></div><p>Would result in the following HTML:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">select</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-select\"</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"1\"</span>&gt;</span>Yehuda<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">option</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"2\"</span>&gt;</span>Tom<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">option</span>&gt;</span>\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">select</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p>The <code>value</code> attribute of the selected <code>&lt;option&gt;</code> within an <code>Ember.Select</code>\ncan be bound to a property on another object:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.ApplicationController = Ember.ObjectController.extend({\n  programmers: [\n    {firstName: <span class=\"hljs-string\">\"Yehuda\"</span>, id: <span class=\"hljs-number\">1</span>},\n    {firstName: <span class=\"hljs-string\">\"Tom\"</span>,    id: <span class=\"hljs-number\">2</span>}\n  ],\n  currentProgrammer: {\n    id: <span class=\"hljs-number\">2</span>\n  }\n});</pre></td>      </tr>    </table>  </div></div><div class=\"highlight handlebars\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"handlebars\"><span class=\"xml\"></span><span class=\"hljs-expression\">{{<span class=\"hljs-variable\"><span class=\"hljs-keyword\">view</span></span> <span class=\"hljs-string\">\"select\"</span>\n       <span class=\"hljs-variable\">content</span>=<span class=\"hljs-variable\">programmers</span>\n       <span class=\"hljs-variable\">optionValuePath</span>=<span class=\"hljs-string\">\"content.id\"</span>\n       <span class=\"hljs-variable\">optionLabelPath</span>=<span class=\"hljs-string\">\"content.firstName\"</span>\n       <span class=\"hljs-variable\">value</span>=<span class=\"hljs-variable\">currentProgrammer.id</span>}}</span><span class=\"xml\"></span></pre></td>      </tr>    </table>  </div></div><p>Would result in the following HTML with a selected option:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">select</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-select\"</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"1\"</span>&gt;</span>Yehuda<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">option</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"2\"</span> <span class=\"hljs-attribute\">selected</span>=<span class=\"hljs-value\">\"selected\"</span>&gt;</span>Tom<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">option</span>&gt;</span>\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">select</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p>Interacting with the rendered element by selecting the first option\n(&#39;Yehuda&#39;) will update the <code>id</code> of <code>currentProgrammer</code>\nto match the <code>value</code> property of the newly selected <code>&lt;option&gt;</code>.</p>\n<p>Alternatively, you can control selection through the underlying objects\nused to render each object by binding the <code>selection</code> option. When the selected\n<code>&lt;option&gt;</code> is changed, the property path provided to <code>selection</code>\nwill be updated to match the content object of the rendered <code>&lt;option&gt;</code>\nelement:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">\n<span class=\"hljs-keyword\">var</span> yehuda = {firstName: <span class=\"hljs-string\">\"Yehuda\"</span>, id: <span class=\"hljs-number\">1</span>, bff4eva: <span class=\"hljs-string\">'tom'</span>}\n<span class=\"hljs-keyword\">var</span> tom = {firstName: <span class=\"hljs-string\">\"Tom\"</span>, id: <span class=\"hljs-number\">2</span>, bff4eva: <span class=\"hljs-string\">'yehuda'</span>};\n\nApp.ApplicationController = Ember.ObjectController.extend({\n  selectedPerson: tom,\n  programmers: [ yehuda, tom ]\n});</pre></td>      </tr>    </table>  </div></div><div class=\"highlight handlebars\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"handlebars\"><span class=\"xml\"></span><span class=\"hljs-expression\">{{<span class=\"hljs-variable\"><span class=\"hljs-keyword\">view</span></span> <span class=\"hljs-string\">\"select\"</span>\n       <span class=\"hljs-variable\">content</span>=<span class=\"hljs-variable\">programmers</span>\n       <span class=\"hljs-variable\">optionValuePath</span>=<span class=\"hljs-string\">\"content.id\"</span>\n       <span class=\"hljs-variable\">optionLabelPath</span>=<span class=\"hljs-string\">\"content.firstName\"</span>\n       <span class=\"hljs-variable\">selection</span>=<span class=\"hljs-variable\">selectedPerson</span>}}</span><span class=\"xml\"></span></pre></td>      </tr>    </table>  </div></div><p>Would result in the following HTML with a selected option:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">select</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-select\"</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"1\"</span>&gt;</span>Yehuda<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">option</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"2\"</span> <span class=\"hljs-attribute\">selected</span>=<span class=\"hljs-value\">\"selected\"</span>&gt;</span>Tom<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">option</span>&gt;</span>\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">select</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p>Interacting with the rendered element by selecting the first option\n(&#39;Yehuda&#39;) will update the <code>selectedPerson</code> to match the object of\nthe newly selected <code>&lt;option&gt;</code>. In this case it is the first object\nin the <code>programmers</code></p>\n<h2 id=\"supplying-a-prompt\">Supplying a Prompt</h2>\n<p>A <code>null</code> value for the <code>Ember.Select</code>&#39;s <code>value</code> or <code>selection</code> property\nresults in there being no <code>&lt;option&gt;</code> with a <code>selected</code> attribute:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.ApplicationController = Ember.ObjectController.extend({\n  selectedProgrammer: <span class=\"hljs-literal\">null</span>,\n  programmers: [<span class=\"hljs-string\">\"Yehuda\"</span>, <span class=\"hljs-string\">\"Tom\"</span>]\n});</pre></td>      </tr>    </table>  </div></div><div class=\"highlight handlebars\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n</pre>        </td>        <td class=\"code\"><pre class=\"handlebars\"><span class=\"xml\"></span><span class=\"hljs-expression\">{{<span class=\"hljs-variable\"><span class=\"hljs-keyword\">view</span></span> <span class=\"hljs-string\">\"select\"</span>\n       <span class=\"hljs-variable\">content</span>=<span class=\"hljs-variable\">programmers</span>\n       <span class=\"hljs-variable\">value</span>=<span class=\"hljs-variable\">selectedProgrammer</span>\n}}</span><span class=\"xml\"></span></pre></td>      </tr>    </table>  </div></div><p>Would result in the following HTML:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">select</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-select\"</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"Yehuda\"</span>&gt;</span>Yehuda<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">option</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"Tom\"</span>&gt;</span>Tom<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">option</span>&gt;</span>\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">select</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p>Although <code>selectedProgrammer</code> is <code>null</code> and no <code>&lt;option&gt;</code>\nhas a <code>selected</code> attribute the rendered HTML will display the\nfirst item as though it were selected. You can supply a string\nvalue for the <code>Ember.Select</code> to display when there is no selection\nwith the <code>prompt</code> option:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.ApplicationController = Ember.ObjectController.extend({\n  selectedProgrammer: <span class=\"hljs-literal\">null</span>,\n  programmers: [ <span class=\"hljs-string\">\"Yehuda\"</span>, <span class=\"hljs-string\">\"Tom\"</span> ]\n});</pre></td>      </tr>    </table>  </div></div><div class=\"highlight handlebars\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"handlebars\"><span class=\"xml\"></span><span class=\"hljs-expression\">{{<span class=\"hljs-variable\"><span class=\"hljs-keyword\">view</span></span> <span class=\"hljs-string\">\"select\"</span>\n       <span class=\"hljs-variable\">content</span>=<span class=\"hljs-variable\">programmers</span>\n       <span class=\"hljs-variable\">value</span>=<span class=\"hljs-variable\">selectedProgrammer</span>\n       <span class=\"hljs-variable\">prompt</span>=<span class=\"hljs-string\">\"Please select a name\"</span>\n}}</span><span class=\"xml\"></span></pre></td>      </tr>    </table>  </div></div><p>Would result in the following HTML:</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">select</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-select\"</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">option</span>&gt;</span>Please select a name<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">option</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"Yehuda\"</span>&gt;</span>Yehuda<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">option</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">option</span> <span class=\"hljs-attribute\">value</span>=<span class=\"hljs-value\">\"Tom\"</span>&gt;</span>Tom<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">option</span>&gt;</span>\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">select</span>&gt;</span></pre></td>      </tr>    </table>  </div></div>",
+  "line": 96,
+  "file": "packages/ember-views/lib/views/select.js",
+  "methods": [
+    {
+      "name": "init",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "destroy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "willDestroy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_scheduledDestroy",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "toString",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "extend",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "createWithMixins",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "create",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "reopen",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "reopenClass",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "metaForProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "eachComputedProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_onLookup",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_lazyInjections",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "get",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "getProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "set",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "setProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "beginPropertyChanges",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "endPropertyChanges",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "propertyWillChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "propertyDidChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "notifyPropertyChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "addObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "removeObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "hasObserverFor",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "getWithDefault",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "incrementProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "decrementProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "toggleProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "cacheFor",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "on",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "one",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "trigger",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreView"
+    },
+    {
+      "name": "off",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "has",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "willMergeMixin",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "send",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "_contextDidChange",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "nearestOfType",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "nearestWithProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "_parentViewDidChange",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "rerender",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "_classStringForProperty",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "$",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "appendTo",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "replaceIn",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "append",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "remove",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "findElementInParentElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "createElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "destroyElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "removeFromParent",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "handleEvent",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.View"
+    }
+  ],
+  "properties": [
+    {
+      "name": "concatenatedProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "isDestroyed",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "isDestroying",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "actions",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "parentView",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreView"
+    },
+    {
+      "name": "isView",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "templateName",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "layoutName",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "template",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "layout",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "element",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "elementId",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "tagName",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "ariaRole",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "views",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "multiple",
+      "isPrivate": false
+    },
+    {
+      "name": "disabled",
+      "isPrivate": false
+    },
+    {
+      "name": "required",
+      "isPrivate": false
+    },
+    {
+      "name": "content",
+      "isPrivate": false
+    },
+    {
+      "name": "selection",
+      "isPrivate": false
+    },
+    {
+      "name": "value",
+      "isPrivate": false
+    },
+    {
+      "name": "prompt",
+      "isPrivate": false
+    },
+    {
+      "name": "optionLabelPath",
+      "isPrivate": false
+    },
+    {
+      "name": "optionValuePath",
+      "isPrivate": false
+    },
+    {
+      "name": "optionGroupPath",
+      "isPrivate": false
+    },
+    {
+      "name": "groupView",
+      "isPrivate": false
+    },
+    {
+      "name": "optionView",
+      "isPrivate": false
+    }
+  ],
+  "events": [
+    {
+      "name": "willInsertElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "didInsertElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "willClearRender",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "willDestroyElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "parentViewDidChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    }
+  ],
+  "isPrivate": false,
+  "constType": "Class"
+}

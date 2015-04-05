@@ -1,0 +1,97 @@
+{
+  "name": "Ember.DataAdapter",
+  "description": "<p>The <code>DataAdapter</code> helps a data persistence library\ninterface with tools that debug Ember such\nas the <a href=\"https://github.com/tildeio/ember-extension\">Ember Extension</a>\nfor Chrome and Firefox.</p>\n<p>This class will be extended by a persistence library\nwhich will override some of the methods with\nlibrary-specific code.</p>\n<p>The methods likely to be overridden are:</p>\n<ul>\n<li><code>getFilters</code></li>\n<li><code>detect</code></li>\n<li><code>columnsForType</code></li>\n<li><code>getRecords</code></li>\n<li><code>getRecordColumnValues</code></li>\n<li><code>getRecordKeywords</code></li>\n<li><code>getRecordFilterValues</code></li>\n<li><code>getRecordColor</code></li>\n<li><code>observeRecord</code></li>\n</ul>\n<p>The adapter will need to be registered\nin the application&#39;s container as <code>dataAdapter:main</code></p>\n<p>Example:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">Application.initializer({\n  name: <span class=\"hljs-string\">\"data-adapter\"</span>,\n\n  initialize: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(container, application)</span> </span>{\n    application.register(<span class=\"hljs-string\">'data-adapter:main'</span>, DS.DataAdapter);\n  }\n});</pre></td>      </tr>    </table>  </div></div>",
+  "line": 14,
+  "file": "packages/ember-extension-support/lib/data_adapter.js",
+  "methods": [
+    {
+      "name": "getFilters",
+      "isPrivate": false
+    },
+    {
+      "name": "watchModelTypes",
+      "isPrivate": false
+    },
+    {
+      "name": "watchRecords",
+      "isPrivate": false
+    },
+    {
+      "name": "willDestroy",
+      "isPrivate": true
+    },
+    {
+      "name": "detect",
+      "isPrivate": true
+    },
+    {
+      "name": "columnsForType",
+      "isPrivate": true
+    },
+    {
+      "name": "observeModelType",
+      "isPrivate": true
+    },
+    {
+      "name": "wrapModelType",
+      "isPrivate": true
+    },
+    {
+      "name": "getModelTypes",
+      "isPrivate": true
+    },
+    {
+      "name": "_getObjectsOnNamespaces",
+      "isPrivate": true
+    },
+    {
+      "name": "getRecords",
+      "isPrivate": true
+    },
+    {
+      "name": "wrapRecord",
+      "isPrivate": true
+    },
+    {
+      "name": "getRecordColumnValues",
+      "isPrivate": true
+    },
+    {
+      "name": "getRecordKeywords",
+      "isPrivate": true
+    },
+    {
+      "name": "getRecordFilterValues",
+      "isPrivate": true
+    },
+    {
+      "name": "getRecordColor",
+      "isPrivate": true
+    },
+    {
+      "name": "observerRecord",
+      "isPrivate": true
+    }
+  ],
+  "properties": [
+    {
+      "name": "container",
+      "isPrivate": false
+    },
+    {
+      "name": "containerDebugAdapter",
+      "isPrivate": false
+    },
+    {
+      "name": "attributeLimit",
+      "isPrivate": true
+    },
+    {
+      "name": "releaseMethods",
+      "isPrivate": true
+    }
+  ],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

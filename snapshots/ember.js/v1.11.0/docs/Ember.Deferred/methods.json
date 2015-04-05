@@ -1,0 +1,47 @@
+[
+  {
+    "file": "packages/ember-runtime/lib/mixins/deferred.js",
+    "line": 18,
+    "description": "<p>Add handlers to be called when the Deferred object is resolved or rejected.</p>\n",
+    "itemtype": "method",
+    "name": "then",
+    "params": [
+      {
+        "name": "resolve",
+        "description": "a callback function to be called when done",
+        "type": "Function"
+      },
+      {
+        "name": "reject",
+        "description": "a callback function to be called when failed",
+        "type": "Function"
+      }
+    ],
+    "class": "Ember.Deferred",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-runtime/lib/mixins/deferred.js",
+    "line": 43,
+    "description": "<p>Resolve a Deferred object and call any <code>doneCallbacks</code> with the given args.</p>\n",
+    "itemtype": "method",
+    "name": "resolve",
+    "class": "Ember.Deferred",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-runtime/lib/mixins/deferred.js",
+    "line": 61,
+    "description": "<p>Reject a Deferred object and call any <code>failCallbacks</code> with the given args.</p>\n",
+    "itemtype": "method",
+    "name": "reject",
+    "class": "Ember.Deferred",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  }
+]

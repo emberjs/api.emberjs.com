@@ -1,0 +1,396 @@
+{
+  "name": "Ember.ContainerView",
+  "description": "<p>A <code>ContainerView</code> is an <code>Ember.View</code> subclass that implements <code>Ember.MutableArray</code>\nallowing programmatic management of its child views.</p>\n<h2 id=\"setting-initial-child-views\">Setting Initial Child Views</h2>\n<p>The initial array of child views can be set in one of two ways. You can\nprovide a <code>childViews</code> property at creation time that contains instance of\n<code>Ember.View</code>:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">aContainer = Ember.ContainerView.create({\n  childViews: [Ember.View.create(), Ember.View.create()]\n});</pre></td>      </tr>    </table>  </div></div><p>You can also provide a list of property names whose values are instances of\n<code>Ember.View</code>:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">aContainer = Ember.ContainerView.create({\n  childViews: [<span class=\"hljs-string\">'aView'</span>, <span class=\"hljs-string\">'bView'</span>, <span class=\"hljs-string\">'cView'</span>],\n  aView: Ember.View.create(),\n  bView: Ember.View.create(),\n  cView: Ember.View.create()\n});</pre></td>      </tr>    </table>  </div></div><p>The two strategies can be combined:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">aContainer = Ember.ContainerView.create({\n  childViews: [<span class=\"hljs-string\">'aView'</span>, Ember.View.create()],\n  aView: Ember.View.create()\n});</pre></td>      </tr>    </table>  </div></div><p>Each child view&#39;s rendering will be inserted into the container&#39;s rendered\nHTML in the same order as its position in the <code>childViews</code> property.</p>\n<h2 id=\"adding-and-removing-child-views\">Adding and Removing Child Views</h2>\n<p>The container view implements <code>Ember.MutableArray</code> allowing programmatic management of its child views.</p>\n<p>To remove a view, pass that view into a <code>removeObject</code> call on the container view.</p>\n<p>Given an empty <code>&lt;body&gt;</code> the following code</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">aContainer = Ember.ContainerView.create({\n  classNames: [<span class=\"hljs-string\">'the-container'</span>],\n  childViews: [<span class=\"hljs-string\">'aView'</span>, <span class=\"hljs-string\">'bView'</span>],\n  aView: Ember.View.create({\n    template: Ember.Handlebars.compile(<span class=\"hljs-string\">\"A\"</span>)\n  }),\n  bView: Ember.View.create({\n    template: Ember.Handlebars.compile(<span class=\"hljs-string\">\"B\"</span>)\n  })\n});\n\naContainer.appendTo(<span class=\"hljs-string\">'body'</span>);</pre></td>      </tr>    </table>  </div></div><p>Results in the HTML</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view the-container\"</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view\"</span>&gt;</span>A<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view\"</span>&gt;</span>B<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p>Removing a view</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">aContainer.toArray();  <span class=\"hljs-comment\">// [aContainer.aView, aContainer.bView]</span>\naContainer.removeObject(aContainer.get(<span class=\"hljs-string\">'bView'</span>));\naContainer.toArray();  <span class=\"hljs-comment\">// [aContainer.aView]</span></pre></td>      </tr>    </table>  </div></div><p>Will result in the following HTML</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view the-container\"</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view\"</span>&gt;</span>A<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p>Similarly, adding a child view is accomplished by adding <code>Ember.View</code> instances to the\ncontainer view.</p>\n<p>Given an empty <code>&lt;body&gt;</code> the following code</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">aContainer = Ember.ContainerView.create({\n  classNames: [<span class=\"hljs-string\">'the-container'</span>],\n  childViews: [<span class=\"hljs-string\">'aView'</span>, <span class=\"hljs-string\">'bView'</span>],\n  aView: Ember.View.create({\n    template: Ember.Handlebars.compile(<span class=\"hljs-string\">\"A\"</span>)\n  }),\n  bView: Ember.View.create({\n    template: Ember.Handlebars.compile(<span class=\"hljs-string\">\"B\"</span>)\n  })\n});\n\naContainer.appendTo(<span class=\"hljs-string\">'body'</span>);</pre></td>      </tr>    </table>  </div></div><p>Results in the HTML</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view the-container\"</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view\"</span>&gt;</span>A<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view\"</span>&gt;</span>B<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><p>Adding a view</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">AnotherViewClass = Ember.View.extend({\n  template: Ember.Handlebars.compile(<span class=\"hljs-string\">\"Another view\"</span>)\n});\n\naContainer.toArray();  <span class=\"hljs-comment\">// [aContainer.aView, aContainer.bView]</span>\naContainer.pushObject(AnotherViewClass.create());\naContainer.toArray(); <span class=\"hljs-comment\">// [aContainer.aView, aContainer.bView, &lt;AnotherViewClass instance&gt;]</span></pre></td>      </tr>    </table>  </div></div><p>Will result in the following HTML</p>\n<div class=\"highlight html\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"html\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view the-container\"</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view\"</span>&gt;</span>A<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view\"</span>&gt;</span>B<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">div</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">\"ember-view\"</span>&gt;</span>Another view<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span>\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">div</span>&gt;</span></pre></td>      </tr>    </table>  </div></div><h2 id=\"templates-and-layout\">Templates and Layout</h2>\n<p>A <code>template</code>, <code>templateName</code>, <code>defaultTemplate</code>, <code>layout</code>, <code>layoutName</code> or\n<code>defaultLayout</code> property on a container view will not result in the template\nor layout being rendered. The HTML contents of a <code>Ember.ContainerView</code>&#39;s DOM\nrepresentation will only be the rendered HTML of its child views.</p>\n",
+  "line": 37,
+  "file": "packages/ember-views/lib/views/container_view.js",
+  "methods": [
+    {
+      "name": "init",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "destroy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "willDestroy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_scheduledDestroy",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "toString",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "extend",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "createWithMixins",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "create",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "reopen",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "reopenClass",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "metaForProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "eachComputedProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_onLookup",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_lazyInjections",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "get",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "getProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "set",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "setProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "beginPropertyChanges",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "endPropertyChanges",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "propertyWillChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "propertyDidChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "notifyPropertyChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "addObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "removeObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "hasObserverFor",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "getWithDefault",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "incrementProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "decrementProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "toggleProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "cacheFor",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "on",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "one",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "trigger",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreView"
+    },
+    {
+      "name": "off",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "has",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "willMergeMixin",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "send",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "_contextDidChange",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "nearestOfType",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "nearestWithProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "_parentViewDidChange",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "rerender",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "_classStringForProperty",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "$",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "appendTo",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "replaceIn",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "append",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "remove",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "findElementInParentElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "createElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "destroyElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "removeFromParent",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "handleEvent",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "render",
+      "isPrivate": true
+    },
+    {
+      "name": "childViewsWillChange",
+      "isPrivate": true
+    },
+    {
+      "name": "childViewsDidChange",
+      "isPrivate": true
+    }
+  ],
+  "properties": [
+    {
+      "name": "concatenatedProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "isDestroyed",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "isDestroying",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "actions",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "parentView",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreView"
+    },
+    {
+      "name": "isView",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "templateName",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "layoutName",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "template",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "layout",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "element",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "elementId",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "tagName",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "ariaRole",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "views",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    }
+  ],
+  "events": [
+    {
+      "name": "willInsertElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "didInsertElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "willClearRender",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "willDestroyElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "parentViewDidChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    }
+  ],
+  "isPrivate": false,
+  "constType": "Class"
+}

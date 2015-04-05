@@ -1,0 +1,177 @@
+{
+  "name": "Ember.Enumerable",
+  "description": "<p>This mixin defines the common interface implemented by enumerable objects\nin Ember. Most of these methods follow the standard Array iteration\nAPI defined up to JavaScript 1.8 (excluding language-specific features that\ncannot be emulated in older versions of JavaScript).</p>\n<p>This mixin is applied automatically to the Array class on page load, so you\ncan use any of these methods on simple arrays. If Array already implements\none of these methods, the mixin will not override them.</p>\n<h2 id=\"writing-your-own-enumerable\">Writing Your Own Enumerable</h2>\n<p>To make your own custom class enumerable, you need two items:</p>\n<ol>\n<li><p>You must have a length property. This property should change whenever\nthe number of items in your enumerable object changes. If you use this\nwith an <code>Ember.Object</code> subclass, you should be sure to change the length\nproperty using <code>set().</code></p>\n</li>\n<li><p>You must implement <code>nextObject().</code> See documentation.</p>\n</li>\n</ol>\n<p>Once you have these two methods implemented, apply the <code>Ember.Enumerable</code> mixin\nto your class and you will be able to enumerate the contents of your object\nlike any other collection.</p>\n<h2 id=\"using-ember-enumeration-with-other-libraries\">Using Ember Enumeration with Other Libraries</h2>\n<p>Many other libraries provide some kind of iterator or enumeration like\nfacility. This is often where the most common API conflicts occur.\nEmber&#39;s API is designed to be as friendly as possible with other\nlibraries by implementing only methods that mostly correspond to the\nJavaScript 1.8 API.</p>\n",
+  "line": 57,
+  "file": "packages/ember-runtime/lib/mixins/enumerable.js",
+  "methods": [
+    {
+      "name": "nextObject",
+      "isPrivate": false
+    },
+    {
+      "name": "contains",
+      "isPrivate": false
+    },
+    {
+      "name": "forEach",
+      "isPrivate": false
+    },
+    {
+      "name": "getEach",
+      "isPrivate": false
+    },
+    {
+      "name": "setEach",
+      "isPrivate": false
+    },
+    {
+      "name": "map",
+      "isPrivate": false
+    },
+    {
+      "name": "mapBy",
+      "isPrivate": false
+    },
+    {
+      "name": "mapProperty",
+      "isPrivate": false
+    },
+    {
+      "name": "filter",
+      "isPrivate": false
+    },
+    {
+      "name": "reject",
+      "isPrivate": false
+    },
+    {
+      "name": "filterBy",
+      "isPrivate": false
+    },
+    {
+      "name": "filterProperty",
+      "isPrivate": false
+    },
+    {
+      "name": "rejectBy",
+      "isPrivate": false
+    },
+    {
+      "name": "rejectProperty",
+      "isPrivate": false
+    },
+    {
+      "name": "find",
+      "isPrivate": false
+    },
+    {
+      "name": "findBy",
+      "isPrivate": false
+    },
+    {
+      "name": "findProperty",
+      "isPrivate": false
+    },
+    {
+      "name": "every",
+      "isPrivate": false
+    },
+    {
+      "name": "everyBy",
+      "isPrivate": false
+    },
+    {
+      "name": "everyProperty",
+      "isPrivate": false
+    },
+    {
+      "name": "isEvery",
+      "isPrivate": false
+    },
+    {
+      "name": "any",
+      "isPrivate": false
+    },
+    {
+      "name": "some",
+      "isPrivate": false
+    },
+    {
+      "name": "isAny",
+      "isPrivate": false
+    },
+    {
+      "name": "anyBy",
+      "isPrivate": false
+    },
+    {
+      "name": "someProperty",
+      "isPrivate": false
+    },
+    {
+      "name": "reduce",
+      "isPrivate": false
+    },
+    {
+      "name": "invoke",
+      "isPrivate": false
+    },
+    {
+      "name": "toArray",
+      "isPrivate": false
+    },
+    {
+      "name": "compact",
+      "isPrivate": false
+    },
+    {
+      "name": "without",
+      "isPrivate": false
+    },
+    {
+      "name": "uniq",
+      "isPrivate": false
+    },
+    {
+      "name": "addEnumerableObserver",
+      "isPrivate": false
+    },
+    {
+      "name": "removeEnumerableObserver",
+      "isPrivate": false
+    },
+    {
+      "name": "enumerableContentWillChange",
+      "isPrivate": false
+    },
+    {
+      "name": "enumerableContentDidChange",
+      "isPrivate": false
+    },
+    {
+      "name": "sortBy",
+      "isPrivate": false
+    }
+  ],
+  "properties": [
+    {
+      "name": "firstObject",
+      "isPrivate": false
+    },
+    {
+      "name": "lastObject",
+      "isPrivate": false
+    },
+    {
+      "name": "[]",
+      "isPrivate": false
+    },
+    {
+      "name": "hasEnumerableObservers",
+      "isPrivate": false
+    }
+  ],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Ember.HTMLBars.Helper",
+  "description": "",
+  "line": 6,
+  "file": "packages/ember-htmlbars/lib/system/helper.js",
+  "methods": [],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Ember.Descriptor",
+  "description": "<p>Objects of this type can implement an interface to respond to requests to\nget and set. The default implementation handles simple properties.</p>\n<p>You generally won&#39;t need to create or subclass this directly.</p>\n",
+  "line": 16,
+  "file": "packages/ember-metal/lib/properties.js",
+  "methods": [],
+  "properties": [],
+  "events": [],
+  "isPrivate": true,
+  "constType": "Class"
+}

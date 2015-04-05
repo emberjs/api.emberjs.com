@@ -1,0 +1,13 @@
+[
+  {
+    "file": "packages/ember-metal/lib/platform/define_property.js",
+    "line": 9,
+    "description": "<p>Set to true if the platform supports native getters and setters.</p>\n",
+    "itemtype": "property",
+    "name": "hasPropertyAccessors",
+    "final": 1,
+    "class": "Ember.platform",
+    "module": "ember",
+    "namespace": "Ember"
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "name": "Libraries",
+  "description": "<p>Helper class that allows you to register your library with Ember.</p>\n<p>Singleton created at <code>Ember.libraries</code>.</p>\n",
+  "line": 7,
+  "file": "packages/ember-metal/lib/libraries.js",
+  "methods": [],
+  "properties": [],
+  "events": [],
+  "isPrivate": true,
+  "constType": "Class"
+}

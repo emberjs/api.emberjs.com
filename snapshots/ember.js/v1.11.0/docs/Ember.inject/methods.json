@@ -1,0 +1,47 @@
+[
+  {
+    "file": "packages/ember-runtime/lib/controllers/controller.js",
+    "line": 24,
+    "description": "<p>Creates a property that lazily looks up another controller in the container.\nCan only be used when defining another controller.</p>\n<p>Example:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.PostController = Ember.Controller.extend({\n  posts: Ember.inject.controller()\n});</pre></td>      </tr>    </table>  </div></div><p>This example will create a <code>posts</code> property on the <code>post</code> controller that\nlooks up the <code>posts</code> controller in the container, making it easy to\nreference other controllers. This is functionally equivalent to:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.PostController = Ember.Controller.extend({\n  needs: <span class=\"hljs-string\">'posts'</span>,\n  posts: Ember.computed.alias(<span class=\"hljs-string\">'controllers.posts'</span>)\n});</pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "method",
+    "name": "controller",
+    "since": "1.10.0",
+    "params": [
+      {
+        "name": "name",
+        "description": "(optional) name of the controller to inject, defaults\n       to the property's name",
+        "type": "String"
+      }
+    ],
+    "return": {
+      "description": "injection descriptor instance",
+      "type": "Ember.InjectedProperty"
+    },
+    "class": "Ember.inject",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-runtime/lib/system/service.js",
+    "line": 5,
+    "description": "<p>Creates a property that lazily looks up a service in the container. There\nare no restrictions as to what objects a service can be injected into.</p>\n<p>Example:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.ApplicationRoute = Ember.Route.extend({\n  authManager: Ember.inject.service(<span class=\"hljs-string\">'auth'</span>),\n\n  model: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n    <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.get(<span class=\"hljs-string\">'authManager'</span>).findCurrentUser();\n  }\n});</pre></td>      </tr>    </table>  </div></div><p>This example will create an <code>authManager</code> property on the application route\nthat looks up the <code>auth</code> service in the container, making it easily\naccessible in the <code>model</code> hook.</p>\n",
+    "itemtype": "method",
+    "name": "service",
+    "since": "1.10.0",
+    "params": [
+      {
+        "name": "name",
+        "description": "(optional) name of the service to inject, defaults to\n       the property's name",
+        "type": "String"
+      }
+    ],
+    "return": {
+      "description": "injection descriptor instance",
+      "type": "Ember.InjectedProperty"
+    },
+    "class": "Ember.inject",
+    "module": "ember",
+    "namespace": "Ember"
+  }
+]

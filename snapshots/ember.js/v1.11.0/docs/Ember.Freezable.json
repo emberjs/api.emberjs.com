@@ -1,0 +1,21 @@
+{
+  "name": "Ember.Freezable",
+  "description": "<p>The <code>Ember.Freezable</code> mixin implements some basic methods for marking an\nobject as frozen. Once an object is frozen it should be read only. No changes\nmay be made the internal state of the object.</p>\n<h2 id=\"enforcement\">Enforcement</h2>\n<p>To fully support freezing in your subclass, you must include this mixin and\noverride any method that might alter any property on the object to instead\nraise an exception. You can check the state of an object by checking the\n<code>isFrozen</code> property.</p>\n<p>Although future versions of JavaScript may support language-level freezing\nobject objects, that is not the case today. Even if an object is freezable,\nit is still technically possible to modify the object, even though it could\nbreak other parts of your application that do not expect a frozen object to\nchange. It is, therefore, very important that you always respect the\n<code>isFrozen</code> property on all freezable objects.</p>\n<h2 id=\"example-usage\">Example Usage</h2>\n<p>The example below shows a simple object that implement the <code>Ember.Freezable</code>\nprotocol.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">Contact = Ember.Object.extend(Ember.Freezable, {\n  firstName: <span class=\"hljs-literal\">null</span>,\n  lastName: <span class=\"hljs-literal\">null</span>,\n\n  <span class=\"hljs-comment\">// swaps the names</span>\n  swapNames: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n    <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.get(<span class=\"hljs-string\">'isFrozen'</span>)) <span class=\"hljs-keyword\">throw</span> Ember.FROZEN_ERROR;\n    <span class=\"hljs-keyword\">var</span> tmp = <span class=\"hljs-keyword\">this</span>.get(<span class=\"hljs-string\">'firstName'</span>);\n    <span class=\"hljs-keyword\">this</span>.set(<span class=\"hljs-string\">'firstName'</span>, <span class=\"hljs-keyword\">this</span>.get(<span class=\"hljs-string\">'lastName'</span>));\n    <span class=\"hljs-keyword\">this</span>.set(<span class=\"hljs-string\">'lastName'</span>, tmp);\n    <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>;\n  }\n\n});\n\nc = Contact.create({ firstName: <span class=\"hljs-string\">\"John\"</span>, lastName: <span class=\"hljs-string\">\"Doe\"</span> });\nc.swapNames();  <span class=\"hljs-comment\">// returns c</span>\nc.freeze();\nc.swapNames();  <span class=\"hljs-comment\">// EXCEPTION</span></pre></td>      </tr>    </table>  </div></div><h2 id=\"copying\">Copying</h2>\n<p>Usually the <code>Ember.Freezable</code> protocol is implemented in cooperation with the\n<code>Ember.Copyable</code> protocol, which defines a <code>frozenCopy()</code> method that will\nreturn a frozen object, if the object implements this method as well.</p>\n",
+  "line": 10,
+  "file": "packages/ember-runtime/lib/mixins/freezable.js",
+  "methods": [
+    {
+      "name": "freeze",
+      "isPrivate": false
+    }
+  ],
+  "properties": [
+    {
+      "name": "isFrozen",
+      "isPrivate": false
+    }
+  ],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

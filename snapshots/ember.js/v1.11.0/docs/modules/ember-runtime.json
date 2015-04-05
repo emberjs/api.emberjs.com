@@ -1,0 +1,186 @@
+{
+  "name": "ember-runtime",
+  "classes": [
+    {
+      "name": "Ember.ActionHandler"
+    },
+    {
+      "name": "Ember.Array"
+    },
+    {
+      "name": "Ember.ArrayController"
+    },
+    {
+      "name": "Ember.ArrayProxy"
+    },
+    {
+      "name": "Ember.Comparable"
+    },
+    {
+      "name": "Ember.Controller"
+    },
+    {
+      "name": "Ember.Copyable"
+    },
+    {
+      "name": "Ember.CoreObject"
+    },
+    {
+      "name": "Ember.Deferred"
+    },
+    {
+      "name": "Ember.EachProxy"
+    },
+    {
+      "name": "Ember.Enumerable"
+    },
+    {
+      "name": "Ember.Evented"
+    },
+    {
+      "name": "Ember.Freezable"
+    },
+    {
+      "name": "Ember.MutableArray"
+    },
+    {
+      "name": "Ember.MutableEnumerable"
+    },
+    {
+      "name": "Ember.Namespace"
+    },
+    {
+      "name": "Ember.NativeArray"
+    },
+    {
+      "name": "Ember.Object"
+    },
+    {
+      "name": "Ember.ObjectController"
+    },
+    {
+      "name": "Ember.Observable"
+    },
+    {
+      "name": "Ember.PromiseProxyMixin"
+    },
+    {
+      "name": "Ember.ProxyMixin"
+    },
+    {
+      "name": "Ember.Set"
+    },
+    {
+      "name": "Ember.SortableMixin"
+    },
+    {
+      "name": "Ember.String"
+    },
+    {
+      "name": "Ember.TargetActionSupport"
+    },
+    {
+      "name": "Ember.inject"
+    },
+    {
+      "name": "Function"
+    },
+    {
+      "name": "String"
+    }
+  ],
+  "submodules": [
+    {
+      "name": "Ember.ActionHandler"
+    },
+    {
+      "name": "Ember.Array"
+    },
+    {
+      "name": "Ember.ArrayController"
+    },
+    {
+      "name": "Ember.ArrayProxy"
+    },
+    {
+      "name": "Ember.Comparable"
+    },
+    {
+      "name": "Ember.Controller"
+    },
+    {
+      "name": "Ember.Copyable"
+    },
+    {
+      "name": "Ember.CoreObject"
+    },
+    {
+      "name": "Ember.Deferred"
+    },
+    {
+      "name": "Ember.EachProxy"
+    },
+    {
+      "name": "Ember.Enumerable"
+    },
+    {
+      "name": "Ember.Evented"
+    },
+    {
+      "name": "Ember.Freezable"
+    },
+    {
+      "name": "Ember.MutableArray"
+    },
+    {
+      "name": "Ember.MutableEnumerable"
+    },
+    {
+      "name": "Ember.Namespace"
+    },
+    {
+      "name": "Ember.NativeArray"
+    },
+    {
+      "name": "Ember.Object"
+    },
+    {
+      "name": "Ember.ObjectController"
+    },
+    {
+      "name": "Ember.Observable"
+    },
+    {
+      "name": "Ember.PromiseProxyMixin"
+    },
+    {
+      "name": "Ember.ProxyMixin"
+    },
+    {
+      "name": "Ember.Set"
+    },
+    {
+      "name": "Ember.SortableMixin"
+    },
+    {
+      "name": "Ember.String"
+    },
+    {
+      "name": "Ember.TargetActionSupport"
+    },
+    {
+      "name": "Ember.inject"
+    },
+    {
+      "name": "Function"
+    },
+    {
+      "name": "String"
+    }
+  ],
+  "requires": [
+    {
+      "name": "ember-metal"
+    }
+  ]
+}

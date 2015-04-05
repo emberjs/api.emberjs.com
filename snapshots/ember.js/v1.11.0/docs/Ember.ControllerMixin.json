@@ -1,0 +1,92 @@
+{
+  "name": "Ember.ControllerMixin",
+  "description": "<p><code>Ember.ControllerMixin</code> provides a standard interface for all classes that\ncompose Ember&#39;s controller layer: <code>Ember.Controller</code>,\n<code>Ember.ArrayController</code>, and <code>Ember.ObjectController</code>.</p>\n",
+  "line": 70,
+  "file": "packages/ember-application/lib/ext/controller.js",
+  "methods": [
+    {
+      "name": "willMergeMixin",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "send",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "_updateCacheParams",
+      "isPrivate": true
+    },
+    {
+      "name": "_qpChanged",
+      "isPrivate": true
+    },
+    {
+      "name": "_calculateCacheKey",
+      "isPrivate": true
+    },
+    {
+      "name": "transitionToRoute",
+      "isPrivate": false
+    },
+    {
+      "name": "transitionTo",
+      "isPrivate": false
+    },
+    {
+      "name": "replaceRoute",
+      "isPrivate": false
+    },
+    {
+      "name": "replaceWith",
+      "isPrivate": false
+    },
+    {
+      "name": "controllerFor",
+      "isPrivate": false
+    }
+  ],
+  "properties": [
+    {
+      "name": "actions",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "target",
+      "isPrivate": false
+    },
+    {
+      "name": "model",
+      "isPrivate": false
+    },
+    {
+      "name": "queryParams",
+      "isPrivate": false
+    },
+    {
+      "name": "_qpDelegate",
+      "isPrivate": true
+    },
+    {
+      "name": "_normalizedQueryParams",
+      "isPrivate": true
+    },
+    {
+      "name": "_cacheMeta",
+      "isPrivate": true
+    },
+    {
+      "name": "needs",
+      "isPrivate": false
+    },
+    {
+      "name": "controllers",
+      "isPrivate": false
+    }
+  ],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

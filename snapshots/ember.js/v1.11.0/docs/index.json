@@ -1,0 +1,327 @@
+{
+  "defaultIndex": "Ember",
+  "sha": "v1.11.0",
+  "rev": "v1.11.0",
+  "githubUrl": "https://github.com/emberjs/ember.js",
+  "namespaces": [
+    {
+      "name": "Ember"
+    },
+    {
+      "name": "Ember.AutoLocation"
+    },
+    {
+      "name": "Ember.EnumerableUtils"
+    },
+    {
+      "name": "Ember.FEATURES"
+    },
+    {
+      "name": "Ember.Instrumentation"
+    },
+    {
+      "name": "Ember.Location"
+    },
+    {
+      "name": "Ember.String"
+    },
+    {
+      "name": "Ember.computed"
+    },
+    {
+      "name": "Ember.inject"
+    },
+    {
+      "name": "Ember.platform"
+    },
+    {
+      "name": "Ember.run"
+    }
+  ],
+  "classes": [
+    {
+      "name": "Backburner"
+    },
+    {
+      "name": "Ember.ActionHandler"
+    },
+    {
+      "name": "Ember.Application"
+    },
+    {
+      "name": "Ember.Array"
+    },
+    {
+      "name": "Ember.ArrayController"
+    },
+    {
+      "name": "Ember.ArrayProxy"
+    },
+    {
+      "name": "Ember.Binding"
+    },
+    {
+      "name": "Ember.Checkbox"
+    },
+    {
+      "name": "Ember.CollectionView"
+    },
+    {
+      "name": "Ember.Comparable"
+    },
+    {
+      "name": "Ember.Component"
+    },
+    {
+      "name": "Ember.ComputedProperty"
+    },
+    {
+      "name": "Ember.ContainerDebugAdapter"
+    },
+    {
+      "name": "Ember.ContainerView"
+    },
+    {
+      "name": "Ember.Controller"
+    },
+    {
+      "name": "Ember.ControllerMixin"
+    },
+    {
+      "name": "Ember.Copyable"
+    },
+    {
+      "name": "Ember.CoreObject"
+    },
+    {
+      "name": "Ember.CoreView"
+    },
+    {
+      "name": "Ember.DataAdapter"
+    },
+    {
+      "name": "Ember.DefaultResolver"
+    },
+    {
+      "name": "Ember.Deferred"
+    },
+    {
+      "name": "Ember.Descriptor"
+    },
+    {
+      "name": "Ember.EachProxy"
+    },
+    {
+      "name": "Ember.Enumerable"
+    },
+    {
+      "name": "Ember.Error"
+    },
+    {
+      "name": "Ember.EventDispatcher"
+    },
+    {
+      "name": "Ember.Evented"
+    },
+    {
+      "name": "Ember.Freezable"
+    },
+    {
+      "name": "Ember.HTMLBars"
+    },
+    {
+      "name": "Ember.HTMLBars.Helper"
+    },
+    {
+      "name": "Ember.Handlebars"
+    },
+    {
+      "name": "Ember.Handlebars.helpers"
+    },
+    {
+      "name": "Ember.HashLocation"
+    },
+    {
+      "name": "Ember.HistoryLocation"
+    },
+    {
+      "name": "Ember.InjectedProperty"
+    },
+    {
+      "name": "Ember.LinkView"
+    },
+    {
+      "name": "Ember.Logger"
+    },
+    {
+      "name": "Ember.Map"
+    },
+    {
+      "name": "Ember.MapWithDefault"
+    },
+    {
+      "name": "Ember.Mixin"
+    },
+    {
+      "name": "Ember.MutableArray"
+    },
+    {
+      "name": "Ember.MutableEnumerable"
+    },
+    {
+      "name": "Ember.Namespace"
+    },
+    {
+      "name": "Ember.NativeArray"
+    },
+    {
+      "name": "Ember.NoneLocation"
+    },
+    {
+      "name": "Ember.Object"
+    },
+    {
+      "name": "Ember.ObjectController"
+    },
+    {
+      "name": "Ember.ObjectProxy"
+    },
+    {
+      "name": "Ember.Observable"
+    },
+    {
+      "name": "Ember.OrderedSet"
+    },
+    {
+      "name": "Ember.PromiseProxyMixin"
+    },
+    {
+      "name": "Ember.ProxyMixin"
+    },
+    {
+      "name": "Ember.ReduceComputedProperty"
+    },
+    {
+      "name": "Ember.Route"
+    },
+    {
+      "name": "Ember.Router"
+    },
+    {
+      "name": "Ember.Select"
+    },
+    {
+      "name": "Ember.Service"
+    },
+    {
+      "name": "Ember.Set"
+    },
+    {
+      "name": "Ember.SortableMixin"
+    },
+    {
+      "name": "Ember.SubArray"
+    },
+    {
+      "name": "Ember.TargetActionSupport"
+    },
+    {
+      "name": "Ember.Test"
+    },
+    {
+      "name": "Ember.Test.Adapter"
+    },
+    {
+      "name": "Ember.Test.QUnitAdapter"
+    },
+    {
+      "name": "Ember.TextArea"
+    },
+    {
+      "name": "Ember.TextField"
+    },
+    {
+      "name": "Ember.TextSupport"
+    },
+    {
+      "name": "Ember.TrackedArray"
+    },
+    {
+      "name": "Ember.View"
+    },
+    {
+      "name": "Ember.ViewTargetActionSupport"
+    },
+    {
+      "name": "Ember._Metamorph"
+    },
+    {
+      "name": "Ember._MetamorphView"
+    },
+    {
+      "name": "Ember.stream"
+    },
+    {
+      "name": "Ember.stream.Ember.stream"
+    },
+    {
+      "name": "Ember.stream.Stream"
+    },
+    {
+      "name": "Function"
+    },
+    {
+      "name": "HandlebarsCompatibleHelper"
+    },
+    {
+      "name": "Libraries"
+    },
+    {
+      "name": "RSVP"
+    },
+    {
+      "name": "RSVP.EventTarget"
+    },
+    {
+      "name": "RSVP.Promise"
+    },
+    {
+      "name": "String"
+    }
+  ],
+  "modules": [
+    {
+      "name": "ember-application"
+    },
+    {
+      "name": "ember-debug"
+    },
+    {
+      "name": "ember-extension-support"
+    },
+    {
+      "name": "ember-handlebars"
+    },
+    {
+      "name": "ember-htmlbars"
+    },
+    {
+      "name": "ember-routing"
+    },
+    {
+      "name": "ember-routing-htmlbars"
+    },
+    {
+      "name": "ember-routing-views"
+    },
+    {
+      "name": "ember-runtime"
+    },
+    {
+      "name": "ember-testing"
+    },
+    {
+      "name": "ember-views"
+    }
+  ]
+}

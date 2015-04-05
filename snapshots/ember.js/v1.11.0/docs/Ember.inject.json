@@ -1,0 +1,20 @@
+{
+  "name": "Ember.inject",
+  "description": "<p>Namespace for injection helper methods.</p>\n",
+  "line": 6,
+  "file": "packages/ember-runtime/lib/inject.js",
+  "methods": [
+    {
+      "name": "controller",
+      "isPrivate": false
+    },
+    {
+      "name": "service",
+      "isPrivate": false
+    }
+  ],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Namespace"
+}

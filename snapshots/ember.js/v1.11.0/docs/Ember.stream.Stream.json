@@ -1,0 +1,11 @@
+{
+  "name": "Ember.stream.Stream",
+  "description": "",
+  "line": 11,
+  "file": "packages/ember-metal/lib/streams/stream.js",
+  "methods": [],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

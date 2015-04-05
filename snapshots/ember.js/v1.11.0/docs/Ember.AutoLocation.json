@@ -1,0 +1,89 @@
+{
+  "name": "Ember.AutoLocation",
+  "description": "<p>Ember.AutoLocation will select the best location option based off browser\nsupport with the priority order: history, hash, none.</p>\n<p>Clean pushState paths accessed by hashchange-only browsers will be redirected\nto the hash-equivalent and vice versa so future transitions are consistent.</p>\n<p>Keep in mind that since some of your users will use <code>HistoryLocation</code>, your\nserver must serve the Ember app at all the routes you define.</p>\n",
+  "line": 17,
+  "file": "packages/ember-routing/lib/location/auto_location.js",
+  "methods": [
+    {
+      "name": "_getOrigin",
+      "isPrivate": true
+    },
+    {
+      "name": "_getSupportsHistory",
+      "isPrivate": true
+    },
+    {
+      "name": "_getSupportsHashChange",
+      "isPrivate": true
+    },
+    {
+      "name": "_replacePath",
+      "isPrivate": true
+    },
+    {
+      "name": "_getRootURL",
+      "isPrivate": true
+    },
+    {
+      "name": "_getPath",
+      "isPrivate": true
+    },
+    {
+      "name": "_getHash",
+      "isPrivate": true
+    },
+    {
+      "name": "_getQuery",
+      "isPrivate": true
+    },
+    {
+      "name": "_getFullPath",
+      "isPrivate": true
+    },
+    {
+      "name": "_getHistoryPath",
+      "isPrivate": true
+    },
+    {
+      "name": "_getHashPath",
+      "isPrivate": true
+    },
+    {
+      "name": "create",
+      "isPrivate": false
+    }
+  ],
+  "properties": [
+    {
+      "name": "location",
+      "isPrivate": true
+    },
+    {
+      "name": "_history",
+      "isPrivate": true
+    },
+    {
+      "name": "cancelRouterSetup",
+      "isPrivate": true
+    },
+    {
+      "name": "rootURL",
+      "isPrivate": true
+    },
+    {
+      "name": "_HistoryLocation",
+      "isPrivate": true
+    },
+    {
+      "name": "_HashLocation",
+      "isPrivate": true
+    },
+    {
+      "name": "_NoneLocation",
+      "isPrivate": true
+    }
+  ],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Namespace"
+}

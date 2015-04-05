@@ -1,0 +1,423 @@
+{
+  "name": "Ember.Route",
+  "description": "<p>The <code>Ember.Route</code> class is used to define individual routes. Refer to\nthe <a href=\"http://emberjs.com/guides/routing/\">routing guide</a> for documentation.</p>\n",
+  "line": 35,
+  "file": "packages/ember-routing/lib/system/route.js",
+  "methods": [
+    {
+      "name": "init",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "destroy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "willDestroy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_scheduledDestroy",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "toString",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "extend",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "createWithMixins",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "create",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "reopen",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "reopenClass",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "metaForProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "eachComputedProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_onLookup",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_lazyInjections",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "get",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "getProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "set",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "setProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "beginPropertyChanges",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "endPropertyChanges",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "propertyWillChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "propertyDidChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "notifyPropertyChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "addObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "removeObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "hasObserverFor",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "getWithDefault",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "incrementProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "decrementProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "toggleProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "cacheFor",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "willMergeMixin",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "send",
+      "isPrivate": false
+    },
+    {
+      "name": "on",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "one",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "trigger",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "off",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "has",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "_stashNames",
+      "isPrivate": true
+    },
+    {
+      "name": "_updatingQPChanged",
+      "isPrivate": true
+    },
+    {
+      "name": "paramsFor",
+      "isPrivate": false
+    },
+    {
+      "name": "serializeQueryParamKey",
+      "isPrivate": false
+    },
+    {
+      "name": "serializeQueryParam",
+      "isPrivate": false
+    },
+    {
+      "name": "deserializeQueryParam",
+      "isPrivate": false
+    },
+    {
+      "name": "resetController",
+      "isPrivate": false
+    },
+    {
+      "name": "exit",
+      "isPrivate": true
+    },
+    {
+      "name": "_reset",
+      "isPrivate": true
+    },
+    {
+      "name": "enter",
+      "isPrivate": true
+    },
+    {
+      "name": "activate",
+      "isPrivate": false
+    },
+    {
+      "name": "deactivate",
+      "isPrivate": false
+    },
+    {
+      "name": "events",
+      "isPrivate": false
+    },
+    {
+      "name": "transitionTo",
+      "isPrivate": false
+    },
+    {
+      "name": "intermediateTransitionTo",
+      "isPrivate": false
+    },
+    {
+      "name": "refresh",
+      "isPrivate": false
+    },
+    {
+      "name": "replaceWith",
+      "isPrivate": false
+    },
+    {
+      "name": "setup",
+      "isPrivate": true
+    },
+    {
+      "name": "beforeModel",
+      "isPrivate": false
+    },
+    {
+      "name": "afterModel",
+      "isPrivate": false
+    },
+    {
+      "name": "redirect",
+      "isPrivate": false
+    },
+    {
+      "name": "contextDidChange",
+      "isPrivate": true
+    },
+    {
+      "name": "model",
+      "isPrivate": false
+    },
+    {
+      "name": "deserialize",
+      "isPrivate": true
+    },
+    {
+      "name": "findModel",
+      "isPrivate": false
+    },
+    {
+      "name": "store",
+      "isPrivate": false
+    },
+    {
+      "name": "serialize",
+      "isPrivate": false
+    },
+    {
+      "name": "setupController",
+      "isPrivate": false
+    },
+    {
+      "name": "controllerFor",
+      "isPrivate": false
+    },
+    {
+      "name": "generateController",
+      "isPrivate": false
+    },
+    {
+      "name": "modelFor",
+      "isPrivate": false
+    },
+    {
+      "name": "renderTemplate",
+      "isPrivate": false
+    },
+    {
+      "name": "render",
+      "isPrivate": false
+    },
+    {
+      "name": "disconnectOutlet",
+      "isPrivate": false
+    },
+    {
+      "name": "teardownViews",
+      "isPrivate": true
+    }
+  ],
+  "properties": [
+    {
+      "name": "concatenatedProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "isDestroyed",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "isDestroying",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "actions",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "queryParams",
+      "isPrivate": false
+    },
+    {
+      "name": "_qp",
+      "isPrivate": true
+    },
+    {
+      "name": "_names",
+      "isPrivate": true
+    },
+    {
+      "name": "_updateSerializedQPValue",
+      "isPrivate": true
+    },
+    {
+      "name": "_activeQPChanged",
+      "isPrivate": true
+    },
+    {
+      "name": "_fireQueryParamTransition",
+      "isPrivate": true
+    },
+    {
+      "name": "_optionsForQueryParam",
+      "isPrivate": true
+    },
+    {
+      "name": "viewName",
+      "isPrivate": false
+    },
+    {
+      "name": "templateName",
+      "isPrivate": false
+    },
+    {
+      "name": "controllerName",
+      "isPrivate": false
+    },
+    {
+      "name": "controller",
+      "isPrivate": false
+    }
+  ],
+  "events": [
+    {
+      "name": "willTransition",
+      "isPrivate": false
+    },
+    {
+      "name": "didTransition",
+      "isPrivate": false
+    },
+    {
+      "name": "loading",
+      "isPrivate": false
+    },
+    {
+      "name": "error",
+      "isPrivate": false
+    }
+  ],
+  "isPrivate": false,
+  "constType": "Class"
+}

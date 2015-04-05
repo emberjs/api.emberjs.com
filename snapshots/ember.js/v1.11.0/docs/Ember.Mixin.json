@@ -1,0 +1,28 @@
+{
+  "name": "Ember.Mixin",
+  "description": "<p>The <code>Ember.Mixin</code> class allows you to create mixins, whose properties can be\nadded to other classes. For instance,</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.Editable = Ember.Mixin.create({\n  edit: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n    <span class=\"hljs-built_in\">console</span>.log(<span class=\"hljs-string\">'starting to edit'</span>);\n    <span class=\"hljs-keyword\">this</span>.set(<span class=\"hljs-string\">'isEditing'</span>, <span class=\"hljs-literal\">true</span>);\n  },\n  isEditing: <span class=\"hljs-literal\">false</span>\n});\n\n<span class=\"hljs-comment\">// Mix mixins into classes by passing them as the first arguments to</span>\n<span class=\"hljs-comment\">// .extend.</span>\nApp.CommentView = Ember.View.extend(App.Editable, {\n  template: Ember.Handlebars.compile(<span class=\"hljs-string\">'{{#if view.isEditing}}...{{else}}...{{/if}}'</span>)\n});\n\ncommentView = App.CommentView.create();\ncommentView.edit(); <span class=\"hljs-comment\">// outputs 'starting to edit'</span></pre></td>      </tr>    </table>  </div></div><p>Note that Mixins are created with <code>Ember.Mixin.create</code>, not\n<code>Ember.Mixin.extend</code>.</p>\n<p>Note that mixins extend a constructor&#39;s prototype so arrays and object literals\ndefined as properties will be shared amongst objects that implement the mixin.\nIf you want to define a property in a mixin that is not shared, you can define\nit either as a computed property or have it be created on initialization of the object.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"><span class=\"hljs-comment\">//filters array will be shared amongst any object implementing mixin</span>\nApp.Filterable = Ember.Mixin.create({\n  filters: Ember.A()\n});\n\n<span class=\"hljs-comment\">//filters will be a separate  array for every object implementing the mixin</span>\nApp.Filterable = Ember.Mixin.create({\n  filters: Ember.computed(<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{<span class=\"hljs-keyword\">return</span> Ember.A();})\n});\n\n<span class=\"hljs-comment\">//filters will be created as a separate array during the object's initialization</span>\nApp.Filterable = Ember.Mixin.create({\n  init: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n    <span class=\"hljs-keyword\">this</span>._super.apply(<span class=\"hljs-keyword\">this</span>, <span class=\"hljs-built_in\">arguments</span>);\n    <span class=\"hljs-keyword\">this</span>.set(<span class=\"hljs-string\">\"filters\"</span>, Ember.A());\n  }\n});</pre></td>      </tr>    </table>  </div></div>",
+  "line": 497,
+  "file": "packages/ember-metal/lib/mixin.js",
+  "methods": [
+    {
+      "name": "create",
+      "isPrivate": false
+    },
+    {
+      "name": "reopen",
+      "isPrivate": false
+    },
+    {
+      "name": "apply",
+      "isPrivate": false
+    },
+    {
+      "name": "detect",
+      "isPrivate": false
+    }
+  ],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

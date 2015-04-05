@@ -1,0 +1,16 @@
+{
+  "name": "Ember.FEATURES",
+  "description": "<p>Hash of enabled Canary features. Add to this before creating your application.</p>\n<p>You can also define <code>EmberENV.FEATURES</code> if you need to enable features flagged at runtime.</p>\n",
+  "line": 87,
+  "file": "packages/ember-metal/lib/core.js",
+  "methods": [
+    {
+      "name": "isEnabled",
+      "isPrivate": false
+    }
+  ],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Namespace"
+}

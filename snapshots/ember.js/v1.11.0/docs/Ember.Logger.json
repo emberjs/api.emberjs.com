@@ -1,0 +1,36 @@
+{
+  "name": "Ember.Logger",
+  "description": "<p>Inside Ember-Metal, simply uses the methods from <code>imports.console</code>.\nOverride this to provide more robust logging functionality.</p>\n",
+  "line": 50,
+  "file": "packages/ember-metal/lib/logger.js",
+  "methods": [
+    {
+      "name": "log",
+      "isPrivate": false
+    },
+    {
+      "name": "warn",
+      "isPrivate": false
+    },
+    {
+      "name": "error",
+      "isPrivate": false
+    },
+    {
+      "name": "info",
+      "isPrivate": false
+    },
+    {
+      "name": "debug",
+      "isPrivate": false
+    },
+    {
+      "name": "assert",
+      "isPrivate": false
+    }
+  ],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

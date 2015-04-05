@@ -1,0 +1,79 @@
+[
+  {
+    "file": "packages/ember-routing/lib/system/route.js",
+    "line": 457,
+    "description": "<p>The <code>willTransition</code> action is fired at the beginning of any\nattempted transition with a <code>Transition</code> object as the sole\nargument. This action can be used for aborting, redirecting,\nor decorating the transition from the currently active routes.</p>\n<p>A good example is preventing navigation when a form is\nhalf-filled out:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.ContactFormRoute = Ember.Route.extend({\n  actions: {\n    willTransition: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(transition)</span> </span>{\n      <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-keyword\">this</span>.controller.get(<span class=\"hljs-string\">'userHasEnteredData'</span>)) {\n        <span class=\"hljs-keyword\">this</span>.controller.displayNavigationConfirm();\n        transition.abort();\n      }\n    }\n  }\n});</pre></td>      </tr>    </table>  </div></div><p>You can also redirect elsewhere by calling\n<code>this.transitionTo(&#39;elsewhere&#39;)</code> from within <code>willTransition</code>.\nNote that <code>willTransition</code> will not be fired for the\nredirecting <code>transitionTo</code>, since <code>willTransition</code> doesn&#39;t\nfire when there is already a transition underway. If you want\nsubsequent <code>willTransition</code> actions to fire for the redirecting\ntransition, you must first explicitly call\n<code>transition.abort()</code>.</p>\n",
+    "itemtype": "event",
+    "name": "willTransition",
+    "params": [
+      {
+        "name": "transition",
+        "description": "",
+        "type": "Transition"
+      }
+    ],
+    "class": "Ember.Route",
+    "module": "ember",
+    "submodule": "ember-routing",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-routing/lib/system/route.js",
+    "line": 492,
+    "description": "<p>The <code>didTransition</code> action is fired after a transition has\nsuccessfully been completed. This occurs after the normal model\nhooks (<code>beforeModel</code>, <code>model</code>, <code>afterModel</code>, <code>setupController</code>)\nhave resolved. The <code>didTransition</code> action has no arguments,\nhowever, it can be useful for tracking page views or resetting\nstate on the controller.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.LoginRoute = Ember.Route.extend({\n  actions: {\n    didTransition: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n      <span class=\"hljs-keyword\">this</span>.controller.get(<span class=\"hljs-string\">'errors.base'</span>).clear();\n      <span class=\"hljs-keyword\">return</span> <span class=\"hljs-literal\">true</span>; <span class=\"hljs-comment\">// Bubble the didTransition event</span>\n    }\n  }\n});</pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "event",
+    "name": "didTransition",
+    "since": "1.2.0",
+    "class": "Ember.Route",
+    "module": "ember",
+    "submodule": "ember-routing",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-routing/lib/system/route.js",
+    "line": 515,
+    "description": "<p>The <code>loading</code> action is fired on the route when a route&#39;s <code>model</code>\nhook returns a promise that is not already resolved. The current\n<code>Transition</code> object is the first parameter and the route that\ntriggered the loading event is the second parameter.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.ApplicationRoute = Ember.Route.extend({\n  actions: {\n    loading: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(transition, route)</span> </span>{\n      <span class=\"hljs-keyword\">var</span> view = Ember.View.create({\n        classNames: [<span class=\"hljs-string\">'app-loading'</span>]\n      })\n      .append();\n\n      <span class=\"hljs-keyword\">this</span>.router.one(<span class=\"hljs-string\">'didTransition'</span>, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n        view.destroy();\n      });\n\n      <span class=\"hljs-keyword\">return</span> <span class=\"hljs-literal\">true</span>; <span class=\"hljs-comment\">// Bubble the loading event</span>\n    }\n  }\n});</pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "event",
+    "name": "loading",
+    "params": [
+      {
+        "name": "transition",
+        "description": "",
+        "type": "Transition"
+      },
+      {
+        "name": "route",
+        "description": "The route that triggered the loading event",
+        "type": "Ember.Route"
+      }
+    ],
+    "since": "1.2.0",
+    "class": "Ember.Route",
+    "module": "ember",
+    "submodule": "ember-routing",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-routing/lib/system/route.js",
+    "line": 546,
+    "description": "<p>When attempting to transition into a route, any of the hooks\nmay return a promise that rejects, at which point an <code>error</code>\naction will be fired on the partially-entered routes, allowing\nfor per-route error handling logic, or shared error handling\nlogic defined on a parent route.</p>\n<p>Here is an example of an error handler that will be invoked\nfor rejected promises from the various hooks on the route,\nas well as any unhandled errors from child routes:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.AdminRoute = Ember.Route.extend({\n  beforeModel: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n    <span class=\"hljs-keyword\">return</span> Ember.RSVP.reject(<span class=\"hljs-string\">'bad things!'</span>);\n  },\n\n  actions: {\n    error: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(error, transition)</span> </span>{\n      <span class=\"hljs-comment\">// Assuming we got here due to the error in `beforeModel`,</span>\n      <span class=\"hljs-comment\">// we can expect that error === \"bad things!\",</span>\n      <span class=\"hljs-comment\">// but a promise model rejecting would also</span>\n      <span class=\"hljs-comment\">// call this hook, as would any errors encountered</span>\n      <span class=\"hljs-comment\">// in `afterModel`.</span>\n\n      <span class=\"hljs-comment\">// The `error` hook is also provided the failed</span>\n      <span class=\"hljs-comment\">// `transition`, which can be stored and later</span>\n      <span class=\"hljs-comment\">// `.retry()`d if desired.</span>\n\n      <span class=\"hljs-keyword\">this</span>.transitionTo(<span class=\"hljs-string\">'login'</span>);\n    }\n  }\n});</pre></td>      </tr>    </table>  </div></div><p><code>error</code> actions that bubble up all the way to <code>ApplicationRoute</code>\nwill fire a default error handler that logs the error. You can\nspecify your own global default error handler by overriding the\n<code>error</code> handler on <code>ApplicationRoute</code>:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.ApplicationRoute = Ember.Route.extend({\n  actions: {\n    error: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(error, transition)</span> </span>{\n      <span class=\"hljs-keyword\">this</span>.controllerFor(<span class=\"hljs-string\">'banner'</span>).displayError(error.message);\n    }\n  }\n});</pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "event",
+    "name": "error",
+    "params": [
+      {
+        "name": "error",
+        "description": "",
+        "type": "Error"
+      },
+      {
+        "name": "transition",
+        "description": "",
+        "type": "Transition"
+      }
+    ],
+    "class": "Ember.Route",
+    "module": "ember",
+    "submodule": "ember-routing",
+    "namespace": "Ember"
+  }
+]

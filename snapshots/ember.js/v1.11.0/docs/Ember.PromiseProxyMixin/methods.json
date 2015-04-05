@@ -1,0 +1,67 @@
+[
+  {
+    "file": "packages/ember-runtime/lib/mixins/promise_proxy.js",
+    "line": 167,
+    "description": "<p>An alias to the proxied promise&#39;s <code>then</code>.</p>\n<p>See RSVP.Promise.then.</p>\n",
+    "itemtype": "method",
+    "name": "then",
+    "params": [
+      {
+        "name": "callback",
+        "description": "",
+        "type": "Function"
+      }
+    ],
+    "return": {
+      "description": "",
+      "type": "RSVP.Promise"
+    },
+    "class": "Ember.PromiseProxyMixin",
+    "module": "ember",
+    "submodule": "ember-runtime"
+  },
+  {
+    "file": "packages/ember-runtime/lib/mixins/promise_proxy.js",
+    "line": 178,
+    "description": "<p>An alias to the proxied promise&#39;s <code>catch</code>.</p>\n<p>See RSVP.Promise.catch.</p>\n",
+    "itemtype": "method",
+    "name": "catch",
+    "params": [
+      {
+        "name": "callback",
+        "description": "",
+        "type": "Function"
+      }
+    ],
+    "return": {
+      "description": "",
+      "type": "RSVP.Promise"
+    },
+    "since": "1.3.0",
+    "class": "Ember.PromiseProxyMixin",
+    "module": "ember",
+    "submodule": "ember-runtime"
+  },
+  {
+    "file": "packages/ember-runtime/lib/mixins/promise_proxy.js",
+    "line": 190,
+    "description": "<p>An alias to the proxied promise&#39;s <code>finally</code>.</p>\n<p>See RSVP.Promise.finally.</p>\n",
+    "itemtype": "method",
+    "name": "finally",
+    "params": [
+      {
+        "name": "callback",
+        "description": "",
+        "type": "Function"
+      }
+    ],
+    "return": {
+      "description": "",
+      "type": "RSVP.Promise"
+    },
+    "since": "1.3.0",
+    "class": "Ember.PromiseProxyMixin",
+    "module": "ember",
+    "submodule": "ember-runtime"
+  }
+]

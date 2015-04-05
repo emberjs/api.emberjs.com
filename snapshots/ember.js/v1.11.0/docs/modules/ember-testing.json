@@ -1,0 +1,24 @@
+{
+  "name": "ember-testing",
+  "classes": [
+    {
+      "name": "Ember.Test"
+    },
+    {
+      "name": "Ember.Test.Adapter"
+    }
+  ],
+  "submodules": [
+    {
+      "name": "Ember.Test"
+    },
+    {
+      "name": "Ember.Test.Adapter"
+    }
+  ],
+  "requires": [
+    {
+      "name": "ember-application"
+    }
+  ]
+}

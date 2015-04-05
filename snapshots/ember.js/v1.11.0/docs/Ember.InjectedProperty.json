@@ -1,0 +1,11 @@
+{
+  "name": "Ember.InjectedProperty",
+  "description": "<p>Read-only property that returns the result of a container lookup.</p>\n",
+  "line": 7,
+  "file": "packages/ember-metal/lib/injected_property.js",
+  "methods": [],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

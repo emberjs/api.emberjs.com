@@ -1,0 +1,38 @@
+{
+  "name": "ember-htmlbars",
+  "classes": [
+    {
+      "name": "Ember.HTMLBars"
+    },
+    {
+      "name": "Ember.HTMLBars.Helper"
+    },
+    {
+      "name": "Ember.Handlebars"
+    },
+    {
+      "name": "Ember.Handlebars.helpers"
+    },
+    {
+      "name": "HandlebarsCompatibleHelper"
+    }
+  ],
+  "submodules": [
+    {
+      "name": "Ember.HTMLBars"
+    },
+    {
+      "name": "Ember.HTMLBars.Helper"
+    },
+    {
+      "name": "Ember.Handlebars"
+    },
+    {
+      "name": "Ember.Handlebars.helpers"
+    },
+    {
+      "name": "HandlebarsCompatibleHelper"
+    }
+  ],
+  "requires": []
+}

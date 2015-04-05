@@ -1,0 +1,20 @@
+{
+  "name": "Ember.SubArray",
+  "description": "<p>An <code>Ember.SubArray</code> tracks an array in a way similar to, but more specialized\nthan, <code>Ember.TrackedArray</code>.  It is useful for keeping track of the indexes of\nitems within a filtered array.</p>\n",
+  "line": 14,
+  "file": "packages/ember-runtime/lib/system/subarray.js",
+  "methods": [
+    {
+      "name": "addItem",
+      "isPrivate": false
+    },
+    {
+      "name": "removeItem",
+      "isPrivate": false
+    }
+  ],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

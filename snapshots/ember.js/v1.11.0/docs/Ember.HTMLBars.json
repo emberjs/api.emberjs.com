@@ -1,0 +1,31 @@
+{
+  "name": "Ember.HTMLBars",
+  "description": "",
+  "methods": [
+    {
+      "name": "resolveHelper",
+      "isPrivate": true
+    },
+    {
+      "name": "makeViewHelper",
+      "isPrivate": true
+    },
+    {
+      "name": "makeBoundHelper",
+      "isPrivate": true
+    },
+    {
+      "name": "_registerHelper",
+      "isPrivate": true
+    }
+  ],
+  "properties": [
+    {
+      "name": "helpers",
+      "isPrivate": true
+    }
+  ],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

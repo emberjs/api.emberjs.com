@@ -1,0 +1,28 @@
+{
+  "name": "Ember.Instrumentation",
+  "description": "<p>The purpose of the Ember Instrumentation module is\nto provide efficient, general-purpose instrumentation\nfor Ember.</p>\n<p>Subscribe to a listener by using <code>Ember.subscribe</code>:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">Ember.subscribe(<span class=\"hljs-string\">\"render\"</span>, {\n  before: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(name, timestamp, payload)</span> </span>{\n\n  },\n\n  after: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(name, timestamp, payload)</span> </span>{\n\n  }\n});</pre></td>      </tr>    </table>  </div></div><p>If you return a value from the <code>before</code> callback, that same\nvalue will be passed as a fourth parameter to the <code>after</code>\ncallback.</p>\n<p>Instrument a block of code by using <code>Ember.instrument</code>:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">Ember.instrument(<span class=\"hljs-string\">\"render.handlebars\"</span>, payload, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n  <span class=\"hljs-comment\">// rendering logic</span>\n}, binding);</pre></td>      </tr>    </table>  </div></div><p>Event names passed to <code>Ember.instrument</code> are namespaced\nby periods, from more general to more specific. Subscribers\ncan listen for events by whatever level of granularity they\nare interested in.</p>\n<p>In the above example, the event is <code>render.handlebars</code>,\nand the subscriber listened for all events beginning with\n<code>render</code>. It would receive callbacks for events named\n<code>render</code>, <code>render.handlebars</code>, <code>render.container</code>, or\neven <code>render.handlebars.layout</code>.</p>\n",
+  "line": 4,
+  "file": "packages/ember-metal/lib/instrumentation.js",
+  "methods": [
+    {
+      "name": "instrument",
+      "isPrivate": false
+    },
+    {
+      "name": "subscribe",
+      "isPrivate": false
+    },
+    {
+      "name": "unsubscribe",
+      "isPrivate": false
+    },
+    {
+      "name": "reset",
+      "isPrivate": false
+    }
+  ],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Namespace"
+}

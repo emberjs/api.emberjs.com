@@ -1,0 +1,15 @@
+[
+  {
+    "file": "packages/ember-htmlbars/lib/helpers.js",
+    "line": 8,
+    "access": "private",
+    "tagname": "",
+    "itemtype": "property",
+    "name": "helpers",
+    "class": "Ember.HTMLBars",
+    "module": "ember",
+    "submodule": "ember-htmlbars",
+    "description": "",
+    "isPrivate": true
+  }
+]

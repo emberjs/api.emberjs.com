@@ -1,0 +1,66 @@
+[
+  {
+    "file": "packages/ember-routing/lib/location/api.js",
+    "line": 122,
+    "description": "<p>This is deprecated in favor of using the container to lookup the location\nimplementation as desired.</p>\n<p>For example:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"><span class=\"hljs-comment\">// Given a location registered as follows:</span>\ncontainer.register(<span class=\"hljs-string\">'location:history-test'</span>, HistoryTestLocation);\n\n<span class=\"hljs-comment\">// You could create a new instance via:</span>\ncontainer.lookup(<span class=\"hljs-string\">'location:history-test'</span>);</pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "method",
+    "name": "create",
+    "params": [
+      {
+        "name": "options",
+        "description": "",
+        "type": "Object"
+      }
+    ],
+    "return": {
+      "description": "an instance of an implementation of the `location` API",
+      "type": "Object"
+    },
+    "deprecated": true,
+    "deprecationMessage": "Use the container to lookup the location implementation that you\n need.",
+    "class": "Ember.Location",
+    "module": "ember",
+    "submodule": "ember-routing",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-routing/lib/location/api.js",
+    "line": 152,
+    "description": "<p>This is deprecated in favor of using the container to register the\nlocation implementation as desired.</p>\n<p>Example:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">Application.initializer({\n name: <span class=\"hljs-string\">\"history-test-location\"</span>,\n\n initialize: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(container, application)</span> </span>{\n   application.register(<span class=\"hljs-string\">'location:history-test'</span>, HistoryTestLocation);\n }\n});</pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "method",
+    "name": "registerImplementation",
+    "params": [
+      {
+        "name": "name",
+        "description": "",
+        "type": "String"
+      },
+      {
+        "name": "implementation",
+        "description": "of the `location` API",
+        "type": "Object"
+      }
+    ],
+    "deprecated": true,
+    "deprecationMessage": "Register your custom location implementation with the\ncontainer directly.",
+    "class": "Ember.Location",
+    "module": "ember",
+    "submodule": "ember-routing",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-routing/lib/location/api.js",
+    "line": 184,
+    "description": "<p>Returns the current <code>location.hash</code> by parsing location.href since browsers\ninconsistently URL-decode <code>location.hash</code>.</p>\n<p><a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=483304\">https://bugzilla.mozilla.org/show_bug.cgi?id=483304</a></p>\n",
+    "access": "private",
+    "tagname": "",
+    "itemtype": "method",
+    "name": "getHash",
+    "since": "1.4.0",
+    "class": "Ember.Location",
+    "module": "ember",
+    "submodule": "ember-routing",
+    "namespace": "Ember",
+    "isPrivate": true
+  }
+]

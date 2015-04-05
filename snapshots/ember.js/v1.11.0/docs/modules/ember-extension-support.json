@@ -1,0 +1,24 @@
+{
+  "name": "ember-extension-support",
+  "classes": [
+    {
+      "name": "Ember.ContainerDebugAdapter"
+    },
+    {
+      "name": "Ember.DataAdapter"
+    }
+  ],
+  "submodules": [
+    {
+      "name": "Ember.ContainerDebugAdapter"
+    },
+    {
+      "name": "Ember.DataAdapter"
+    }
+  ],
+  "requires": [
+    {
+      "name": "ember-application"
+    }
+  ]
+}

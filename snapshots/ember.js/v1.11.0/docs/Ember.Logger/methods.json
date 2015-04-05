@@ -1,0 +1,104 @@
+[
+  {
+    "file": "packages/ember-metal/lib/logger.js",
+    "line": 58,
+    "description": "<p>Logs the arguments to the console.\nYou can pass as many arguments as you want and they will be joined together with a space.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"> <span class=\"hljs-keyword\">var</span> foo = <span class=\"hljs-number\">1</span>;\n Ember.Logger.log(<span class=\"hljs-string\">'log value of foo:'</span>, foo);\n <span class=\"hljs-comment\">// \"log value of foo: 1\" will be printed to the console</span></pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "method",
+    "name": "log",
+    "params": [
+      {
+        "name": "arguments",
+        "description": "",
+        "type": "*"
+      }
+    ],
+    "class": "Ember.Logger",
+    "module": "ember-metal",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-metal/lib/logger.js",
+    "line": 74,
+    "description": "<p>Prints the arguments to the console with a warning icon.\nYou can pass as many arguments as you want and they will be joined together with a space.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"> Ember.Logger.warn(<span class=\"hljs-string\">'Something happened!'</span>);\n <span class=\"hljs-comment\">// \"Something happened!\" will be printed to the console with a warning icon.</span></pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "method",
+    "name": "warn",
+    "params": [
+      {
+        "name": "arguments",
+        "description": "",
+        "type": "*"
+      }
+    ],
+    "class": "Ember.Logger",
+    "module": "ember-metal",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-metal/lib/logger.js",
+    "line": 89,
+    "description": "<p>Prints the arguments to the console with an error icon, red text and a stack trace.\nYou can pass as many arguments as you want and they will be joined together with a space.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"> Ember.Logger.error(<span class=\"hljs-string\">'Danger! Danger!'</span>);\n <span class=\"hljs-comment\">// \"Danger! Danger!\" will be printed to the console in red text.</span></pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "method",
+    "name": "error",
+    "params": [
+      {
+        "name": "arguments",
+        "description": "",
+        "type": "*"
+      }
+    ],
+    "class": "Ember.Logger",
+    "module": "ember-metal",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-metal/lib/logger.js",
+    "line": 104,
+    "description": "<p>Logs the arguments to the console.\nYou can pass as many arguments as you want and they will be joined together with a space.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"> <span class=\"hljs-keyword\">var</span> foo = <span class=\"hljs-number\">1</span>;\n Ember.Logger.info(<span class=\"hljs-string\">'log value of foo:'</span>, foo);\n <span class=\"hljs-comment\">// \"log value of foo: 1\" will be printed to the console</span></pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "method",
+    "name": "info",
+    "params": [
+      {
+        "name": "arguments",
+        "description": "",
+        "type": "*"
+      }
+    ],
+    "class": "Ember.Logger",
+    "module": "ember-metal",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-metal/lib/logger.js",
+    "line": 120,
+    "description": "<p>Logs the arguments to the console in blue text.\nYou can pass as many arguments as you want and they will be joined together with a space.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"> <span class=\"hljs-keyword\">var</span> foo = <span class=\"hljs-number\">1</span>;\n Ember.Logger.debug(<span class=\"hljs-string\">'log value of foo:'</span>, foo);\n <span class=\"hljs-comment\">// \"log value of foo: 1\" will be printed to the console</span></pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "method",
+    "name": "debug",
+    "params": [
+      {
+        "name": "arguments",
+        "description": "",
+        "type": "*"
+      }
+    ],
+    "class": "Ember.Logger",
+    "module": "ember-metal",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-metal/lib/logger.js",
+    "line": 136,
+    "description": "<p>If the value passed into <code>Ember.Logger.assert</code> is not truthy it will throw an error with a stack trace.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"> Ember.Logger.assert(<span class=\"hljs-literal\">true</span>); <span class=\"hljs-comment\">// undefined</span>\n Ember.Logger.assert(<span class=\"hljs-literal\">true</span> === <span class=\"hljs-literal\">false</span>); <span class=\"hljs-comment\">// Throws an Assertion failed error.</span></pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "method",
+    "name": "assert",
+    "params": [
+      {
+        "name": "bool",
+        "description": "Value to test",
+        "type": "Boolean"
+      }
+    ],
+    "class": "Ember.Logger",
+    "module": "ember-metal",
+    "namespace": "Ember"
+  }
+]

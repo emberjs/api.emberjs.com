@@ -1,0 +1,93 @@
+[
+  {
+    "file": "bower_components/rsvp/lib/rsvp/events.js",
+    "line": 24,
+    "description": "<p><code>RSVP.EventTarget.mixin</code> extends an object with EventTarget methods. For\nExample:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"><span class=\"hljs-keyword\">var</span> object = {};\n\nRSVP.EventTarget.mixin(object);\n\nobject.on(<span class=\"hljs-string\">'finished'</span>, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(event)</span> </span>{\n  <span class=\"hljs-comment\">// handle event</span>\n});\n\nobject.trigger(<span class=\"hljs-string\">'finished'</span>, { detail: value });</pre></td>      </tr>    </table>  </div></div><p><code>EventTarget.mixin</code> also works with prototypes:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"><span class=\"hljs-keyword\">var</span> Person = <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{};\nRSVP.EventTarget.mixin(Person.prototype);\n\n<span class=\"hljs-keyword\">var</span> yehuda = <span class=\"hljs-keyword\">new</span> Person();\n<span class=\"hljs-keyword\">var</span> tom = <span class=\"hljs-keyword\">new</span> Person();\n\nyehuda.on(<span class=\"hljs-string\">'poke'</span>, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(event)</span> </span>{\n  <span class=\"hljs-built_in\">console</span>.log(<span class=\"hljs-string\">'Yehuda says OW'</span>);\n});\n\ntom.on(<span class=\"hljs-string\">'poke'</span>, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(event)</span> </span>{\n  <span class=\"hljs-built_in\">console</span>.log(<span class=\"hljs-string\">'Tom says OW'</span>);\n});\n\nyehuda.trigger(<span class=\"hljs-string\">'poke'</span>);\ntom.trigger(<span class=\"hljs-string\">'poke'</span>);</pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "method",
+    "name": "mixin",
+    "access": "private",
+    "tagname": "",
+    "params": [
+      {
+        "name": "object",
+        "description": "object to extend with EventTarget methods",
+        "type": "Object"
+      }
+    ],
+    "class": "RSVP.EventTarget",
+    "module": "ember",
+    "isPrivate": true
+  },
+  {
+    "file": "bower_components/rsvp/lib/rsvp/events.js",
+    "line": 74,
+    "description": "<p>Registers a callback to be executed when <code>eventName</code> is triggered</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">object.on(<span class=\"hljs-string\">'event'</span>, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(eventInfo)</span></span>{\n  <span class=\"hljs-comment\">// handle the event</span>\n});\n\nobject.trigger(<span class=\"hljs-string\">'event'</span>);</pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "method",
+    "name": "on",
+    "access": "private",
+    "tagname": "",
+    "params": [
+      {
+        "name": "eventName",
+        "description": "name of the event to listen for",
+        "type": "String"
+      },
+      {
+        "name": "callback",
+        "description": "function to be called when the event is triggered.",
+        "type": "Function"
+      }
+    ],
+    "class": "RSVP.EventTarget",
+    "module": "ember",
+    "isPrivate": true
+  },
+  {
+    "file": "bower_components/rsvp/lib/rsvp/events.js",
+    "line": 105,
+    "description": "<p>You can use <code>off</code> to stop firing a particular callback for an event:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"><span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">doStuff</span><span class=\"hljs-params\">()</span> </span>{ <span class=\"hljs-comment\">// do stuff! }</span>\nobject.on(<span class=\"hljs-string\">'stuff'</span>, doStuff);\n\nobject.trigger(<span class=\"hljs-string\">'stuff'</span>); <span class=\"hljs-comment\">// doStuff will be called</span>\n\n<span class=\"hljs-comment\">// Unregister ONLY the doStuff callback</span>\nobject.off(<span class=\"hljs-string\">'stuff'</span>, doStuff);\nobject.trigger(<span class=\"hljs-string\">'stuff'</span>); <span class=\"hljs-comment\">// doStuff will NOT be called</span></pre></td>      </tr>    </table>  </div></div><p>If you don&#39;t pass a <code>callback</code> argument to <code>off</code>, ALL callbacks for the\nevent will not be executed when the event fires. For example:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"><span class=\"hljs-keyword\">var</span> callback1 = <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span></span>{};\n<span class=\"hljs-keyword\">var</span> callback2 = <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span></span>{};\n\nobject.on(<span class=\"hljs-string\">'stuff'</span>, callback1);\nobject.on(<span class=\"hljs-string\">'stuff'</span>, callback2);\n\nobject.trigger(<span class=\"hljs-string\">'stuff'</span>); <span class=\"hljs-comment\">// callback1 and callback2 will be executed.</span>\n\nobject.off(<span class=\"hljs-string\">'stuff'</span>);\nobject.trigger(<span class=\"hljs-string\">'stuff'</span>); <span class=\"hljs-comment\">// callback1 and callback2 will not be executed!</span></pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "method",
+    "name": "off",
+    "access": "private",
+    "tagname": "",
+    "params": [
+      {
+        "name": "eventName",
+        "description": "event to stop listening to",
+        "type": "String"
+      },
+      {
+        "name": "callback",
+        "description": "optional argument. If given, only the function\ngiven will be removed from the event's callback queue. If no `callback`\nargument is given, all callbacks will be removed from the event's callback\nqueue.",
+        "type": "Function"
+      }
+    ],
+    "class": "RSVP.EventTarget",
+    "module": "ember",
+    "isPrivate": true
+  },
+  {
+    "file": "bower_components/rsvp/lib/rsvp/events.js",
+    "line": 159,
+    "description": "<p>Use <code>trigger</code> to fire custom events. For example:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">object.on(<span class=\"hljs-string\">'foo'</span>, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span></span>{\n  <span class=\"hljs-built_in\">console</span>.log(<span class=\"hljs-string\">'foo event happened!'</span>);\n});\nobject.trigger(<span class=\"hljs-string\">'foo'</span>);\n<span class=\"hljs-comment\">// 'foo event happened!' logged to the console</span></pre></td>      </tr>    </table>  </div></div><p>You can also pass a value as a second argument to <code>trigger</code> that will be\npassed as an argument to all event listeners for the event:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">object.on(<span class=\"hljs-string\">'foo'</span>, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(value)</span></span>{\n  <span class=\"hljs-built_in\">console</span>.log(value.name);\n});\n\nobject.trigger(<span class=\"hljs-string\">'foo'</span>, { name: <span class=\"hljs-string\">'bar'</span> });\n<span class=\"hljs-comment\">// 'bar' logged to the console</span></pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "method",
+    "name": "trigger",
+    "access": "private",
+    "tagname": "",
+    "params": [
+      {
+        "name": "eventName",
+        "description": "name of the event to be triggered",
+        "type": "String"
+      },
+      {
+        "name": "options",
+        "description": "optional value to be passed to any event handlers for\nthe given `eventName`",
+        "type": "Any"
+      }
+    ],
+    "class": "RSVP.EventTarget",
+    "module": "ember",
+    "isPrivate": true
+  }
+]

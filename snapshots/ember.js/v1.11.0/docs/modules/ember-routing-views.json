@@ -1,0 +1,18 @@
+{
+  "name": "ember-routing-views",
+  "classes": [
+    {
+      "name": "Ember.LinkView"
+    }
+  ],
+  "submodules": [
+    {
+      "name": "Ember.LinkView"
+    }
+  ],
+  "requires": [
+    {
+      "name": "ember-routing"
+    }
+  ]
+}

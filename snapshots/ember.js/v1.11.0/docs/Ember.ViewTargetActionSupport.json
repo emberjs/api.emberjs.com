@@ -1,0 +1,70 @@
+{
+  "name": "Ember.ViewTargetActionSupport",
+  "description": "<p><code>Ember.ViewTargetActionSupport</code> is a mixin that can be included in a\nview class to add a <code>triggerAction</code> method with semantics similar to\nthe Handlebars <code>{{action}}</code> helper. It provides intelligent defaults\nfor the action&#39;s target: the view&#39;s controller; and the context that is\nsent with the action: the view&#39;s context.</p>\n<p>Note: In normal Ember usage, the <code>{{action}}</code> helper is usually the best\nchoice. This mixin is most often useful when you are doing more complex\nevent handling in custom View subclasses.</p>\n<p>For example:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.SaveButtonView = Ember.View.extend(Ember.ViewTargetActionSupport, {\n  action: <span class=\"hljs-string\">'save'</span>,\n  click: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n    <span class=\"hljs-keyword\">this</span>.triggerAction(); <span class=\"hljs-comment\">// Sends the `save` action, along with the current context</span>\n                          <span class=\"hljs-comment\">// to the current controller</span>\n  }\n});</pre></td>      </tr>    </table>  </div></div><p>The <code>action</code> can be provided as properties of an optional object argument\nto <code>triggerAction</code> as well.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.SaveButtonView = Ember.View.extend(Ember.ViewTargetActionSupport, {\n  click: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n    <span class=\"hljs-keyword\">this</span>.triggerAction({\n      action: <span class=\"hljs-string\">'save'</span>\n    }); <span class=\"hljs-comment\">// Sends the `save` action, along with the current context</span>\n        <span class=\"hljs-comment\">// to the current controller</span>\n  }\n});</pre></td>      </tr>    </table>  </div></div>",
+  "line": 5,
+  "file": "packages/ember-views/lib/mixins/view_target_action_support.js",
+  "methods": [
+    {
+      "name": "create",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Mixin"
+    },
+    {
+      "name": "reopen",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Mixin"
+    },
+    {
+      "name": "apply",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Mixin"
+    },
+    {
+      "name": "detect",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Mixin"
+    },
+    {
+      "name": "triggerAction",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.TargetActionSupport"
+    },
+    {
+      "name": "removeChild",
+      "isPrivate": false
+    },
+    {
+      "name": "createChildView",
+      "isPrivate": false
+    }
+  ],
+  "properties": [
+    {
+      "name": "childViews",
+      "isPrivate": true
+    },
+    {
+      "name": "context",
+      "isPrivate": false
+    },
+    {
+      "name": "_context",
+      "isPrivate": true
+    },
+    {
+      "name": "controller",
+      "isPrivate": false
+    },
+    {
+      "name": "target",
+      "isPrivate": false
+    },
+    {
+      "name": "actionContext",
+      "isPrivate": false
+    }
+  ],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

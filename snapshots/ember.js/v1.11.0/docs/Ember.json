@@ -1,0 +1,386 @@
+{
+  "name": "Ember",
+  "description": "<p>All Ember methods and functions are defined inside of this namespace. You\ngenerally should not add new properties to this namespace as it may be\noverwritten by future versions of Ember.</p>\n<p>You can also use the shorthand <code>Em</code> instead of <code>Ember</code>.</p>\n<p>Ember-Runtime is a framework that provides core functions for Ember including\ncross-platform functions, support for property observing and objects. Its\nfocus is on small size and performance. You can use this in place of or\nalong-side other cross-platform libraries such as jQuery.</p>\n<p>The core Runtime framework is based on the jQuery API with a number of\nperformance optimizations.</p>\n",
+  "line": 8,
+  "file": "packages/ember-metal/lib/core.js",
+  "methods": [
+    {
+      "name": "assert",
+      "isPrivate": false
+    },
+    {
+      "name": "warn",
+      "isPrivate": false
+    },
+    {
+      "name": "debug",
+      "isPrivate": false
+    },
+    {
+      "name": "deprecate",
+      "isPrivate": false
+    },
+    {
+      "name": "deprecateFunc",
+      "isPrivate": false
+    },
+    {
+      "name": "runInDebug",
+      "isPrivate": false
+    },
+    {
+      "name": "_warnIfUsingStrippedFeatureFlags",
+      "isPrivate": true
+    },
+    {
+      "name": "create",
+      "isPrivate": false
+    },
+    {
+      "name": "isGlobalPath",
+      "isPrivate": true
+    },
+    {
+      "name": "bind",
+      "isPrivate": false
+    },
+    {
+      "name": "oneWay",
+      "isPrivate": false
+    },
+    {
+      "name": "cacheFor",
+      "isPrivate": false
+    },
+    {
+      "name": "K",
+      "isPrivate": true
+    },
+    {
+      "name": "addListener",
+      "isPrivate": false
+    },
+    {
+      "name": "removeListener",
+      "isPrivate": false
+    },
+    {
+      "name": "suspendListener",
+      "isPrivate": true
+    },
+    {
+      "name": "suspendListeners",
+      "isPrivate": true
+    },
+    {
+      "name": "watchedEvents",
+      "isPrivate": true
+    },
+    {
+      "name": "sendEvent",
+      "isPrivate": false
+    },
+    {
+      "name": "hasListeners",
+      "isPrivate": true
+    },
+    {
+      "name": "listenersFor",
+      "isPrivate": true
+    },
+    {
+      "name": "on",
+      "isPrivate": false
+    },
+    {
+      "name": "",
+      "isPrivate": true
+    },
+    {
+      "name": "getProperties",
+      "isPrivate": false
+    },
+    {
+      "name": "isBlank",
+      "isPrivate": false
+    },
+    {
+      "name": "isEmpty",
+      "isPrivate": false
+    },
+    {
+      "name": "isNone",
+      "isPrivate": false
+    },
+    {
+      "name": "isPresent",
+      "isPrivate": false
+    },
+    {
+      "name": "keys",
+      "isPrivate": false
+    },
+    {
+      "name": "merge",
+      "isPrivate": false
+    },
+    {
+      "name": "mixin",
+      "isPrivate": false
+    },
+    {
+      "name": "required",
+      "isPrivate": false
+    },
+    {
+      "name": "aliasMethod",
+      "isPrivate": false
+    },
+    {
+      "name": "observer",
+      "isPrivate": false
+    },
+    {
+      "name": "immediateObserver",
+      "isPrivate": false
+    },
+    {
+      "name": "beforeObserver",
+      "isPrivate": false
+    },
+    {
+      "name": "addObserver",
+      "isPrivate": false
+    },
+    {
+      "name": "removeObserver",
+      "isPrivate": false
+    },
+    {
+      "name": "addBeforeObserver",
+      "isPrivate": false
+    },
+    {
+      "name": "removeBeforeObserver",
+      "isPrivate": false
+    },
+    {
+      "name": "defineProperty",
+      "isPrivate": true
+    },
+    {
+      "name": "propertyWillChange",
+      "isPrivate": false
+    },
+    {
+      "name": "propertyDidChange",
+      "isPrivate": false
+    },
+    {
+      "name": "beginPropertyChanges",
+      "isPrivate": true
+    },
+    {
+      "name": "endPropertyChanges",
+      "isPrivate": true
+    },
+    {
+      "name": "changeProperties",
+      "isPrivate": false
+    },
+    {
+      "name": "get",
+      "isPrivate": false
+    },
+    {
+      "name": "normalizeTuple",
+      "isPrivate": true
+    },
+    {
+      "name": "set",
+      "isPrivate": false
+    },
+    {
+      "name": "trySet",
+      "isPrivate": false
+    },
+    {
+      "name": "setProperties",
+      "isPrivate": false
+    },
+    {
+      "name": "generateGuid",
+      "isPrivate": true
+    },
+    {
+      "name": "guidFor",
+      "isPrivate": true
+    },
+    {
+      "name": "meta",
+      "isPrivate": true
+    },
+    {
+      "name": "metaPath",
+      "isPrivate": true
+    },
+    {
+      "name": "wrap",
+      "isPrivate": true
+    },
+    {
+      "name": "isArray",
+      "isPrivate": false
+    },
+    {
+      "name": "makeArray",
+      "isPrivate": false
+    },
+    {
+      "name": "canInvoke",
+      "isPrivate": false
+    },
+    {
+      "name": "tryInvoke",
+      "isPrivate": false
+    },
+    {
+      "name": "tryFinally",
+      "isPrivate": false
+    },
+    {
+      "name": "tryCatchFinally",
+      "isPrivate": false
+    },
+    {
+      "name": "typeOf",
+      "isPrivate": false
+    },
+    {
+      "name": "inspect",
+      "isPrivate": false
+    },
+    {
+      "name": "watch",
+      "isPrivate": true
+    },
+    {
+      "name": "destroy",
+      "isPrivate": false
+    },
+    {
+      "name": "arrayComputed",
+      "isPrivate": false
+    },
+    {
+      "name": "reduceComputed",
+      "isPrivate": false
+    },
+    {
+      "name": "onLoad",
+      "isPrivate": false
+    },
+    {
+      "name": "runLoadHooks",
+      "isPrivate": false
+    },
+    {
+      "name": "A",
+      "isPrivate": false
+    },
+    {
+      "name": "compare",
+      "isPrivate": false
+    },
+    {
+      "name": "copy",
+      "isPrivate": false
+    },
+    {
+      "name": "isEqual",
+      "isPrivate": false
+    },
+    {
+      "name": "createInjectionHelper",
+      "isPrivate": true
+    },
+    {
+      "name": "validatePropertyInjections",
+      "isPrivate": true
+    },
+    {
+      "name": "$",
+      "isPrivate": false
+    },
+    {
+      "name": "controllerFor",
+      "isPrivate": true
+    },
+    {
+      "name": "generateControllerFactory",
+      "isPrivate": true
+    },
+    {
+      "name": "generateController",
+      "isPrivate": true
+    }
+  ],
+  "properties": [
+    {
+      "name": "ArrayPolyfills",
+      "isPrivate": false
+    },
+    {
+      "name": "LOG_BINDINGS",
+      "isPrivate": false
+    },
+    {
+      "name": "VERSION",
+      "isPrivate": false
+    },
+    {
+      "name": "ENV",
+      "isPrivate": false
+    },
+    {
+      "name": "EXTEND_PROTOTYPES",
+      "isPrivate": false
+    },
+    {
+      "name": "LOG_STACKTRACE_ON_DEPRECATION",
+      "isPrivate": false
+    },
+    {
+      "name": "SHIM_ES5",
+      "isPrivate": false
+    },
+    {
+      "name": "LOG_VERSION",
+      "isPrivate": false
+    },
+    {
+      "name": "GUID_PREFIX",
+      "isPrivate": true
+    },
+    {
+      "name": "GUID_KEY",
+      "isPrivate": true
+    },
+    {
+      "name": "STRINGS",
+      "isPrivate": false
+    },
+    {
+      "name": "TEMPLATES",
+      "isPrivate": false
+    }
+  ],
+  "events": [
+    {
+      "name": "onerror",
+      "isPrivate": false
+    }
+  ],
+  "isPrivate": false,
+  "constType": "Namespace"
+}

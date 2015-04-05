@@ -1,0 +1,14 @@
+[
+  {
+    "file": "packages/ember-metal/lib/run_loop.js",
+    "line": 209,
+    "description": "<p>Array of named queues. This array determines the order in which queues\nare flushed at the end of the RunLoop. You can define your own queues by\nsimply adding the queue name to this array. Normally you should not need\nto inspect or modify this property.</p>\n",
+    "itemtype": "property",
+    "name": "queues",
+    "type": "Array",
+    "default": "['sync', 'actions', 'destroy']",
+    "class": "Ember.run",
+    "module": "ember-metal",
+    "namespace": "Ember"
+  }
+]

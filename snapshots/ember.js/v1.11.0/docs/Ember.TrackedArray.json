@@ -1,0 +1,36 @@
+{
+  "name": "Ember.TrackedArray",
+  "description": "<p>An <code>Ember.TrackedArray</code> tracks array operations.  It&#39;s useful when you want to\nlazily compute the indexes of items in an array after they&#39;ve been shifted by\nsubsequent operations.</p>\n",
+  "line": 10,
+  "file": "packages/ember-runtime/lib/system/tracked_array.js",
+  "methods": [
+    {
+      "name": "addItems",
+      "isPrivate": false
+    },
+    {
+      "name": "removeItems",
+      "isPrivate": false
+    },
+    {
+      "name": "apply",
+      "isPrivate": false
+    },
+    {
+      "name": "_findArrayOperation",
+      "isPrivate": true
+    },
+    {
+      "name": "ArrayOperation",
+      "isPrivate": true
+    },
+    {
+      "name": "ArrayOperationMatch",
+      "isPrivate": true
+    }
+  ],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

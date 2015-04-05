@@ -1,0 +1,27 @@
+{
+  "name": "Ember.Test.QUnitAdapter",
+  "description": "<p>This class implements the methods defined by Ember.Test.Adapter for the\nQUnit testing framework.</p>\n",
+  "line": 4,
+  "file": "packages/ember-testing/lib/adapters/qunit.js",
+  "methods": [
+    {
+      "name": "asyncStart",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Test.Adapter"
+    },
+    {
+      "name": "asyncEnd",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Test.Adapter"
+    },
+    {
+      "name": "exception",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Test.Adapter"
+    }
+  ],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

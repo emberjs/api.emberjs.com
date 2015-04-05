@@ -1,0 +1,96 @@
+[
+  {
+    "file": "packages/ember-runtime/lib/mixins/enumerable.js",
+    "line": 131,
+    "description": "<p>Helper method returns the first object from a collection. This is usually\nused by bindings and other parts of the framework to extract a single\nobject if the enumerable contains only one item.</p>\n<p>If you override this method, you should implement it so that it will\nalways return the same value each time it is called. If your enumerable\ncontains only one object, this method should always return that object.\nIf your enumerable is empty, this method should return <code>undefined</code>.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"><span class=\"hljs-keyword\">var</span> arr = [<span class=\"hljs-string\">'a'</span>, <span class=\"hljs-string\">'b'</span>, <span class=\"hljs-string\">'c'</span>];\narr.get(<span class=\"hljs-string\">'firstObject'</span>);  <span class=\"hljs-comment\">// 'a'</span>\n\n<span class=\"hljs-keyword\">var</span> arr = [];\narr.get(<span class=\"hljs-string\">'firstObject'</span>);  <span class=\"hljs-comment\">// undefined</span></pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "property",
+    "name": "firstObject",
+    "return": {
+      "description": "the object or undefined",
+      "type": "Object"
+    },
+    "class": "Ember.Enumerable",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember",
+    "inheritedFrom": "Ember.Enumerable"
+  },
+  {
+    "file": "packages/ember-runtime/lib/mixins/enumerable.js",
+    "line": 166,
+    "description": "<p>Helper method returns the last object from a collection. If your enumerable\ncontains only one object, this method should always return that object.\nIf your enumerable is empty, this method should return <code>undefined</code>.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"><span class=\"hljs-keyword\">var</span> arr = [<span class=\"hljs-string\">'a'</span>, <span class=\"hljs-string\">'b'</span>, <span class=\"hljs-string\">'c'</span>];\narr.get(<span class=\"hljs-string\">'lastObject'</span>);  <span class=\"hljs-comment\">// 'c'</span>\n\n<span class=\"hljs-keyword\">var</span> arr = [];\narr.get(<span class=\"hljs-string\">'lastObject'</span>);  <span class=\"hljs-comment\">// undefined</span></pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "property",
+    "name": "lastObject",
+    "return": {
+      "description": "the last object or undefined",
+      "type": "Object"
+    },
+    "class": "Ember.Enumerable",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember",
+    "inheritedFrom": "Ember.Enumerable"
+  },
+  {
+    "file": "packages/ember-runtime/lib/mixins/array.js",
+    "line": 161,
+    "description": "<p>This is the handler for the special array content property. If you get\nthis property, it will return this. If you set this property to a new\narray, it will replace the current content.</p>\n<p>This property overrides the default property defined in <code>Ember.Enumerable</code>.</p>\n",
+    "itemtype": "property",
+    "name": "[]",
+    "return": {
+      "description": "this"
+    },
+    "class": "Ember.Array",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-runtime/lib/mixins/enumerable.js",
+    "line": 1029,
+    "description": "<p>Becomes true whenever the array currently has observers watching changes\non the array.</p>\n",
+    "itemtype": "property",
+    "name": "hasEnumerableObservers",
+    "type": "Boolean",
+    "class": "Ember.Enumerable",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember",
+    "inheritedFrom": "Ember.Enumerable"
+  },
+  {
+    "file": "packages/ember-runtime/lib/mixins/array.js",
+    "line": 95,
+    "description": "<p>Your array must support the <code>length</code> property. Your replace methods should\nset this property whenever it changes.</p>\n",
+    "itemtype": "property",
+    "name": "length",
+    "type": "Number",
+    "class": "Ember.Array",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-runtime/lib/mixins/array.js",
+    "line": 372,
+    "description": "<p>Becomes true whenever the array currently has observers watching changes\non the array.</p>\n",
+    "itemtype": "property",
+    "name": "hasArrayObservers",
+    "type": "Boolean",
+    "class": "Ember.Array",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-runtime/lib/mixins/array.js",
+    "line": 502,
+    "description": "<p>Returns a special object that can be used to observe individual properties\non the array. Just get an equivalent property on this object and it will\nreturn an enumerable that maps automatically to the named key on the\nmember objects.</p>\n<p>If you merely want to watch for any items being added or removed to the array,\nuse the <code>[]</code> property instead of <code>@each</code>.</p>\n",
+    "itemtype": "property",
+    "name": "@each",
+    "class": "Ember.Array",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  }
+]

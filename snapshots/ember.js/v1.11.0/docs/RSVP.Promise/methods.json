@@ -1,0 +1,82 @@
+[
+  {
+    "file": "bower_components/rsvp/lib/rsvp/promise.js",
+    "line": 177,
+    "description": "<p>The primary way of interacting with a promise is through its <code>then</code> method,\nwhich registers callbacks to receive either a promise&#39;s eventual value or the\nreason why the promise cannot be fulfilled.</p>\n<div class=\"highlight js\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"js\">findUser().then(<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(user)</span></span>{\n  <span class=\"hljs-comment\">// user is available</span>\n}, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(reason)</span></span>{\n  <span class=\"hljs-comment\">// user is unavailable, and you are given the reason why</span>\n});</pre></td>      </tr>    </table>  </div></div><h2 id=\"chaining\">Chaining</h2>\n<p>The return value of <code>then</code> is itself a promise.  This second, &#39;downstream&#39;\npromise is resolved with the return value of the first promise&#39;s fulfillment\nor rejection handler, or rejected if the handler throws an exception.</p>\n<div class=\"highlight js\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n</pre>        </td>        <td class=\"code\"><pre class=\"js\">findUser().then(function (user) {\n  return user.name;\n}, function (reason) {\n  return 'default name';\n}).then(function (userName) {\n  // If `findUser` fulfilled, `userName` will be the user's name, otherwise it\n  // will be `'default name'`\n});\n\nfindUser().then(function (user) {\n  throw new Error('Found user, but still unhappy');\n}, function (reason) {\n  throw new Error('`findUser` rejected and we're unhappy');\n}).then(function (value) {\n  // never reached\n}, function (reason) {\n  // if `findUser` fulfilled, `reason` will be 'Found user, but still unhappy'.\n  // If `findUser` rejected, `reason` will be '`findUser` rejected and we're unhappy'.\n});</pre></td>      </tr>    </table>  </div></div><p>If the downstream promise does not specify a rejection handler, rejection reasons will be propagated further downstream.</p>\n<div class=\"highlight js\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n</pre>        </td>        <td class=\"code\"><pre class=\"js\">findUser().then(<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-params\">(user)</span> </span>{\n  <span class=\"hljs-keyword\">throw</span> <span class=\"hljs-keyword\">new</span> PedagogicalException(<span class=\"hljs-string\">'Upstream error'</span>);\n}).then(<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-params\">(value)</span> </span>{\n  <span class=\"hljs-comment\">// never reached</span>\n}).then(<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-params\">(value)</span> </span>{\n  <span class=\"hljs-comment\">// never reached</span>\n}, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-params\">(reason)</span> </span>{\n  <span class=\"hljs-comment\">// The `PedgagocialException` is propagated all the way down to here</span>\n});</pre></td>      </tr>    </table>  </div></div><h2 id=\"assimilation\">Assimilation</h2>\n<p>Sometimes the value you want to propagate to a downstream promise can only be\nretrieved asynchronously. This can be achieved by returning a promise in the\nfulfillment or rejection handler. The downstream promise will then be pending\nuntil the returned promise is settled. This is called <em>assimilation</em>.</p>\n<div class=\"highlight js\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"js\">findUser().then(<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-params\">(user)</span> </span>{\n  <span class=\"hljs-keyword\">return</span> findCommentsByAuthor(user);\n}).then(<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-params\">(comments)</span> </span>{\n  <span class=\"hljs-comment\">// The user's comments are now available</span>\n});</pre></td>      </tr>    </table>  </div></div><p>If the assimliated promise rejects, then the downstream promise will also reject.</p>\n<div class=\"highlight js\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n</pre>        </td>        <td class=\"code\"><pre class=\"js\">findUser().then(<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-params\">(user)</span> </span>{\n  <span class=\"hljs-keyword\">return</span> findCommentsByAuthor(user);\n}).then(<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-params\">(comments)</span> </span>{\n  <span class=\"hljs-comment\">// If `findCommentsByAuthor` fulfills, we'll have the value here</span>\n}, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-params\">(reason)</span> </span>{\n  <span class=\"hljs-comment\">// If `findCommentsByAuthor` rejects, we'll have the reason here</span>\n});</pre></td>      </tr>    </table>  </div></div><h2 id=\"simple-example\">Simple Example</h2>\n<p>Synchronous Example</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"><span class=\"hljs-keyword\">var</span> result;\n\n<span class=\"hljs-keyword\">try</span> {\n  result = findResult();\n  <span class=\"hljs-comment\">// success</span>\n} <span class=\"hljs-keyword\">catch</span>(reason) {\n  <span class=\"hljs-comment\">// failure</span>\n}</pre></td>      </tr>    </table>  </div></div><p>Errback Example</p>\n<div class=\"highlight js\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n</pre>        </td>        <td class=\"code\"><pre class=\"js\">findResult(<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(result, err)</span></span>{\n  <span class=\"hljs-keyword\">if</span> (err) {\n    <span class=\"hljs-comment\">// failure</span>\n  } <span class=\"hljs-keyword\">else</span> {\n    <span class=\"hljs-comment\">// success</span>\n  }\n});</pre></td>      </tr>    </table>  </div></div><p>Promise Example;</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">findResult().then(<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(result)</span></span>{\n  <span class=\"hljs-comment\">// success</span>\n}, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(reason)</span></span>{\n  <span class=\"hljs-comment\">// failure</span>\n});</pre></td>      </tr>    </table>  </div></div><h2 id=\"advanced-example\">Advanced Example</h2>\n<p>Synchronous Example</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"><span class=\"hljs-keyword\">var</span> author, books;\n\n<span class=\"hljs-keyword\">try</span> {\n  author = findAuthor();\n  books  = findBooksByAuthor(author);\n  <span class=\"hljs-comment\">// success</span>\n} <span class=\"hljs-keyword\">catch</span>(reason) {\n  <span class=\"hljs-comment\">// failure</span>\n}</pre></td>      </tr>    </table>  </div></div><p>Errback Example</p>\n<div class=\"highlight js\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n</pre>        </td>        <td class=\"code\"><pre class=\"js\">\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">foundBooks</span><span class=\"hljs-params\">(books)</span> </span>{\n\n}\n\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">failure</span><span class=\"hljs-params\">(reason)</span> </span>{\n\n}\n\nfindAuthor(<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(author, err)</span></span>{\n  <span class=\"hljs-keyword\">if</span> (err) {\n    failure(err);\n    <span class=\"hljs-comment\">// failure</span>\n  } <span class=\"hljs-keyword\">else</span> {\n    <span class=\"hljs-keyword\">try</span> {\n      findBoooksByAuthor(author, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(books, err)</span> </span>{\n        <span class=\"hljs-keyword\">if</span> (err) {\n          failure(err);\n        } <span class=\"hljs-keyword\">else</span> {\n          <span class=\"hljs-keyword\">try</span> {\n            foundBooks(books);\n          } <span class=\"hljs-keyword\">catch</span>(reason) {\n            failure(reason);\n          }\n        }\n      });\n    } <span class=\"hljs-keyword\">catch</span>(error) {\n      failure(err);\n    }\n    <span class=\"hljs-comment\">// success</span>\n  }\n});</pre></td>      </tr>    </table>  </div></div><p>Promise Example;</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">findAuthor().\n  then(findBooksByAuthor).\n  then(<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(books)</span></span>{\n    <span class=\"hljs-comment\">// found books</span>\n}).catch(<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(reason)</span></span>{\n  <span class=\"hljs-comment\">// something went wrong</span>\n});</pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "method",
+    "name": "then",
+    "params": [
+      {
+        "name": "onFulfilled",
+        "description": "",
+        "type": "Function"
+      },
+      {
+        "name": "onRejected",
+        "description": "",
+        "type": "Function"
+      },
+      {
+        "name": "label",
+        "description": "optional string for labeling the promise.\nUseful for tooling.",
+        "type": "String"
+      }
+    ],
+    "return": {
+      "description": "",
+      "type": "Promise"
+    },
+    "class": "RSVP.Promise",
+    "module": "ember"
+  },
+  {
+    "file": "bower_components/rsvp/lib/rsvp/promise.js",
+    "line": 403,
+    "description": "<p><code>catch</code> is simply sugar for <code>then(undefined, onRejection)</code> which makes it the same\nas the catch block of a try/catch statement.</p>\n<div class=\"highlight js\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n</pre>        </td>        <td class=\"code\"><pre class=\"js\">function findAuthor(){\n  throw new Error('couldn't find that author');\n}\n\n// synchronous\ntry {\n  findAuthor();\n} catch(reason) {\n  // something went wrong\n}\n\n// async with promises\nfindAuthor().catch(function(reason){\n  // something went wrong\n});</pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "method",
+    "name": "catch",
+    "params": [
+      {
+        "name": "onRejection",
+        "description": "",
+        "type": "Function"
+      },
+      {
+        "name": "label",
+        "description": "optional string for labeling the promise.\nUseful for tooling.",
+        "type": "String"
+      }
+    ],
+    "return": {
+      "description": "",
+      "type": "Promise"
+    },
+    "class": "RSVP.Promise",
+    "module": "ember"
+  },
+  {
+    "file": "bower_components/rsvp/lib/rsvp/promise.js",
+    "line": 435,
+    "description": "<p><code>finally</code> will be invoked regardless of the promise&#39;s fate just as native\ntry/catch/finally behaves</p>\n<p>Synchronous example:</p>\n<div class=\"highlight js\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n</pre>        </td>        <td class=\"code\"><pre class=\"js\">findAuthor() {\n  <span class=\"hljs-keyword\">if</span> (<span class=\"hljs-built_in\">Math</span>.random() &gt; <span class=\"hljs-number\">0.5</span>) {\n    <span class=\"hljs-keyword\">throw</span> <span class=\"hljs-keyword\">new</span> <span class=\"hljs-built_in\">Error</span>();\n  }\n  <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">new</span> Author();\n}\n\n<span class=\"hljs-keyword\">try</span> {\n  <span class=\"hljs-keyword\">return</span> findAuthor(); <span class=\"hljs-comment\">// succeed or fail</span>\n} <span class=\"hljs-keyword\">catch</span>(error) {\n  <span class=\"hljs-keyword\">return</span> findOtherAuther();\n} <span class=\"hljs-keyword\">finally</span> {\n  <span class=\"hljs-comment\">// always runs</span>\n  <span class=\"hljs-comment\">// doesn't affect the return value</span>\n}</pre></td>      </tr>    </table>  </div></div><p>Asynchronous example:</p>\n<div class=\"highlight js\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"js\">findAuthor().catch(<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(reason)</span></span>{\n  <span class=\"hljs-keyword\">return</span> findOtherAuther();\n}).finally(<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span></span>{\n  <span class=\"hljs-comment\">// author was either found, or not</span>\n});</pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "method",
+    "name": "finally",
+    "params": [
+      {
+        "name": "callback",
+        "description": "",
+        "type": "Function"
+      },
+      {
+        "name": "label",
+        "description": "optional string for labeling the promise.\nUseful for tooling.",
+        "type": "String"
+      }
+    ],
+    "return": {
+      "description": "",
+      "type": "Promise"
+    },
+    "class": "RSVP.Promise",
+    "module": "ember"
+  }
+]

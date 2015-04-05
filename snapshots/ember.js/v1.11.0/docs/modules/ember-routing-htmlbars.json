@@ -1,0 +1,10 @@
+{
+  "name": "ember-routing-htmlbars",
+  "classes": [],
+  "submodules": [],
+  "requires": [
+    {
+      "name": "ember-routing"
+    }
+  ]
+}

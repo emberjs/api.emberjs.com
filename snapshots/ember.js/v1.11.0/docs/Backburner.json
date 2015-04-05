@@ -1,0 +1,11 @@
+{
+  "name": "Backburner",
+  "description": "",
+  "line": 369,
+  "file": "packages/ember-metal/lib/main.js",
+  "methods": [],
+  "properties": [],
+  "events": [],
+  "isPrivate": true,
+  "constType": "Class"
+}

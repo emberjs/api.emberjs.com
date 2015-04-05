@@ -1,0 +1,52 @@
+{
+  "name": "Ember.String",
+  "description": "<p>Defines string helper methods including string formatting and localization.\nUnless <code>Ember.EXTEND_PROTOTYPES.String</code> is <code>false</code> these methods will also be\nadded to the <code>String.prototype</code> as well.</p>\n",
+  "line": 125,
+  "file": "packages/ember-runtime/lib/system/string.js",
+  "methods": [
+    {
+      "name": "fmt",
+      "isPrivate": false
+    },
+    {
+      "name": "loc",
+      "isPrivate": false
+    },
+    {
+      "name": "w",
+      "isPrivate": false
+    },
+    {
+      "name": "decamelize",
+      "isPrivate": false
+    },
+    {
+      "name": "dasherize",
+      "isPrivate": false
+    },
+    {
+      "name": "camelize",
+      "isPrivate": false
+    },
+    {
+      "name": "classify",
+      "isPrivate": false
+    },
+    {
+      "name": "underscore",
+      "isPrivate": false
+    },
+    {
+      "name": "capitalize",
+      "isPrivate": false
+    },
+    {
+      "name": "htmlSafe",
+      "isPrivate": false
+    }
+  ],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Namespace"
+}

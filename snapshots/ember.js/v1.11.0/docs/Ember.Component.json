@@ -1,0 +1,390 @@
+{
+  "name": "Ember.Component",
+  "description": "<p>An <code>Ember.Component</code> is a view that is completely\nisolated. Properties accessed in its templates go\nto the view object and actions are targeted at\nthe view object. There is no access to the\nsurrounding context or outer controller; all\ncontextual information must be passed in.</p>\n<p>The easiest way to create an <code>Ember.Component</code> is via\na template. If you name a template\n<code>components/my-foo</code>, you will be able to use\n<code>{{my-foo}}</code> in other templates, which will make\nan instance of the isolated component.</p>\n<div class=\"highlight handlebars\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"handlebars\"><span class=\"xml\"></span><span class=\"hljs-expression\">{{<span class=\"hljs-variable\">app-profile</span> <span class=\"hljs-variable\">person</span>=<span class=\"hljs-variable\">currentUser</span>}}</span><span class=\"xml\"></span></pre></td>      </tr>    </table>  </div></div><div class=\"highlight handlebars\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n</pre>        </td>        <td class=\"code\"><pre class=\"handlebars\"><span class=\"xml\"><span class=\"hljs-comment\">&lt;!-- app-profile template --&gt;</span>\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">h1</span>&gt;</span></span><span class=\"hljs-expression\">{{<span class=\"hljs-variable\">person.title</span>}}</span><span class=\"xml\"><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">h1</span>&gt;</span>\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">img</span> </span></span><span class=\"hljs-expression\">{{<span class=\"hljs-variable\">bind-attr</span> <span class=\"hljs-variable\">src</span>=<span class=\"hljs-variable\">person.avatar</span>}}</span><span class=\"xml\"><span class=\"hljs-tag\">&gt;</span>\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span> <span class=\"hljs-attribute\">class</span>=<span class=\"hljs-value\">'signature'</span>&gt;</span></span><span class=\"hljs-expression\">{{<span class=\"hljs-variable\">person.signature</span>}}</span><span class=\"xml\"><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span></span></pre></td>      </tr>    </table>  </div></div><p>You can use <code>yield</code> inside a template to\ninclude the <strong>contents</strong> of any block attached to\nthe component. The block will be executed in the\ncontext of the surrounding context or outer controller:</p>\n<div class=\"highlight handlebars\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n</pre>        </td>        <td class=\"code\"><pre class=\"handlebars\"><span class=\"xml\"></span><span class=\"hljs-expression\">{{<span class=\"hljs-begin-block\">#app-profile person</span>=<span class=\"hljs-variable\">currentUser</span>}}</span><span class=\"xml\">\n  <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">p</span>&gt;</span>Admin mode<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">p</span>&gt;</span>\n  </span><span class=\"hljs-expression\">{{! <span class=\"hljs-variable\">Executed</span> <span class=\"hljs-variable\"><span class=\"hljs-keyword\">in</span></span> <span class=\"hljs-variable\">the</span> <span class=\"hljs-variable\">controller</span>'<span class=\"hljs-variable\">s</span> <span class=\"hljs-variable\">context.</span> }}</span><span class=\"xml\">\n</span><span class=\"hljs-expression\">{{<span class=\"hljs-end-block\">/app-profile</span>}}</span><span class=\"xml\"></span></pre></td>      </tr>    </table>  </div></div><div class=\"highlight handlebars\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n</pre>        </td>        <td class=\"code\"><pre class=\"handlebars\"><span class=\"xml\"><span class=\"hljs-comment\">&lt;!-- app-profile template --&gt;</span>\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">h1</span>&gt;</span></span><span class=\"hljs-expression\">{{<span class=\"hljs-variable\">person.title</span>}}</span><span class=\"xml\"><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">h1</span>&gt;</span>\n</span><span class=\"hljs-expression\">{{! <span class=\"hljs-variable\">Executed</span> <span class=\"hljs-variable\"><span class=\"hljs-keyword\">in</span></span> <span class=\"hljs-variable\">the</span> <span class=\"hljs-variable\">components</span> <span class=\"hljs-variable\">context.</span> }}</span><span class=\"xml\">\n</span><span class=\"hljs-expression\">{{<span class=\"hljs-variable\"><span class=\"hljs-keyword\">yield</span></span>}}</span><span class=\"xml\"> </span><span class=\"hljs-expression\">{{! <span class=\"hljs-variable\">block</span> <span class=\"hljs-variable\">contents</span> }}</span><span class=\"xml\"></span></pre></td>      </tr>    </table>  </div></div><p>If you want to customize the component, in order to\nhandle events or actions, you implement a subclass\nof <code>Ember.Component</code> named after the name of the\ncomponent. Note that <code>Component</code> needs to be appended to the name of\nyour subclass like <code>AppProfileComponent</code>.</p>\n<p>For example, you could implement the action\n<code>hello</code> for the <code>app-profile</code> component:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.AppProfileComponent = Ember.Component.extend({\n  actions: {\n    hello: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(name)</span> </span>{\n      <span class=\"hljs-built_in\">console</span>.log(<span class=\"hljs-string\">\"Hello\"</span>, name);\n    }\n  }\n});</pre></td>      </tr>    </table>  </div></div><p>And then use it in the component&#39;s template:</p>\n<div class=\"highlight handlebars\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n</pre>        </td>        <td class=\"code\"><pre class=\"handlebars\"><span class=\"xml\"><span class=\"hljs-comment\">&lt;!-- app-profile template --&gt;</span>\n\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">h1</span>&gt;</span></span><span class=\"hljs-expression\">{{<span class=\"hljs-variable\">person.title</span>}}</span><span class=\"xml\"><span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">h1</span>&gt;</span>\n</span><span class=\"hljs-expression\">{{<span class=\"hljs-variable\"><span class=\"hljs-keyword\">yield</span></span>}}</span><span class=\"xml\"> <span class=\"hljs-comment\">&lt;!-- block contents --&gt;</span>\n\n<span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">button</span> </span></span><span class=\"hljs-expression\">{{<span class=\"hljs-variable\"><span class=\"hljs-keyword\">action</span></span> '<span class=\"hljs-variable\">hello</span>' <span class=\"hljs-variable\">person.name</span>}}</span><span class=\"xml\"><span class=\"hljs-tag\">&gt;</span>\n  Say Hello to </span><span class=\"hljs-expression\">{{<span class=\"hljs-variable\">person.name</span>}}</span><span class=\"xml\">\n<span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">button</span>&gt;</span></span></pre></td>      </tr>    </table>  </div></div><p>Components must have a <code>-</code> in their name to avoid\nconflicts with built-in controls that wrap HTML\nelements. This is consistent with the same\nrequirement in web components.</p>\n",
+  "line": 21,
+  "file": "packages/ember-views/lib/views/component.js",
+  "methods": [
+    {
+      "name": "init",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "destroy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "willDestroy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_scheduledDestroy",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "toString",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "extend",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "createWithMixins",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "create",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "reopen",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "reopenClass",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "metaForProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "eachComputedProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_onLookup",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "_lazyInjections",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "get",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "getProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "set",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "setProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "beginPropertyChanges",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "endPropertyChanges",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "propertyWillChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "propertyDidChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "notifyPropertyChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "addObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "removeObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "hasObserverFor",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "getWithDefault",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "incrementProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "decrementProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "toggleProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "cacheFor",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Observable"
+    },
+    {
+      "name": "on",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "one",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "trigger",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.CoreView"
+    },
+    {
+      "name": "off",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "has",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Evented"
+    },
+    {
+      "name": "willMergeMixin",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "send",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "_contextDidChange",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "nearestOfType",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "nearestWithProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "_parentViewDidChange",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "rerender",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "_classStringForProperty",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "$",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "appendTo",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "replaceIn",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "append",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "remove",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "findElementInParentElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "createElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "destroyElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "removeFromParent",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "handleEvent",
+      "isPrivate": true,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "sendAction",
+      "isPrivate": false
+    }
+  ],
+  "properties": [
+    {
+      "name": "concatenatedProperties",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "isDestroyed",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "isDestroying",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreObject"
+    },
+    {
+      "name": "actions",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.ActionHandler"
+    },
+    {
+      "name": "parentView",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.CoreView"
+    },
+    {
+      "name": "isView",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "templateName",
+      "isPrivate": false
+    },
+    {
+      "name": "layoutName",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "template",
+      "isPrivate": false
+    },
+    {
+      "name": "layout",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "element",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "elementId",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "tagName",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "ariaRole",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "views",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "targetObject",
+      "isPrivate": false
+    }
+  ],
+  "events": [
+    {
+      "name": "willInsertElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "didInsertElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "willClearRender",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "willDestroyElement",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    },
+    {
+      "name": "parentViewDidChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.View"
+    }
+  ],
+  "isPrivate": false,
+  "constType": "Class"
+}

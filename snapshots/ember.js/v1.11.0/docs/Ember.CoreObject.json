@@ -1,0 +1,81 @@
+{
+  "name": "Ember.CoreObject",
+  "description": "",
+  "line": 225,
+  "file": "packages/ember-runtime/lib/system/core_object.js",
+  "methods": [
+    {
+      "name": "init",
+      "isPrivate": false
+    },
+    {
+      "name": "destroy",
+      "isPrivate": false
+    },
+    {
+      "name": "willDestroy",
+      "isPrivate": false
+    },
+    {
+      "name": "_scheduledDestroy",
+      "isPrivate": true
+    },
+    {
+      "name": "toString",
+      "isPrivate": false
+    },
+    {
+      "name": "extend",
+      "isPrivate": false
+    },
+    {
+      "name": "createWithMixins",
+      "isPrivate": false
+    },
+    {
+      "name": "create",
+      "isPrivate": false
+    },
+    {
+      "name": "reopen",
+      "isPrivate": false
+    },
+    {
+      "name": "reopenClass",
+      "isPrivate": false
+    },
+    {
+      "name": "metaForProperty",
+      "isPrivate": false
+    },
+    {
+      "name": "eachComputedProperty",
+      "isPrivate": false
+    },
+    {
+      "name": "_onLookup",
+      "isPrivate": true
+    },
+    {
+      "name": "_lazyInjections",
+      "isPrivate": false
+    }
+  ],
+  "properties": [
+    {
+      "name": "concatenatedProperties",
+      "isPrivate": false
+    },
+    {
+      "name": "isDestroyed",
+      "isPrivate": false
+    },
+    {
+      "name": "isDestroying",
+      "isPrivate": false
+    }
+  ],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

@@ -1,0 +1,112 @@
+[
+  {
+    "file": "packages/ember-runtime/lib/mixins/enumerable.js",
+    "line": 131,
+    "description": "<p>Helper method returns the first object from a collection. This is usually\nused by bindings and other parts of the framework to extract a single\nobject if the enumerable contains only one item.</p>\n<p>If you override this method, you should implement it so that it will\nalways return the same value each time it is called. If your enumerable\ncontains only one object, this method should always return that object.\nIf your enumerable is empty, this method should return <code>undefined</code>.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"><span class=\"hljs-keyword\">var</span> arr = [<span class=\"hljs-string\">'a'</span>, <span class=\"hljs-string\">'b'</span>, <span class=\"hljs-string\">'c'</span>];\narr.get(<span class=\"hljs-string\">'firstObject'</span>);  <span class=\"hljs-comment\">// 'a'</span>\n\n<span class=\"hljs-keyword\">var</span> arr = [];\narr.get(<span class=\"hljs-string\">'firstObject'</span>);  <span class=\"hljs-comment\">// undefined</span></pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "property",
+    "name": "firstObject",
+    "return": {
+      "description": "the object or undefined",
+      "type": "Object"
+    },
+    "class": "Ember.Enumerable",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember",
+    "inheritedFrom": "Ember.Enumerable"
+  },
+  {
+    "file": "packages/ember-runtime/lib/mixins/enumerable.js",
+    "line": 166,
+    "description": "<p>Helper method returns the last object from a collection. If your enumerable\ncontains only one object, this method should always return that object.\nIf your enumerable is empty, this method should return <code>undefined</code>.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"><span class=\"hljs-keyword\">var</span> arr = [<span class=\"hljs-string\">'a'</span>, <span class=\"hljs-string\">'b'</span>, <span class=\"hljs-string\">'c'</span>];\narr.get(<span class=\"hljs-string\">'lastObject'</span>);  <span class=\"hljs-comment\">// 'c'</span>\n\n<span class=\"hljs-keyword\">var</span> arr = [];\narr.get(<span class=\"hljs-string\">'lastObject'</span>);  <span class=\"hljs-comment\">// undefined</span></pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "property",
+    "name": "lastObject",
+    "return": {
+      "description": "the last object or undefined",
+      "type": "Object"
+    },
+    "class": "Ember.Enumerable",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember",
+    "inheritedFrom": "Ember.Enumerable"
+  },
+  {
+    "file": "packages/ember-runtime/lib/mixins/enumerable.js",
+    "line": 954,
+    "description": "<p>This property will trigger anytime the enumerable&#39;s content changes.\nYou can observe this property to be notified of changes to the enumerable&#39;s\ncontent.</p>\n<p>For plain enumerables, this property is read only. <code>Array</code> overrides\nthis method.</p>\n",
+    "itemtype": "property",
+    "name": "[]",
+    "type": "Array",
+    "return": {
+      "description": "this"
+    },
+    "class": "Ember.Enumerable",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember",
+    "inheritedFrom": "Ember.Enumerable"
+  },
+  {
+    "file": "packages/ember-runtime/lib/mixins/enumerable.js",
+    "line": 1029,
+    "description": "<p>Becomes true whenever the array currently has observers watching changes\non the array.</p>\n",
+    "itemtype": "property",
+    "name": "hasEnumerableObservers",
+    "type": "Boolean",
+    "class": "Ember.Enumerable",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember",
+    "inheritedFrom": "Ember.Enumerable"
+  },
+  {
+    "file": "packages/ember-runtime/lib/mixins/sortable.js",
+    "line": 78,
+    "description": "<p>Specifies which properties dictate the <code>arrangedContent</code>&#39;s sort order.</p>\n<p>When specifying multiple properties the sorting will use properties\nfrom the <code>sortProperties</code> array prioritized from first to last.</p>\n",
+    "itemtype": "property",
+    "name": "sortProperties",
+    "type": "Array",
+    "class": "Ember.SortableMixin",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-runtime/lib/mixins/sortable.js",
+    "line": 88,
+    "description": "<p>Specifies the <code>arrangedContent</code>&#39;s sort direction.\nSorts the content in ascending order by default. Set to <code>false</code> to\nuse descending order.</p>\n",
+    "itemtype": "property",
+    "name": "sortAscending",
+    "type": "Boolean",
+    "default": "true",
+    "class": "Ember.SortableMixin",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-runtime/lib/mixins/sortable.js",
+    "line": 98,
+    "description": "<p>The function used to compare two values. You can override this if you\nwant to do custom comparisons. Functions must be of the type expected by\nArray#sort, i.e.,</p>\n<ul>\n<li>return 0 if the two parameters are equal,</li>\n<li>return a negative value if the first parameter is smaller than the second or</li>\n<li>return a positive value otherwise:</li>\n</ul>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\"><span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(x, y)</span> </span>{ <span class=\"hljs-comment\">// These are assumed to be integers</span>\n  <span class=\"hljs-keyword\">if</span> (x === y)\n    <span class=\"hljs-keyword\">return</span> <span class=\"hljs-number\">0</span>;\n  <span class=\"hljs-keyword\">return</span> x &lt; y ? -<span class=\"hljs-number\">1</span> : <span class=\"hljs-number\">1</span>;\n}</pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "property",
+    "name": "sortFunction",
+    "type": "{Function}",
+    "default": "Ember.compare",
+    "class": "Ember.SortableMixin",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-runtime/lib/mixins/sortable.js",
+    "line": 158,
+    "description": "<p>Overrides the default <code>arrangedContent</code> from <code>ArrayProxy</code> in order to sort by <code>sortFunction</code>.\nAlso sets up observers for each <code>sortProperty</code> on each item in the content Array.</p>\n",
+    "itemtype": "property",
+    "name": "arrangedContent",
+    "class": "Ember.SortableMixin",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  }
+]

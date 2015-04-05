@@ -1,0 +1,39 @@
+[
+  {
+    "file": "packages/ember-runtime/lib/mixins/action_handler.js",
+    "line": 148,
+    "description": "<p>Moves <code>actions</code> to <code>_actions</code> at extend time. Note that this currently\nmodifies the mixin themselves, which is technically dubious but\nis practically of little consequence. This may change in the future.</p>\n",
+    "access": "private",
+    "tagname": "",
+    "itemtype": "method",
+    "name": "willMergeMixin",
+    "class": "Ember.ActionHandler",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember",
+    "isPrivate": true
+  },
+  {
+    "file": "packages/ember-runtime/lib/mixins/action_handler.js",
+    "line": 178,
+    "description": "<p>Triggers a named action on the <code>ActionHandler</code>. Any parameters\nsupplied after the <code>actionName</code> string will be passed as arguments\nto the action target function.</p>\n<p>If the <code>ActionHandler</code> has its <code>target</code> property set, actions may\nbubble to the <code>target</code>. Bubbling happens when an <code>actionName</code> can\nnot be found in the <code>ActionHandler</code>&#39;s <code>actions</code> hash or if the\naction target function returns <code>true</code>.</p>\n<p>Example</p>\n<div class=\"highlight js\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n</pre>        </td>        <td class=\"code\"><pre class=\"js\">App.WelcomeRoute = Ember.Route.extend({\n  actions: {\n    playTheme: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n       <span class=\"hljs-keyword\">this</span>.send(<span class=\"hljs-string\">'playMusic'</span>, <span class=\"hljs-string\">'theme.mp3'</span>);\n    },\n    playMusic: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">(track)</span> </span>{\n      <span class=\"hljs-comment\">// ...</span>\n    }\n  }\n});</pre></td>      </tr>    </table>  </div></div>",
+    "itemtype": "method",
+    "name": "send",
+    "params": [
+      {
+        "name": "actionName",
+        "description": "The action to trigger",
+        "type": "String"
+      },
+      {
+        "name": "context",
+        "description": "a context to send with the action",
+        "type": "*"
+      }
+    ],
+    "class": "Ember.ActionHandler",
+    "module": "ember",
+    "submodule": "ember-runtime",
+    "namespace": "Ember"
+  }
+]

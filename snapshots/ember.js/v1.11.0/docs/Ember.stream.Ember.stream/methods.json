@@ -1,0 +1,24 @@
+[
+  {
+    "file": "packages/ember-metal/lib/streams/utils.js",
+    "line": 3,
+    "description": "<p>Check whether an object is a stream or not</p>\n",
+    "access": "public",
+    "tagname": "",
+    "itemtype": "method",
+    "name": "isStream",
+    "params": [
+      {
+        "name": "object",
+        "description": "object to check whether it is a stream",
+        "type": "Object|Stream"
+      }
+    ],
+    "return": {
+      "description": "`true` if the object is a stream, `false` otherwise",
+      "type": "Boolean"
+    },
+    "class": "Ember.stream.Ember.stream",
+    "module": "ember-metal"
+  }
+]

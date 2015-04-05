@@ -1,0 +1,140 @@
+{
+  "name": "ember-metal",
+  "classes": [
+    {
+      "name": "Backburner"
+    },
+    {
+      "name": "Ember"
+    },
+    {
+      "name": "Ember.Binding"
+    },
+    {
+      "name": "Ember.ComputedProperty"
+    },
+    {
+      "name": "Ember.Descriptor"
+    },
+    {
+      "name": "Ember.EnumerableUtils"
+    },
+    {
+      "name": "Ember.Error"
+    },
+    {
+      "name": "Ember.FEATURES"
+    },
+    {
+      "name": "Ember.InjectedProperty"
+    },
+    {
+      "name": "Ember.Instrumentation"
+    },
+    {
+      "name": "Ember.Logger"
+    },
+    {
+      "name": "Ember.Map"
+    },
+    {
+      "name": "Ember.MapWithDefault"
+    },
+    {
+      "name": "Ember.Mixin"
+    },
+    {
+      "name": "Ember.OrderedSet"
+    },
+    {
+      "name": "Ember.ReduceComputedProperty"
+    },
+    {
+      "name": "Ember.computed"
+    },
+    {
+      "name": "Ember.run"
+    },
+    {
+      "name": "Ember.stream"
+    },
+    {
+      "name": "Ember.stream.Ember.stream"
+    },
+    {
+      "name": "Ember.stream.Stream"
+    },
+    {
+      "name": "Libraries"
+    }
+  ],
+  "submodules": [
+    {
+      "name": "Backburner"
+    },
+    {
+      "name": "Ember"
+    },
+    {
+      "name": "Ember.Binding"
+    },
+    {
+      "name": "Ember.ComputedProperty"
+    },
+    {
+      "name": "Ember.Descriptor"
+    },
+    {
+      "name": "Ember.EnumerableUtils"
+    },
+    {
+      "name": "Ember.Error"
+    },
+    {
+      "name": "Ember.FEATURES"
+    },
+    {
+      "name": "Ember.InjectedProperty"
+    },
+    {
+      "name": "Ember.Instrumentation"
+    },
+    {
+      "name": "Ember.Logger"
+    },
+    {
+      "name": "Ember.Map"
+    },
+    {
+      "name": "Ember.MapWithDefault"
+    },
+    {
+      "name": "Ember.Mixin"
+    },
+    {
+      "name": "Ember.OrderedSet"
+    },
+    {
+      "name": "Ember.ReduceComputedProperty"
+    },
+    {
+      "name": "Ember.computed"
+    },
+    {
+      "name": "Ember.run"
+    },
+    {
+      "name": "Ember.stream"
+    },
+    {
+      "name": "Ember.stream.Ember.stream"
+    },
+    {
+      "name": "Ember.stream.Stream"
+    },
+    {
+      "name": "Libraries"
+    }
+  ],
+  "requires": []
+}

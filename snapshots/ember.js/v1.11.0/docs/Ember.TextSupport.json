@@ -1,0 +1,126 @@
+{
+  "name": "Ember.TextSupport",
+  "description": "<p><code>TextSupport</code> is a shared mixin used by both <code>Ember.TextField</code> and\n<code>Ember.TextArea</code>. <code>TextSupport</code> adds a number of methods that allow you to\nspecify a controller action to invoke when a certain event is fired on your\ntext field or textarea. The specifed controller action would get the current\nvalue of the field passed in as the only argument unless the value of\nthe field is empty. In that case, the instance of the field itself is passed\nin as the only argument.</p>\n<p>Let&#39;s use the pressing of the escape key as an example. If you wanted to\ninvoke a controller action when a user presses the escape key while on your\nfield, you would use the <code>escape-press</code> attribute on your field like so:</p>\n<div class=\"highlight handlebars\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n</pre>        </td>        <td class=\"code\"><pre class=\"handlebars\"><span class=\"xml\">  </span><span class=\"hljs-expression\">{{! <span class=\"hljs-variable\">application.hbs</span>}}</span><span class=\"xml\">\n\n  </span><span class=\"hljs-expression\">{{<span class=\"hljs-variable\">input</span> <span class=\"hljs-variable\">escape-press</span>='<span class=\"hljs-variable\">alertUser</span>'}}</span><span class=\"xml\"></span></pre></td>      </tr>    </table>  </div></div><div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">    App = Ember.Application.create();\n\n    App.ApplicationController = Ember.Controller.extend({\n      actions: {\n        alertUser: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-params\">( currentValue )</span> </span>{\n          alert( <span class=\"hljs-string\">'escape pressed, current value: '</span> + currentValue );\n        }\n      }\n    });</pre></td>      </tr>    </table>  </div></div><p>The following chart is a visual representation of what takes place when the\nescape key is pressed in this scenario:</p>\n<p>The Template\n+---------------------------+\n|                           |\n| escape-press=&#39;alertUser&#39;  |\n|                           |          TextSupport Mixin\n+----+----------------------+          +-------------------------------+\n     |                                 | cancel method                 |\n     |      escape button pressed      |                               |\n     +-------------------------------&gt; | checks for the <code>escape-press</code> |\n                                       | attribute and pulls out the   |\n     +-------------------------------+ | <code>alertUser</code> value             |\n     |     action name &#39;alertUser&#39;     +-------------------------------+\n     |     sent to controller\n     v\nController\n+------------------------------------------ +\n|                                           |\n|  actions: {                               |\n|     alertUser: function( currentValue ){  |\n|       alert( &#39;the esc key was pressed!&#39; ) |\n|     }                                     |\n|  }                                        |\n|                                           |\n+-------------------------------------------+</p>\n<p>Here are the events that we currently support along with the name of the\nattribute you would need to use on your field. To reiterate, you would use the\nattribute name like so:</p>\n<div class=\"highlight handlebars\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n</pre>        </td>        <td class=\"code\"><pre class=\"handlebars\"><span class=\"xml\">  </span><span class=\"hljs-expression\">{{<span class=\"hljs-variable\">input</span> <span class=\"hljs-variable\">attribute-name</span>='<span class=\"hljs-variable\">controllerAction</span>'}}</span><span class=\"xml\"></span></pre></td>      </tr>    </table>  </div></div><p>+--------------------+----------------+\n|                    |                |\n| event              | attribute name |\n+--------------------+----------------+\n| new line inserted  | insert-newline |\n|                    |                |\n| enter key pressed  | insert-newline |\n|                    |                |\n| cancel key pressed | escape-press   |\n|                    |                |\n| focusin            | focus-in       |\n|                    |                |\n| focusout           | focus-out      |\n|                    |                |\n| keypress           | key-press      |\n|                    |                |\n| keyup              | key-up         |\n|                    |                |\n| keydown            | key-down       |\n+--------------------+----------------+</p>\n",
+  "line": 11,
+  "file": "packages/ember-views/lib/mixins/text_support.js",
+  "methods": [
+    {
+      "name": "create",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Mixin"
+    },
+    {
+      "name": "reopen",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Mixin"
+    },
+    {
+      "name": "apply",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Mixin"
+    },
+    {
+      "name": "detect",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Mixin"
+    },
+    {
+      "name": "triggerAction",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.TargetActionSupport"
+    },
+    {
+      "name": "_applyAttributeBindings",
+      "isPrivate": true
+    },
+    {
+      "name": "setUnknownProperty",
+      "isPrivate": true
+    },
+    {
+      "name": "_applyClassNameBindings",
+      "isPrivate": true
+    },
+    {
+      "name": "willMergeMixin",
+      "isPrivate": true
+    },
+    {
+      "name": "removeAllChildren",
+      "isPrivate": false
+    },
+    {
+      "name": "nearestChildOf",
+      "isPrivate": false
+    },
+    {
+      "name": "nearestInstanceOf",
+      "isPrivate": false
+    },
+    {
+      "name": "render",
+      "isPrivate": false
+    },
+    {
+      "name": "insertNewline",
+      "isPrivate": false
+    },
+    {
+      "name": "cancel",
+      "isPrivate": false
+    },
+    {
+      "name": "focusIn",
+      "isPrivate": false
+    },
+    {
+      "name": "focusOut",
+      "isPrivate": false
+    },
+    {
+      "name": "keyPress",
+      "isPrivate": false
+    },
+    {
+      "name": "keyUp",
+      "isPrivate": false
+    },
+    {
+      "name": "keyDown",
+      "isPrivate": false
+    }
+  ],
+  "properties": [
+    {
+      "name": "attributeBindings",
+      "isPrivate": false
+    },
+    {
+      "name": "classNames",
+      "isPrivate": false
+    },
+    {
+      "name": "classNameBindings",
+      "isPrivate": false
+    },
+    {
+      "name": "instrumentDisplay",
+      "isPrivate": false
+    },
+    {
+      "name": "action",
+      "isPrivate": false
+    },
+    {
+      "name": "onEvent",
+      "isPrivate": false
+    },
+    {
+      "name": "bubbles",
+      "isPrivate": false
+    }
+  ],
+  "events": [],
+  "isPrivate": true,
+  "constType": "Class"
+}

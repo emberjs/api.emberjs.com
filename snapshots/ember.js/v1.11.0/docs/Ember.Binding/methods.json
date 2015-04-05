@@ -1,0 +1,141 @@
+[
+  {
+    "file": "packages/ember-metal/lib/binding.js",
+    "line": 70,
+    "description": "<p>This copies the Binding so it can be connected to another object.</p>\n",
+    "itemtype": "method",
+    "name": "copy",
+    "return": {
+      "description": "`this`",
+      "type": "Ember.Binding"
+    },
+    "class": "Ember.Binding",
+    "module": "ember-metal",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-metal/lib/binding.js",
+    "line": 86,
+    "description": "<p>This will set <code>from</code> property path to the specified value. It will not\nattempt to resolve this property path to an actual object until you\nconnect the binding.</p>\n<p>The binding will search for the property path starting at the root object\nyou pass when you <code>connect()</code> the binding. It follows the same rules as\n<code>get()</code> - see that method for more information.</p>\n",
+    "itemtype": "method",
+    "name": "from",
+    "params": [
+      {
+        "name": "path",
+        "description": "the property path to connect to",
+        "type": "String"
+      }
+    ],
+    "return": {
+      "description": "`this`",
+      "type": "Ember.Binding"
+    },
+    "class": "Ember.Binding",
+    "module": "ember-metal",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-metal/lib/binding.js",
+    "line": 104,
+    "description": "<p>This will set the <code>to</code> property path to the specified value. It will not\nattempt to resolve this property path to an actual object until you\nconnect the binding.</p>\n<p>The binding will search for the property path starting at the root object\nyou pass when you <code>connect()</code> the binding. It follows the same rules as\n<code>get()</code> - see that method for more information.</p>\n",
+    "itemtype": "method",
+    "name": "to",
+    "params": [
+      {
+        "name": "path",
+        "description": "A property path or tuple",
+        "type": "String|Tuple"
+      }
+    ],
+    "return": {
+      "description": "`this`",
+      "type": "Ember.Binding"
+    },
+    "class": "Ember.Binding",
+    "module": "ember-metal",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-metal/lib/binding.js",
+    "line": 308,
+    "description": "<p>Creates a new Binding instance and makes it apply in a single direction.\nA one-way binding will relay changes on the <code>from</code> side object (supplied\nas the <code>from</code> argument) the <code>to</code> side, but not the other way around.\nThis means that if you change the &quot;to&quot; side directly, the &quot;from&quot; side may have\na different value.</p>\n<p>See <code>Binding.oneWay</code>.</p>\n",
+    "itemtype": "method",
+    "name": "oneWay",
+    "params": [
+      {
+        "name": "from",
+        "description": "from path.",
+        "type": "String"
+      },
+      {
+        "name": "flag",
+        "description": "(Optional) passing nothing here will make the\n  binding `oneWay`. You can instead pass `false` to disable `oneWay`, making the\n  binding two way again.",
+        "type": "Boolean",
+        "optional": true
+      }
+    ],
+    "return": {
+      "description": "`this`",
+      "type": "Ember.Binding"
+    },
+    "class": "Ember.Binding",
+    "module": "ember-metal",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-metal/lib/binding.js",
+    "line": 136,
+    "itemtype": "method",
+    "name": "toString",
+    "return": {
+      "description": "string representation of binding",
+      "type": "String"
+    },
+    "class": "Ember.Binding",
+    "module": "ember-metal",
+    "namespace": "Ember",
+    "description": ""
+  },
+  {
+    "file": "packages/ember-metal/lib/binding.js",
+    "line": 149,
+    "description": "<p>Attempts to connect this binding instance so that it can receive and relay\nchanges. This method will raise an exception if you have not set the\nfrom/to properties yet.</p>\n",
+    "itemtype": "method",
+    "name": "connect",
+    "params": [
+      {
+        "name": "obj",
+        "description": "The root object for this binding.",
+        "type": "Object"
+      }
+    ],
+    "return": {
+      "description": "`this`",
+      "type": "Ember.Binding"
+    },
+    "class": "Ember.Binding",
+    "module": "ember-metal",
+    "namespace": "Ember"
+  },
+  {
+    "file": "packages/ember-metal/lib/binding.js",
+    "line": 178,
+    "description": "<p>Disconnects the binding instance. Changes will no longer be relayed. You\nwill not usually need to call this method.</p>\n",
+    "itemtype": "method",
+    "name": "disconnect",
+    "params": [
+      {
+        "name": "obj",
+        "description": "The root object you passed when connecting the binding.",
+        "type": "Object"
+      }
+    ],
+    "return": {
+      "description": "`this`",
+      "type": "Ember.Binding"
+    },
+    "class": "Ember.Binding",
+    "module": "ember-metal",
+    "namespace": "Ember"
+  }
+]

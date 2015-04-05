@@ -1,0 +1,14 @@
+{
+  "name": "Ember.stream.Ember.stream",
+  "description": "",
+  "methods": [
+    {
+      "name": "isStream",
+      "isPrivate": false
+    }
+  ],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Ember._Metamorph",
+  "description": "",
+  "line": 15,
+  "file": "packages/ember-views/lib/views/metamorph_view.js",
+  "methods": [],
+  "properties": [],
+  "events": [],
+  "isPrivate": true,
+  "constType": "Class"
+}

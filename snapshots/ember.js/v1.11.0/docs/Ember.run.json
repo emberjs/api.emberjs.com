@@ -1,0 +1,73 @@
+{
+  "name": "Ember.run",
+  "description": "<p>Runs the passed target and method inside of a RunLoop, ensuring any\ndeferred actions including bindings and views updates are flushed at the\nend.</p>\n<p>Normally you should not need to invoke this method yourself. However if\nyou are implementing raw event handlers when interfacing with other\nlibraries or plugins, you should probably wrap all of your code inside this\ncall.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">run(<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n  <span class=\"hljs-comment\">// code to be executed within a RunLoop</span>\n});</pre></td>      </tr>    </table>  </div></div>",
+  "line": 40,
+  "file": "packages/ember-metal/lib/run_loop.js",
+  "methods": [
+    {
+      "name": "join",
+      "isPrivate": false
+    },
+    {
+      "name": "bind",
+      "isPrivate": false
+    },
+    {
+      "name": "begin",
+      "isPrivate": false
+    },
+    {
+      "name": "end",
+      "isPrivate": false
+    },
+    {
+      "name": "schedule",
+      "isPrivate": false
+    },
+    {
+      "name": "sync",
+      "isPrivate": false
+    },
+    {
+      "name": "later",
+      "isPrivate": false
+    },
+    {
+      "name": "once",
+      "isPrivate": false
+    },
+    {
+      "name": "scheduleOnce",
+      "isPrivate": false
+    },
+    {
+      "name": "next",
+      "isPrivate": false
+    },
+    {
+      "name": "cancel",
+      "isPrivate": false
+    },
+    {
+      "name": "debounce",
+      "isPrivate": false
+    },
+    {
+      "name": "throttle",
+      "isPrivate": false
+    },
+    {
+      "name": "_addQueue",
+      "isPrivate": true
+    }
+  ],
+  "properties": [
+    {
+      "name": "queues",
+      "isPrivate": false
+    }
+  ],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Namespace"
+}

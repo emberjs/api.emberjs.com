@@ -1,0 +1,254 @@
+{
+  "name": "Ember.SortableMixin",
+  "description": "<p><code>Ember.SortableMixin</code> provides a standard interface for array proxies\nto specify a sort order and maintain this sorting when objects are added,\nremoved, or updated without changing the implicit order of their underlying\nmodel array:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">songs = [\n  {trackNumber: <span class=\"hljs-number\">4</span>, title: <span class=\"hljs-string\">'Ob-La-Di, Ob-La-Da'</span>},\n  {trackNumber: <span class=\"hljs-number\">2</span>, title: <span class=\"hljs-string\">'Back in the U.S.S.R.'</span>},\n  {trackNumber: <span class=\"hljs-number\">3</span>, title: <span class=\"hljs-string\">'Glass Onion'</span>},\n];\n\nsongsController = Ember.ArrayController.create({\n  model: songs,\n  sortProperties: [<span class=\"hljs-string\">'trackNumber'</span>],\n  sortAscending: <span class=\"hljs-literal\">true</span>\n});\n\nsongsController.get(<span class=\"hljs-string\">'firstObject'</span>);  <span class=\"hljs-comment\">// {trackNumber: 2, title: 'Back in the U.S.S.R.'}</span>\n\nsongsController.addObject({trackNumber: <span class=\"hljs-number\">1</span>, title: <span class=\"hljs-string\">'Dear Prudence'</span>});\nsongsController.get(<span class=\"hljs-string\">'firstObject'</span>);  <span class=\"hljs-comment\">// {trackNumber: 1, title: 'Dear Prudence'}</span></pre></td>      </tr>    </table>  </div></div><p>If you add or remove the properties to sort by or change the sort direction the model\nsort order will be automatically updated.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">songsController.set(<span class=\"hljs-string\">'sortProperties'</span>, [<span class=\"hljs-string\">'title'</span>]);\nsongsController.get(<span class=\"hljs-string\">'firstObject'</span>); <span class=\"hljs-comment\">// {trackNumber: 2, title: 'Back in the U.S.S.R.'}</span>\n\nsongsController.toggleProperty(<span class=\"hljs-string\">'sortAscending'</span>);\nsongsController.get(<span class=\"hljs-string\">'firstObject'</span>); <span class=\"hljs-comment\">// {trackNumber: 4, title: 'Ob-La-Di, Ob-La-Da'}</span></pre></td>      </tr>    </table>  </div></div><p><code>SortableMixin</code> works by sorting the <code>arrangedContent</code> array, which is the array that\n<code>ArrayProxy</code> displays. Due to the fact that the underlying &#39;content&#39; array is not changed, that\narray will not display the sorted list:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">songsController.get(<span class=\"hljs-string\">'content'</span>).get(<span class=\"hljs-string\">'firstObject'</span>); <span class=\"hljs-comment\">// Returns the unsorted original content</span>\nsongsController.get(<span class=\"hljs-string\">'firstObject'</span>); <span class=\"hljs-comment\">// Returns the sorted content.</span></pre></td>      </tr>    </table>  </div></div><p>Although the sorted content can also be accessed through the <code>arrangedContent</code> property,\nit is preferable to use the proxied class and not the <code>arrangedContent</code> array directly.</p>\n",
+  "line": 24,
+  "file": "packages/ember-runtime/lib/mixins/sortable.js",
+  "methods": [
+    {
+      "name": "nextObject",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "contains",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "forEach",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "getEach",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "setEach",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "map",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "mapBy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "mapProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "filter",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "reject",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "filterBy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "filterProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "rejectBy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "rejectProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "find",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "findBy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "findProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "every",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "everyBy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "everyProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "isEvery",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "any",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "some",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "isAny",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "anyBy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "someProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "reduce",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "invoke",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "toArray",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "compact",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "without",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "uniq",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "addEnumerableObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "removeEnumerableObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "enumerableContentWillChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "enumerableContentDidChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "sortBy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "addObject",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.MutableEnumerable"
+    },
+    {
+      "name": "addObjects",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.MutableEnumerable"
+    },
+    {
+      "name": "removeObject",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.MutableEnumerable"
+    },
+    {
+      "name": "removeObjects",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.MutableEnumerable"
+    }
+  ],
+  "properties": [
+    {
+      "name": "firstObject",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "lastObject",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "[]",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "hasEnumerableObservers",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "sortProperties",
+      "isPrivate": false
+    },
+    {
+      "name": "sortAscending",
+      "isPrivate": false
+    },
+    {
+      "name": "sortFunction",
+      "isPrivate": false
+    },
+    {
+      "name": "arrangedContent",
+      "isPrivate": false
+    }
+  ],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

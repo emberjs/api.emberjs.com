@@ -1,0 +1,52 @@
+[
+  {
+    "file": "packages/ember-runtime/lib/ext/function.js",
+    "line": 16,
+    "description": "<p>The <code>property</code> extension of Javascript&#39;s Function prototype is available\nwhen <code>Ember.EXTEND_PROTOTYPES</code> or <code>Ember.EXTEND_PROTOTYPES.Function</code> is\n<code>true</code>, which is the default.</p>\n<p>Computed properties allow you to treat a function like a property:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">MyApp.President = Ember.Object.extend({\n  firstName: <span class=\"hljs-string\">''</span>,\n  lastName:  <span class=\"hljs-string\">''</span>,\n\n  fullName: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n    <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.get(<span class=\"hljs-string\">'firstName'</span>) + <span class=\"hljs-string\">' '</span> + <span class=\"hljs-keyword\">this</span>.get(<span class=\"hljs-string\">'lastName'</span>);\n  }.property() <span class=\"hljs-comment\">// Call this flag to mark the function as a property</span>\n});\n\n<span class=\"hljs-keyword\">var</span> president = MyApp.President.create({\n  firstName: <span class=\"hljs-string\">'Barack'</span>,\n  lastName: <span class=\"hljs-string\">'Obama'</span>\n});\n\npresident.get(<span class=\"hljs-string\">'fullName'</span>); <span class=\"hljs-comment\">// 'Barack Obama'</span></pre></td>      </tr>    </table>  </div></div><p>Treating a function like a property is useful because they can work with\nbindings, just like any other property.</p>\n<p>Many computed properties have dependencies on other properties. For\nexample, in the above example, the <code>fullName</code> property depends on\n<code>firstName</code> and <code>lastName</code> to determine its value. You can tell Ember\nabout these dependencies like this:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">MyApp.President = Ember.Object.extend({\n  firstName: <span class=\"hljs-string\">''</span>,\n  lastName:  <span class=\"hljs-string\">''</span>,\n\n  fullName: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n    <span class=\"hljs-keyword\">return</span> <span class=\"hljs-keyword\">this</span>.get(<span class=\"hljs-string\">'firstName'</span>) + <span class=\"hljs-string\">' '</span> + <span class=\"hljs-keyword\">this</span>.get(<span class=\"hljs-string\">'lastName'</span>);\n\n    <span class=\"hljs-comment\">// Tell Ember.js that this computed property depends on firstName</span>\n    <span class=\"hljs-comment\">// and lastName</span>\n  }.property(<span class=\"hljs-string\">'firstName'</span>, <span class=\"hljs-string\">'lastName'</span>)\n});</pre></td>      </tr>    </table>  </div></div><p>Make sure you list these dependencies so Ember knows when to update\nbindings that connect to a computed property. Changing a dependency\nwill not immediately trigger an update of the computed property, but\nwill instead clear the cache so that it is updated when the next <code>get</code>\nis called on the property.</p>\n<p>See <a href=\"/api/classes/Ember.ComputedProperty.html\">Ember.ComputedProperty</a>, <a href=\"/api/#method_computed\">Ember.computed</a>.</p>\n",
+    "itemtype": "method",
+    "name": "property",
+    "class": "Function",
+    "module": "ember",
+    "submodule": "ember-runtime"
+  },
+  {
+    "file": "packages/ember-runtime/lib/ext/function.js",
+    "line": 81,
+    "description": "<p>The <code>observes</code> extension of Javascript&#39;s Function prototype is available\nwhen <code>Ember.EXTEND_PROTOTYPES</code> or <code>Ember.EXTEND_PROTOTYPES.Function</code> is\ntrue, which is the default.</p>\n<p>You can observe property changes simply by adding the <code>observes</code>\ncall to the end of your method declarations in classes that you write.\nFor example:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">Ember.Object.extend({\n  valueObserver: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n    <span class=\"hljs-comment\">// Executes whenever the \"value\" property changes</span>\n  }.observes(<span class=\"hljs-string\">'value'</span>)\n});</pre></td>      </tr>    </table>  </div></div><p>In the future this method may become asynchronous. If you want to ensure\nsynchronous behavior, use <code>observesImmediately</code>.</p>\n<p>See <code>Ember.observer</code>.</p>\n",
+    "itemtype": "method",
+    "name": "observes",
+    "class": "Function",
+    "module": "ember",
+    "submodule": "ember-runtime"
+  },
+  {
+    "file": "packages/ember-runtime/lib/ext/function.js",
+    "line": 115,
+    "description": "<p>The <code>observesImmediately</code> extension of Javascript&#39;s Function prototype is\navailable when <code>Ember.EXTEND_PROTOTYPES</code> or\n<code>Ember.EXTEND_PROTOTYPES.Function</code> is true, which is the default.</p>\n<p>You can observe property changes simply by adding the <code>observesImmediately</code>\ncall to the end of your method declarations in classes that you write.\nFor example:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">Ember.Object.extend({\n  valueObserver: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n    <span class=\"hljs-comment\">// Executes immediately after the \"value\" property changes</span>\n  }.observesImmediately(<span class=\"hljs-string\">'value'</span>)\n});</pre></td>      </tr>    </table>  </div></div><p>In the future, <code>observes</code> may become asynchronous. In this event,\n<code>observesImmediately</code> will maintain the synchronous behavior.</p>\n<p>See <code>Ember.immediateObserver</code>.</p>\n",
+    "itemtype": "method",
+    "name": "observesImmediately",
+    "class": "Function",
+    "module": "ember",
+    "submodule": "ember-runtime"
+  },
+  {
+    "file": "packages/ember-runtime/lib/ext/function.js",
+    "line": 155,
+    "description": "<p>The <code>observesBefore</code> extension of Javascript&#39;s Function prototype is\navailable when <code>Ember.EXTEND_PROTOTYPES</code> or\n<code>Ember.EXTEND_PROTOTYPES.Function</code> is true, which is the default.</p>\n<p>You can get notified when a property change is about to happen by\nby adding the <code>observesBefore</code> call to the end of your method\ndeclarations in classes that you write. For example:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">Ember.Object.extend({\n  valueObserver: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n    <span class=\"hljs-comment\">// Executes whenever the \"value\" property is about to change</span>\n  }.observesBefore(<span class=\"hljs-string\">'value'</span>)\n});</pre></td>      </tr>    </table>  </div></div><p>See <code>Ember.beforeObserver</code>.</p>\n",
+    "itemtype": "method",
+    "name": "observesBefore",
+    "class": "Function",
+    "module": "ember",
+    "submodule": "ember-runtime"
+  },
+  {
+    "file": "packages/ember-runtime/lib/ext/function.js",
+    "line": 192,
+    "description": "<p>The <code>on</code> extension of Javascript&#39;s Function prototype is available\nwhen <code>Ember.EXTEND_PROTOTYPES</code> or <code>Ember.EXTEND_PROTOTYPES.Function</code> is\ntrue, which is the default.</p>\n<p>You can listen for events simply by adding the <code>on</code> call to the end of\nyour method declarations in classes or mixins that you write. For example:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">Ember.Mixin.create({\n  doSomethingWithElement: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n    <span class=\"hljs-comment\">// Executes whenever the \"didInsertElement\" event fires</span>\n  }.on(<span class=\"hljs-string\">'didInsertElement'</span>)\n});</pre></td>      </tr>    </table>  </div></div><p>See <code>Ember.on</code>.</p>\n",
+    "itemtype": "method",
+    "name": "on",
+    "class": "Function",
+    "module": "ember",
+    "submodule": "ember-runtime"
+  }
+]

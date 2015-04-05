@@ -1,0 +1,84 @@
+{
+  "name": "ember-views",
+  "classes": [
+    {
+      "name": "Ember.Checkbox"
+    },
+    {
+      "name": "Ember.CollectionView"
+    },
+    {
+      "name": "Ember.Component"
+    },
+    {
+      "name": "Ember.ContainerView"
+    },
+    {
+      "name": "Ember.EventDispatcher"
+    },
+    {
+      "name": "Ember.Select"
+    },
+    {
+      "name": "Ember.TextArea"
+    },
+    {
+      "name": "Ember.TextField"
+    },
+    {
+      "name": "Ember.TextSupport"
+    },
+    {
+      "name": "Ember.View"
+    },
+    {
+      "name": "Ember._Metamorph"
+    },
+    {
+      "name": "Ember._MetamorphView"
+    }
+  ],
+  "submodules": [
+    {
+      "name": "Ember.Checkbox"
+    },
+    {
+      "name": "Ember.CollectionView"
+    },
+    {
+      "name": "Ember.Component"
+    },
+    {
+      "name": "Ember.ContainerView"
+    },
+    {
+      "name": "Ember.EventDispatcher"
+    },
+    {
+      "name": "Ember.Select"
+    },
+    {
+      "name": "Ember.TextArea"
+    },
+    {
+      "name": "Ember.TextField"
+    },
+    {
+      "name": "Ember.TextSupport"
+    },
+    {
+      "name": "Ember.View"
+    },
+    {
+      "name": "Ember._Metamorph"
+    },
+    {
+      "name": "Ember._MetamorphView"
+    }
+  ],
+  "requires": [
+    {
+      "name": "ember-runtime"
+    }
+  ]
+}

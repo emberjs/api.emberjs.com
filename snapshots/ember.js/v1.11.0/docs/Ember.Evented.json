@@ -1,0 +1,32 @@
+{
+  "name": "Ember.Evented",
+  "description": "<p>This mixin allows for Ember objects to subscribe to and emit events.</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">App.Person = Ember.Object.extend(Ember.Evented, {\n  greet: <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n    <span class=\"hljs-comment\">// ...</span>\n    <span class=\"hljs-keyword\">this</span>.trigger(<span class=\"hljs-string\">'greet'</span>);\n  }\n});\n\n<span class=\"hljs-keyword\">var</span> person = App.Person.create();\n\nperson.on(<span class=\"hljs-string\">'greet'</span>, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n  <span class=\"hljs-built_in\">console</span>.log(<span class=\"hljs-string\">'Our person has greeted'</span>);\n});\n\nperson.greet();\n\n<span class=\"hljs-comment\">// outputs: 'Our person has greeted'</span></pre></td>      </tr>    </table>  </div></div><p>You can also chain multiple event subscriptions:</p>\n<div class=\"highlight javascript\">  <div class=\"ribbon\"></div>  <div class=\"scroller\">    <table class=\"CodeRay\">      <tr>        <td class=\"line-numbers\">          <pre>1\n2\n3\n4\n5\n</pre>        </td>        <td class=\"code\"><pre class=\"javascript\">person.on(<span class=\"hljs-string\">'greet'</span>, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n  <span class=\"hljs-built_in\">console</span>.log(<span class=\"hljs-string\">'Our person has greeted'</span>);\n}).one(<span class=\"hljs-string\">'greet'</span>, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span><span class=\"hljs-params\">()</span> </span>{\n  <span class=\"hljs-built_in\">console</span>.log(<span class=\"hljs-string\">'Offer one-time special'</span>);\n}).off(<span class=\"hljs-string\">'event'</span>, <span class=\"hljs-keyword\">this</span>, forgetThis);</pre></td>      </tr>    </table>  </div></div>",
+  "line": 14,
+  "file": "packages/ember-runtime/lib/mixins/evented.js",
+  "methods": [
+    {
+      "name": "on",
+      "isPrivate": false
+    },
+    {
+      "name": "one",
+      "isPrivate": false
+    },
+    {
+      "name": "trigger",
+      "isPrivate": false
+    },
+    {
+      "name": "off",
+      "isPrivate": false
+    },
+    {
+      "name": "has",
+      "isPrivate": false
+    }
+  ],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

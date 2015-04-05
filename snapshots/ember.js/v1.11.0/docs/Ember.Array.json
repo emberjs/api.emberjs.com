@@ -1,0 +1,265 @@
+{
+  "name": "Ember.Array",
+  "description": "<p>This mixin implements Observer-friendly Array-like behavior. It is not a\nconcrete implementation, but it can be used up by other classes that want\nto appear like arrays.</p>\n<p>For example, ArrayProxy and ArrayController are both concrete classes that can\nbe instantiated to implement array-like behavior. Both of these classes use\nthe Array Mixin by way of the MutableArray mixin, which allows observable\nchanges to be made to the underlying array.</p>\n<p>Unlike <code>Ember.Enumerable,</code> this mixin defines methods specifically for\ncollections that provide index-ordered access to their contents. When you\nare designing code that needs to accept any kind of Array-like object, you\nshould use these methods instead of Array primitives because these will\nproperly notify observers of changes to the array.</p>\n<p>Although these methods are efficient, they do add a layer of indirection to\nyour application so it is a good idea to use them only when you need the\nflexibility of using both true JavaScript arrays and &quot;virtual&quot; arrays such\nas controllers and collections.</p>\n<p>You can use the methods defined in this module to access and modify array\ncontents in a KVO-friendly way. You can also be notified whenever the\nmembership of an array changes by using <code>.observes(&#39;myArray.[]&#39;)</code>.</p>\n<p>To support <code>Ember.Array</code> in your own class, you must override two\nprimitives to use it: <code>replace()</code> and <code>objectAt()</code>.</p>\n<p>Note that the Ember.Array mixin also incorporates the <code>Ember.Enumerable</code>\nmixin. All <code>Ember.Array</code>-like objects are also enumerable.</p>\n",
+  "line": 57,
+  "file": "packages/ember-runtime/lib/mixins/array.js",
+  "methods": [
+    {
+      "name": "nextObject",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "contains",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "forEach",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "getEach",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "setEach",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "map",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "mapBy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "mapProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "filter",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "reject",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "filterBy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "filterProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "rejectBy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "rejectProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "find",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "findBy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "findProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "every",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "everyBy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "everyProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "isEvery",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "any",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "some",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "isAny",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "anyBy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "someProperty",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "reduce",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "invoke",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "toArray",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "compact",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "without",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "uniq",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "addEnumerableObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "removeEnumerableObserver",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "enumerableContentWillChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "enumerableContentDidChange",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "sortBy",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "objectAt",
+      "isPrivate": false
+    },
+    {
+      "name": "objectsAt",
+      "isPrivate": false
+    },
+    {
+      "name": "slice",
+      "isPrivate": false
+    },
+    {
+      "name": "indexOf",
+      "isPrivate": false
+    },
+    {
+      "name": "lastIndexOf",
+      "isPrivate": false
+    },
+    {
+      "name": "addArrayObserver",
+      "isPrivate": false
+    },
+    {
+      "name": "removeArrayObserver",
+      "isPrivate": false
+    },
+    {
+      "name": "arrayContentWillChange",
+      "isPrivate": false
+    },
+    {
+      "name": "arrayContentDidChange",
+      "isPrivate": false
+    }
+  ],
+  "properties": [
+    {
+      "name": "firstObject",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "lastObject",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "[]",
+      "isPrivate": false
+    },
+    {
+      "name": "hasEnumerableObservers",
+      "isPrivate": false,
+      "inheritedFrom": "Ember.Enumerable"
+    },
+    {
+      "name": "length",
+      "isPrivate": false
+    },
+    {
+      "name": "hasArrayObservers",
+      "isPrivate": false
+    },
+    {
+      "name": "@each",
+      "isPrivate": false
+    }
+  ],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}

@@ -1,0 +1,33 @@
+[
+  {
+    "file": "packages/ember-metal/lib/platform/define_property.js",
+    "line": 16,
+    "description": "<p>Identical to <code>Object.defineProperty()</code>. Implements as much functionality\nas possible if not available natively.</p>\n",
+    "itemtype": "method",
+    "name": "defineProperty",
+    "params": [
+      {
+        "name": "obj",
+        "description": "The object to modify",
+        "type": "Object"
+      },
+      {
+        "name": "keyName",
+        "description": "property name to modify",
+        "type": "String"
+      },
+      {
+        "name": "desc",
+        "description": "descriptor hash",
+        "type": "Object"
+      }
+    ],
+    "return": {
+      "description": "",
+      "type": "Void"
+    },
+    "class": "Ember.platform",
+    "module": "ember",
+    "namespace": "Ember"
+  }
+]

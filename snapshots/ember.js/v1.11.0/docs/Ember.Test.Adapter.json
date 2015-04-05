@@ -1,0 +1,24 @@
+{
+  "name": "Ember.Test.Adapter",
+  "description": "<p>The primary purpose of this class is to create hooks that can be implemented\nby an adapter for various test frameworks.</p>\n",
+  "line": 10,
+  "file": "packages/ember-testing/lib/adapters/adapter.js",
+  "methods": [
+    {
+      "name": "asyncStart",
+      "isPrivate": false
+    },
+    {
+      "name": "asyncEnd",
+      "isPrivate": false
+    },
+    {
+      "name": "exception",
+      "isPrivate": false
+    }
+  ],
+  "properties": [],
+  "events": [],
+  "isPrivate": false,
+  "constType": "Class"
+}
